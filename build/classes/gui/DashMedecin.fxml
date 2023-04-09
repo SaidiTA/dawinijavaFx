@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashMedecinController">
+   <children>
+      <AnchorPane layoutY="89.0" prefHeight="311.0" prefWidth="167.0" styleClass="sidebar">
+         <children>
+            <Pane layoutX="15.0" layoutY="29.0" prefHeight="18.0" prefWidth="119.0" styleClass="labbtn">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="119.0" text="Medecin" textFill="#1153ec">
+                     <font>
+                        <Font name="AdobePiStd" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <HBox layoutX="15.0" layoutY="142.0" prefHeight="26.0" prefWidth="119.0">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_sync_settings_24px.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="List consultation" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox layoutX="15.0" layoutY="112.0" prefHeight="22.0" prefWidth="99.0">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_time_machine_30px.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Rendez vous" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox layoutX="15.0" layoutY="83.0" prefHeight="27.0" prefWidth="99.0">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_windows_homegroup_32px.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Mes patients" textFill="WHITE" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <TextField layoutX="186.0" layoutY="131.0" prefHeight="26.0" prefWidth="167.0" promptText="chercher" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-background-color: #AEB2C3;" text="chercher">
+         <effect>
+            <DropShadow />
+         </effect>
+      </TextField>
+      <Label layoutX="279.0" layoutY="75.0" prefHeight="27.0" prefWidth="203.0" text="List de mes patients" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="81.0" fitWidth="131.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="179.0" layoutY="167.0" prefHeight="222.0" prefWidth="403.0" />
+   </children>
+</AnchorPane>
