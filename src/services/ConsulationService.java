@@ -104,13 +104,27 @@ public void ajouter(Consulation t) throws SQLException {
         ResultSet rs = st.executeQuery();
         rs.next();
         int i;
-        
-        
         i=rs.getInt("id");
-        
-
-
         return i;
+    }
+     public List<Consulation> recupererByIdPatient(int idPatient) throws SQLException {
+        List<Consulation> consultations = new ArrayList<>();
+        String req = "select * from consulation where patients_id =?";
+        PreparedStatement st = cnx.prepareStatement(req);
+
+        st.setInt(1, idPatient);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            
+            Consulation c = new Consulation();
+            c.setId(rs.getInt("id"));
+            c.setDate(rs.getDate("date"));
+            c.setHeuredebut(rs.getTimestamp("heuredebut"));
+            c.setHeurefin(rs.getTimestamp("heurefin"));
+            consultations.add(c);
+        }
+        return consultations;
     }
 
 }

@@ -22,7 +22,7 @@
             <Font name="Berlin Sans FB" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="add_ordonnance" defaultButton="true" focusTraversable="false" layoutX="206.0" layoutY="284.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="188.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="Enregistrer la modification" textAlignment="CENTER" textFill="#2262c6">
+      <Button fx:id="Enregistrer" defaultButton="true" focusTraversable="false" layoutX="206.0" layoutY="284.0" mnemonicParsing="false" onAction="#modifierconsultation" prefHeight="34.0" prefWidth="188.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="Enregistrer la modification" textAlignment="CENTER" textFill="#2262c6">
          <font>
             <Font name="AdobePiStd" size="12.0" />
          </font>

@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierConsultationController">
     <stylesheets>
         <URL value="@modifierconsultation.css" />
     </stylesheets>
    <children>
-      <Label layoutX="185.0" layoutY="58.0" text="Modifier une ordonnance" textFill="#2262c6">
+      <Label layoutX="185.0" layoutY="58.0" text="Modifier une consultation" textFill="#2262c6">
          <font>
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
@@ -22,13 +22,13 @@
             <Font name="Berlin Sans FB" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="add_ordonnance" defaultButton="true" focusTraversable="false" layoutX="206.0" layoutY="284.0" mnemonicParsing="false" onAction="#add_ordonnance" prefHeight="34.0" prefWidth="188.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="Enregistrer la modification" textAlignment="CENTER" textFill="#2262c6">
+      <Button fx:id="Enregistrer" defaultButton="true" focusTraversable="false" layoutX="206.0" layoutY="284.0" mnemonicParsing="false" onAction="#modifierconsultation" prefHeight="34.0" prefWidth="188.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="Enregistrer la modification" textAlignment="CENTER" textFill="#2262c6">
          <font>
             <Font name="AdobePiStd" size="12.0" />
          </font>
       </Button>
-      <DatePicker layoutX="208.0" layoutY="141.0" prefHeight="26.0" prefWidth="242.0" />
-      <DatePicker layoutX="208.0" layoutY="208.0" prefHeight="26.0" prefWidth="242.0" />
+      <DatePicker fx:id="heureD" layoutX="208.0" layoutY="141.0" prefHeight="26.0" prefWidth="242.0" />
+      <DatePicker fx:id="heureF" layoutX="208.0" layoutY="208.0" prefHeight="26.0" prefWidth="242.0" />
       <Label layoutX="99.0" layoutY="210.0" text="Heure fin" textFill="#4a70a9">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />

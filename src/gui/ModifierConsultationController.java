@@ -5,8 +5,10 @@
  */
 package gui;
 
+import entities.Consulation;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
+import services.ConsulationService;
 
 /**
  * FXML Controller class
@@ -24,12 +27,22 @@ import javafx.scene.control.TableCell;
  */
 public class ModifierConsultationController implements Initializable {
 
-    @FXML
-    private Button add_ordonnance;
+        private Consulation cons;
+
     @FXML
     private DatePicker heureD;
     @FXML
     private DatePicker heureF;
+    @FXML
+    private Button Enregistrer;
+    
+    public Consulation getCons() {
+        return cons;
+    }
+
+    public void setCons(Consulation cons) {
+        this.cons = cons;
+    }
 
     /**
      * Initializes the controller class.
@@ -39,10 +52,25 @@ public class ModifierConsultationController implements Initializable {
         // TODO
     }    
 
-    @FXML
     
-    public void modifier_consultation() {
-        
+    public void modifierconsultation() throws IOException {
+        try {
+
+            ConsulationService consulationService = new ConsulationService();
+            consulationService.modifier(cons);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+            Parent root;
+            
+                root = loader.load();
+                
+                Enregistrer.getScene().setRoot(root);
+                
+
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     
