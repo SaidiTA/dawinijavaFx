@@ -81,37 +81,28 @@ public class CardConsultationController implements Initializable {
             consulationService.supprimer(cons);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
             Parent root;
-            
-                root = loader.load();
-                
-                supp_cons.getScene().setRoot(root);
 
+            root = loader.load();
+
+            supp_cons.getScene().setRoot(root);
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
     }
+
     @FXML
-    public void RedirectModifierConsultation() throws IOException {
-        try {
+    public void RedirectModifierConsultation() throws IOException, SQLException {
 
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ModifierConsultation.fxml"));
-            Parent root;
-            
-                root = loader.load();
-                
-                modif_cons.getScene().setRoot(root);
-                ConsulationService consulationService = new ConsulationService();
-            consulationService.modifier(cons);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ModifierConsultation.fxml"));
+        Parent root;
+        root = loader.load();
+        ModifierConsultationController modif = loader.getController();
 
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        modif.initialize(getCons());
+        modif_cons.getScene().setRoot(root);
 
     }
-    
 
 }

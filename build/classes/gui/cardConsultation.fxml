@@ -10,7 +10,7 @@
       <Label fx:id="date_consultation" prefHeight="18.0" prefWidth="90.0" text="date" />
       <Label fx:id="debut_consultation" prefHeight="18.0" prefWidth="90.0" text="Heure debut" />
       <Label fx:id="fin_consultation" prefHeight="18.0" prefWidth="90.0" text="Heure fin" />
-      <Button fx:id="modif_cons" mnemonicParsing="false" onAction="#ModifierConsultation" text="modifier" />
+      <Button fx:id="modif_cons" mnemonicParsing="false" onAction="#RedirectModifierConsultation" text="modifier" />
       <Button fx:id="supp_cons" mnemonicParsing="false" onAction="#SupprimerConsultation" text="supprimer" />
    </children>
 </HBox>

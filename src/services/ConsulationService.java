@@ -38,19 +38,12 @@ public void ajouter(Consulation t) throws SQLException {
 
     @Override
     public void modifier(Consulation t) throws SQLException {
-        String req = "update consulation set date = ?, heuredebut = ?, heurefin = ?, url_consultation = ?, est_termine = ? where id = ?";
+        String req = "update consulation set  heuredebut = ?, heurefin = ? where id = ?";
         PreparedStatement cs = cnx.prepareStatement(req);
         
-        cs.setDate(1, t.getDate());
-        
-        cs.setTimestamp(2, t.getHeuredebut());
-
-        cs.setTimestamp(3, t.getHeurefin());
-        
-        cs.setString(4, t.getUrl_consultation());
-        cs.setString(5, t.getEst_termine());
-        cs.setInt(6, t.getId());
-
+        cs.setTimestamp(1, t.getHeuredebut());
+        cs.setTimestamp(2, t.getHeurefin());
+        cs.setInt(3, t.getId());
         cs.executeUpdate();
     }
     public void consultationTerminer(int id) throws SQLException {
