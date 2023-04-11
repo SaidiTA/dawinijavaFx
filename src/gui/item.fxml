@@ -9,47 +9,47 @@
 
 <HBox alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="1212.0" style="-fx-border-image-insets: 0; -fx-background-color: #F1F7FD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ItemController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="142.0" text="Ben Foulen">
+      <Label fx:id="lblNom" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="142.0" text="Ben Foulen">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="146.0" text="Foulen">
+      <Label fx:id="lblPrenom" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="146.0" text="Foulen">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="242.0" text="FoulenbenFoulen@esprit.tn">
+      <Label fx:id="lblEmail" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="242.0" text="FoulenbenFoulen@esprit.tn">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="166.0" text="97916552">
+      <Label fx:id="lblTelephone" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="166.0" text="97916552">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="142.0" text="Medecin">
+      <Label fx:id="lblMedecin" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="142.0" text="Medecin">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="180.0" text="Diabetes">
+      <Label fx:id="lblspecialites" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="180.0" text="Diabetes">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="170.0" text="123">
+      <Label fx:id="lblTARIF" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="170.0" text="123">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="167.0" text="Fahs ">
+      <Label fx:id="lblAdresse" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="167.0" text="Fahs ">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
       </Label>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="7.0">
+      <HBox fx:id="lblAction" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="7.0">
          <children>
             <Button fx:id="btnshow" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #70B8D9;" stylesheets="@style.css">
                <graphic>

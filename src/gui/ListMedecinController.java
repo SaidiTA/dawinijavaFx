@@ -40,6 +40,26 @@ private double x, y;
     private Button btnAdd;
     @FXML
     private ImageView btnAddplus1;   
+    @FXML
+    private Label Nom;
+    @FXML
+    private Label Prenom;
+    @FXML
+    private Label Email;
+    @FXML
+    private Label Telephone;
+    @FXML
+    private Label Titre;
+    @FXML
+    private Label Specialites;
+    @FXML
+    private Label Tarif;
+    @FXML
+    private Label Adresse;
+    @FXML
+    private Label Action;
+    @FXML
+    private Label ListeMedecin;
    
 
     
@@ -119,6 +139,8 @@ private double x, y;
        }
     
     }
+
+    
 
     
     

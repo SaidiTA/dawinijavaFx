@@ -32,9 +32,9 @@
          <right>
             <Pane prefHeight="717.0" prefWidth="801.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField layoutX="236.0" layoutY="232.0" prefHeight="63.0" prefWidth="472.0" promptText="Email" />
-                  <PasswordField layoutX="236.0" layoutY="350.0" prefHeight="61.0" prefWidth="470.0" promptText="Mot De Passe" />
-                  <Button layoutX="237.0" layoutY="501.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="471.0" style="-fx-background-color: #4D7DC4;" text="Login">
+                  <TextField fx:id="txtEmail" layoutX="236.0" layoutY="232.0" prefHeight="63.0" prefWidth="472.0" promptText="Email" />
+                  <PasswordField fx:id="txtPass" layoutX="236.0" layoutY="350.0" prefHeight="61.0" prefWidth="470.0" promptText="Mot De Passe" />
+                  <Button fx:id="btnlogin" layoutX="237.0" layoutY="501.0" mnemonicParsing="false" onAction="#login" prefHeight="53.0" prefWidth="471.0" style="-fx-background-color: #4D7DC4;" text="Login">
                      <font>
                         <Font name="DejaVu Sans" size="19.0" />
                      </font>
@@ -59,8 +59,8 @@
                         <Font size="19.0" />
                      </font>
                   </Text>
-                  <Text layoutX="235.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot De Passe" wrappingWidth="99.0673828125" />
-                  <Text layoutX="236.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="49.0673828125" />
+                  <Text fx:id="labelPass" layoutX="235.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot De Passe" wrappingWidth="99.0673828125" />
+                  <Text fx:id="labelEmail" layoutX="236.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="49.0673828125" />
                   <ImageView fitHeight="152.0" fitWidth="311.0" layoutX="312.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logo-dawini.png" />

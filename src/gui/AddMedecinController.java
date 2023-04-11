@@ -4,6 +4,7 @@
  */
 package gui;
 
+import entities.Medecin;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import services.MedecinService;
 
 /**
  *
@@ -58,6 +60,8 @@ public class AddMedecinController implements Initializable {
     private TextArea Tarif;
     @FXML
     private TextArea Cin;
+    @FXML
+    private Button btnAdd;
     
     
     @FXML
@@ -85,6 +89,34 @@ public class AddMedecinController implements Initializable {
         // TODO
     }    
 
+    @FXML
+    private void addMedecin(ActionEvent event) {
+    }
+
+    
+
+}
+
+    //private void addMedecin(ActionEvent event) {
+       // if(githubCol.getText().isEmpty() != true && linkedinCol.getText().isEmpty() != true 
+          //      && pdf != null && image != null){
+         //   MedecinService serv = new MedecinService();
+           // Medecin med = new Medecin();
+           
+           // cv.setCv(pdf);
+            //cv.setGit(githubCol.getText());
+           // cv.setLinkedin(linkedinCol.getText());
+            //cv.setImg(image);
+            
+          
+           // serv.ajouter(med);
+        //}else{
+           // System.out.print("il manque encore des champs ! ");
+       // }
+    //}
+
+  //
+
   
     
-}
+

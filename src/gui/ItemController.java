@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -30,6 +31,24 @@ public class ItemController implements Initializable {
     private Button btnDelete;
 @FXML
     private Button btnModify;
+    @FXML
+    private Label lblNom;
+    @FXML
+    private Label lblPrenom;
+    @FXML
+    private Label lblEmail;
+    @FXML
+    private Label lblTelephone;
+    @FXML
+    private Label lblMedecin;
+    @FXML
+    private Label lblspecialites;
+    @FXML
+    private Label lblTARIF;
+    @FXML
+    private Label lblAdresse;
+    @FXML
+    private HBox lblAction;
 
    
     @FXML
