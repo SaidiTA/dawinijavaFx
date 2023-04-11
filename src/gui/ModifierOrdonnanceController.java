@@ -7,6 +7,7 @@ package gui;
 
 import entities.Consulation;
 import entities.ordonnance;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -26,6 +27,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
@@ -63,14 +65,16 @@ public class ModifierOrdonnanceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+
     @FXML
-    private void retour2(MouseEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("/gui/DashMedecin.fxml"));
-              Scene scene = new Scene(root);
-              Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-              stage.setScene(scene);
-              stage.show();
+    private void retour2(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/DashMedecin.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
+
     @FXML
     private void UploadImageActionPerformed(ActionEvent event) throws IOException {
 
@@ -110,43 +114,46 @@ public class ModifierOrdonnanceController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+
     @FXML
     public void modifierordonnance() throws IOException {
         try {
 
             ordonnanceService ordService = new ordonnanceService();
             ord.setDescription(desc.getText());
-            ordService.modifier(ord);
+            System.out.println("test");
             if (desc.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "remplir la description!");
-                } 
-        else if (lien.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "il faut importer l'image d'ordonnance!");
-                } 
-        else {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
-            Parent root;
+                JOptionPane.showMessageDialog(null, "remplir la description!");
+            } else if (lien.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "il faut importer l'image d'ordonnance!");
+            } else {
+                ordService.modifier(ord);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+                Parent root;
 
-            root = loader.load();
+                root = loader.load();
 
-            modif_ord.getScene().setRoot(root);
+                modif_ord.getScene().setRoot(root);
 
-        }
+            }
 
-            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
     }
-   void initialize(ordonnance ord) throws SQLException {
-       
-     desc.setText(ord.getDescription());
-        this.ord=ord;
+
+    void initialize(ordonnance ord) throws SQLException, IOException {
+
+        desc.setText(ord.getDescription());
+       /* String imagePath = "src\\uploads\\" + this.lien + ".png";
+        File imageFile = new File(imagePath);
+       // Image image = ImageIO.read(imageFile);
+Image image = new Image(imagePath);
+
+        affimage.setImage(image);*/
+        this.ord = ord;
     }
 
-    
-   
-   
-    
+
 }

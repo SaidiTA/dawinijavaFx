@@ -29,12 +29,17 @@
          </font>
       </Button>
       <TextArea fx:id="desc" layoutX="179.0" layoutY="143.0" prefHeight="77.0" prefWidth="346.0" />
-      <ImageView fx:id="affimage" fitHeight="107.0" fitWidth="146.0" layoutX="418.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="affimage" fitHeight="169.0" fitWidth="250.0" layoutX="405.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="98.0" layoutY="266.0" text="image " textFill="#4a70a9">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />
          </font>
       </Label>
       <Button fx:id="choirimage" layoutX="179.0" layoutY="275.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" text="Choisir Une Image" />
+      <Button fx:id="retour" defaultButton="true" focusTraversable="false" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#retour2" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="Retour" textAlignment="CENTER" textFill="#2262c6">
+         <font>
+            <Font name="AdobePiStd" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

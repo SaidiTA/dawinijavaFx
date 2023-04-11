@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entities.ordonnance;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -18,22 +19,31 @@ import javafx.scene.image.ImageView;
  * @author USER
  */
 public class AfficheOrdonnanceController implements Initializable {
-
-    @FXML
-    private Label id;
-    @FXML
-    private Label desc;
-    @FXML
-    private Label date;
+    private ordonnance ord;
     @FXML
     private ImageView aff_img;
+    @FXML
+    private Label id1;
+    @FXML
+    private Label desc1;
+    @FXML
+    private Label date1;
+
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
     }    
+
+    void setOrd(ordonnance ord) {
+        this.ord=ord;
+        id1.setText(String.valueOf(ord.getId()));
+       desc1.setText(ord.getDescription());
+       date1.setText(ord.getDate().toString());
+    }
     
 }

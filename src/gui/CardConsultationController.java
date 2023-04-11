@@ -180,19 +180,18 @@ public class CardConsultationController implements Initializable {
 
     }
     @FXML
-        public void AfficherOrdonnance() throws IOException {
+        public void AfficherOrdonnance() throws IOException, SQLException {
         
-        try {
-            ordonnanceService ordService = new ordonnanceService();
-            ordService.recupererbyID(this.cons.getId());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
-            Parent root;
-            root = loader.load();
-            supp_ord.getScene().setRoot(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/afficheOrdonnance.fxml"));
+        Parent root;
+        root = loader.load();
+        AfficheOrdonnanceController afford = loader.getController();
+         ordonnanceService ordService = new ordonnanceService();
+         
+         
 
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        afford.setOrd(ordService.recupererbycons(this.cons.getId()));
+        aff_ord.getScene().setRoot(root);
 
     }
 

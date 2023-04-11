@@ -102,7 +102,7 @@ public class AjoutConsultationController implements Initializable {
             root = loader.load();
 
             AjouterOrdonnanceController ordonnanceController = loader.getController();
-            
+            //b3atht el id cons mel controllerajoutcons lel  w 3malt el set mta3 id cons 
             ordonnanceController.setConsulation_id(cons.recupererByURL(url));
             
             suivant.getScene().setRoot(root);
