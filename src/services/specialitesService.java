@@ -63,7 +63,7 @@ public class specialitesService {
         cnx = MyDB.getInstance().getCnx();
     }
 
-    public void modifier_spec(Specialites specialite, int id ,String nom, String description) {
+    public void modifier_spec(Specialites specialite ,String nom, String description) {
         try {
             String requete4 = " UPDATE Specialites SET " + "  nom= ?, description = ? WHERE id= " + specialite.getId();
             PreparedStatement pst = MyDB.getInstance().getCnx().prepareStatement(requete4);
@@ -78,5 +78,21 @@ public class specialitesService {
 
    
 
-    }    }
+    }    
+
+public void supprimer(Specialites s) {
+
+        try {
+            String requete3 = "DELETE FROM Specialites WHERE id=" + s.getId();
+            Statement st = MyDB.getInstance().getCnx().createStatement();
+
+            st.executeUpdate(requete3);
+            System.out.println("Specialité supprimer !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+}
 

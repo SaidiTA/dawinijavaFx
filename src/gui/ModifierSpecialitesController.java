@@ -9,6 +9,8 @@ import entities.Specialites;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import services.specialitesService;
@@ -49,9 +52,27 @@ public class ModifierSpecialitesController implements Initializable {
 
     @FXML
     private void buttonOnAction(ActionEvent event) {
+         // Récupérer les données saisies par l'utilisateur
+    String nom = btnnom.getText();
+    String description = btndescription.getHtmlText();
+    
+    // Modifier le dossier correspondant dans la base de données
+    specialitesService specialiteCrud = new specialitesService();
+    specialiteCrud.modifier_spec(specialite ,nom, description);
+    
+    // Fermer la fenêtre de modification
+    Stage stage = (Stage) btnnom.getScene().getWindow();
+    stage.close();
+    
     }
+    
 public void setData(Specialites specialite){
-        
+        /*
+        descpCol.setText(dossier.getDescription());
+        codeCol.setText(dossier.getCode_apci());
+        int numm = dossier.getNumero();
+        numCol.setText(Integer.toString(numm));    
+       */
         this.specialite = specialite;
         btnnom.setText(specialite.getNom());
         btndescription.setHtmlText(specialite.getDescription());
@@ -76,5 +97,9 @@ private void handleButtonAction(ActionEvent event) {
     }
      
 }
+
+    @FXML
+    private void handleButtonAction(MouseEvent event) {
+    }
 
 }

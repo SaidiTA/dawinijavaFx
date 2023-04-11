@@ -12,14 +12,13 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.HTMLEditor?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.ModifierSpecialitesController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierSpecialitesController">
    <children>
       <Pane layoutX="20.0" layoutY="20.0" prefHeight="750.0" prefWidth="972.0">
          <children>
             <ImageView fitHeight="64.0" fitWidth="834.0" layoutX="65.0" layoutY="746.0" pickOnBounds="true" preserveRatio="true" />
-            <Text layoutX="399.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
-            <TextArea fx:id="nom" layoutX="55.0" layoutY="174.0" prefHeight="65.0" prefWidth="834.0" promptText="Nom" styleClass="shadow" stylesheets="@add.css" />
+            <Text layoutX="381.0" layoutY="674.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
+            <TextArea fx:id="btnnom" layoutX="55.0" layoutY="174.0" prefHeight="65.0" prefWidth="834.0" promptText="Nom" styleClass="shadow" stylesheets="@add.css" />
             <Button fx:id="btnAjout" layoutX="657.0" layoutY="658.0" mnemonicParsing="false" onAction="#buttonOnAction" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Ajouter Specialite">
                <styleClass>
                   <String fx:value="shadow" />
@@ -49,7 +48,7 @@
                   </Button>
                </children>
             </Pane>
-            <HTMLEditor fx:id="description" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="55.0" layoutY="291.0" prefHeight="200.0" prefWidth="834.0" />
+            <HTMLEditor fx:id="btndescription" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="55.0" layoutY="291.0" prefHeight="200.0" prefWidth="834.0" />
          </children>
       </Pane>
    </children>

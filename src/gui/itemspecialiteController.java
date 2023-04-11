@@ -10,15 +10,21 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import services.specialitesService;
@@ -62,102 +68,64 @@ public class itemspecialiteController implements Initializable {
         // TODO
     }    
 
-     @FXML
-    void handleButtonClick(ActionEvent event) {
-        if(event.getSource()== btnModify){
-
-      showModifierDialog("MofdifierMedecin");
-      int id = specialite.getId();
-        btnid.setText(Integer.toString(id));
-        
-        // Récupération des données saisies
-        String nom = btnnom.getText();
-        String description = btndescription.getText();
-
-        // Modification de la spécialité correspondante dans la base de données
-        specialitesService Crud = new specialitesService();
-        Crud.modifier_spec(specialite, id, nom, description);
-        
-        // Fermeture de la fenêtre
-      
-        }
+    @FXML
+void handleButtonClick(ActionEvent event) {
+    try {
         // Récupération des données du dossier sélectionné
-       
+        int id = Integer.parseInt(btnid.getText());
+        specialitesService dc = new specialitesService();
+        List<Specialites> spec = dc.listerSpecialites();
+        Specialites specialite = null;
+        for (Specialites d : spec) {
+            if (d.getId() == id) {
+                specialite = d;
+                break;
+            }
+        }
         
-     if(event.getSource()== btnDelete){
-      showDialog("delete");
-      }
-      
-    }
-     private void showModifierDialog(String fxml)
-    {
-       try {
-           Parent parent = FXMLLoader.load(getClass().getResource("/gui/ModifierSpecialites.fxml"));
-           Stage stage = new Stage();
-           Scene scene = new Scene(parent);
-           stage.setScene(scene);
-              stage.initStyle(StageStyle.UNDECORATED);
+        // Chargement de la fenêtre de modification
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ModifierSpecialites.fxml"));
+        Parent parent = fxmlLoader.load();
+        ModifierSpecialitesController controller = fxmlLoader.getController();
 
-        //drag it here
-        parent.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
-        parent.setOnMouseDragged(event -> {
+        // Transmission des données du dossier à la fenêtre de modification
+        controller.setData(specialite);
 
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-
-        });
-           stage.show();
-        
-        //primaryStage.setTitle("Sign In User");
+        // Affichage de la fenêtre de modification
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.show();
        
-       
-           
-           
-           
-           
-       } catch (IOException ex) {
-           ex.printStackTrace();
-       }
-    
-    }
-  
-     private void showDialog(String fxml)
-    {
-       try {
-           Parent parent = FXMLLoader.load(getClass().getResource("/gui/deleteSpecialites.fxml"));
-           Stage stage = new Stage();
-           Scene scene = new Scene(parent);
-           stage.setScene(scene);
-              stage.initStyle(StageStyle.UNDECORATED);
+    } catch (IOException ex) {
+        Logger.getLogger(itemspecialiteController.class.getName()).log(Level.SEVERE, null, ex);
+    } 
+}
 
-        //drag it here
-        parent.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
-        parent.setOnMouseDragged(event -> {
-
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-
-        });
-           stage.show();
-        
-        //primaryStage.setTitle("Sign In User");
-       
-       
-           
-           
-           
-           
-       } catch (IOException ex) {
-           ex.printStackTrace();
-       }
-    
+@FXML
+    private void sup_spec(ActionEvent event) {
+         /*      try {
+            Parent parent = FXMLLoader.load(getClass().getResource("SupprimerDossier.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterDossierController.class.getName()).log(Level.SEVERE, null, ex);
+        } */
+         
+        int id = Integer.parseInt(btnid.getText());
+           specialitesService dc = new specialitesService();
+            List<Specialites> specialite = dc.listerSpecialites();
+                 for (Specialites d : specialite) {
+                     if (d.getId() == id) {
+                     dc.supprimer(d);
+                     
+                 break;
+                 
+        }
     }
     
+    }
    
 }

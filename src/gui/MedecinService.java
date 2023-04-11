@@ -9,6 +9,6 @@ package gui;
  *
  * @author jlidi
  */
-class SpecialitesService {
+public class MedecinService {
     
 }
