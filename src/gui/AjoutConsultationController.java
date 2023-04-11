@@ -7,6 +7,7 @@ package gui;
 
 import entities.Consulation;
 import java.awt.Desktop;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
@@ -14,14 +15,19 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import static java.util.Optional.empty;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import services.ConsulationService;
 
 /**
@@ -39,6 +45,8 @@ public class AjoutConsultationController implements Initializable {
     private String MEET_URL = "https://meet.google.com/new";
     @FXML
     private TextField tURL;
+    @FXML
+    private Button retour;
 
     /**
      * Initializes the controller class.
@@ -66,6 +74,7 @@ public class AjoutConsultationController implements Initializable {
 
     }
 
+    @FXML
     public void newConsultation() throws SQLException {
         String url = tURL.getText();
         Calendar calendar = Calendar.getInstance();
@@ -75,9 +84,14 @@ public class AjoutConsultationController implements Initializable {
 
         Consulation c = new Consulation(dt, heure, heure, url, "0");
         ConsulationService cons = new ConsulationService();
-
+        if (tURL.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "il faut remplir le champ pour recuperer l'url  !");
+                } else {
+                    
+                
         try {
             cons.ajouter(c);
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -95,7 +109,25 @@ public class AjoutConsultationController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+}
+    }
+     @FXML
+    public void Retour() throws IOException, SQLException {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+        Parent root;
+        root = loader.load();
+
+        retour.getScene().setRoot(root);
+
+    }
+     @FXML
+    private void retour2(MouseEvent event) throws IOException {
+          Parent root = FXMLLoader.load(getClass().getResource("/gui/DashMedecin.fxml"));
+              Scene scene = new Scene(root);
+              Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+              stage.setScene(scene);
+              stage.show();
     }
 
 }

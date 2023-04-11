@@ -4,13 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CardConsultationController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CardConsultationController">
    <children>
       <Label fx:id="id_consultation" prefHeight="18.0" prefWidth="90.0" text="id" />
       <Label fx:id="date_consultation" prefHeight="18.0" prefWidth="90.0" text="date" />
       <Label fx:id="debut_consultation" prefHeight="18.0" prefWidth="90.0" text="Heure debut" />
       <Label fx:id="fin_consultation" prefHeight="18.0" prefWidth="90.0" text="Heure fin" />
-      <Button fx:id="modif_cons" mnemonicParsing="false" onAction="#RedirectModifierConsultation" text="modifier" />
-      <Button fx:id="supp_cons" mnemonicParsing="false" onAction="#SupprimerConsultation" text="supprimer" />
+      <Button fx:id="modif_cons" mnemonicParsing="false" onAction="#RedirectModifierConsultation" prefHeight="26.0" prefWidth="69.0" text="modifier" />
+      <Label prefHeight="18.0" prefWidth="6.0" />
+      <Button fx:id="supp_cons" mnemonicParsing="false" onAction="#SupprimerConsultation" prefHeight="26.0" prefWidth="76.0" text="supprimer" />
+      <Label prefHeight="18.0" prefWidth="14.0" />
+      <Button fx:id="modif_ord" mnemonicParsing="false" onAction="#RedirectModifierOrdonnance" prefHeight="26.0" prefWidth="87.0" text="modifier ord" />
+      <Label prefHeight="18.0" prefWidth="6.0" />
+      <Button fx:id="aff_ord" mnemonicParsing="false" onAction="#AfficherOrdonnance" prefHeight="26.0" prefWidth="82.0" text="afficher ord" />
+      <Label prefHeight="18.0" prefWidth="6.0" />
+      <Button fx:id="supp_ord" mnemonicParsing="false" onAction="#SupprimerOrdonnance" prefHeight="26.0" prefWidth="96.0" text="supprimer ord" />
+      <Label prefHeight="18.0" prefWidth="6.0" />
    </children>
 </HBox>

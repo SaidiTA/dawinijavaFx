@@ -32,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import services.ConsulationService;
 import services.ordonnanceService;
 
@@ -87,13 +88,20 @@ public class AjouterOrdonnanceController implements Initializable {
         Date dt = new Date(currentDate.getTime());
         or.setDate(dt);
         or.setImage(lien);
+        if (desc.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "remplir la description!");
+                } 
+        else if (lien.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "il faut importer l'image d'ordonnance!");
+                } 
+        else {
         try {
             os.ajouter(or);
             cons.consultationTerminer(this.consulation_id);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+        }
     }
 
     @FXML

@@ -38,17 +38,19 @@ public void ajouter(ordonnance t) throws SQLException {
 
     @Override
     public void modifier(ordonnance t) throws SQLException {
-        String req = "update ordonnance set description = ?, date = ?";
+        String req = "update ordonnance set description = ?, date = ?,image=? where id=?";
         PreparedStatement cs = cnx.prepareStatement(req);
         
         cs.setString(1, t.getDescription());
         cs.setDate(2, t.getDate());
+        cs.setString(3, t.getImage());
+        cs.setInt(4, t.getId());
         cs.executeUpdate();
     }
 
     @Override
     public void supprimer(ordonnance t) throws SQLException {
-        String req = "delete from ordonnance where ordonnance.id='"+t.getId()+"';";
+        String req = "delete from ordonnance where id='"+t.getId()+"';";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
     }
@@ -72,5 +74,42 @@ public void ajouter(ordonnance t) throws SQLException {
         return ordonnances;
     }
 
+    
+    public ordonnance recupererbycons(int id) throws SQLException {
+        
+        String req = "select * from ordonnance where consulation_id='"+id+"';";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        if(rs.next())
+        {
+            
+            ordonnance o = new ordonnance();
+            o.setId(rs.getInt("id"));
+            o.setDescription(rs.getString("description"));
+            o.setDate(rs.getDate("date"));
+            o.setImage(rs.getString("image"));
+          return o; 
+        }
+        return null;
+    }
+    public ordonnance recupererbyID(int id) throws SQLException {
+        
+        String req = "select * from ordonnance where id='"+id+"';";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        if(rs.next())
+        {
+            
+            ordonnance o = new ordonnance();
+            o.setId(rs.getInt("id"));
+            o.setDescription(rs.getString("description"));
+            o.setDate(rs.getDate("date"));
+            o.setImage(rs.getString("image"));
+          return o; 
+        }
+        return null;
+    }
+    
+    
 }
 

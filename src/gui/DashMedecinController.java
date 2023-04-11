@@ -18,9 +18,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import services.ConsulationService;
+import services.ordonnanceService;
 
 /**
  * FXML Controller class
@@ -36,6 +38,18 @@ public class DashMedecinController implements Initializable {
     private ConsulationService consService = new ConsulationService();
     @FXML
     private Button ConsultationAddButton;
+    @FXML
+    private Label id_consultation;
+    @FXML
+    private Label date;
+    @FXML
+    private Label heureD;
+    @FXML
+    private Label heureF;
+    @FXML
+    private Label action;
+    @FXML
+    private Label ord;
 
     /**
      * Initializes the controller class.
@@ -52,8 +66,18 @@ public class DashMedecinController implements Initializable {
                 try {
                     HBox hBox = fxmlLoader.load();
                     CardConsultationController listconsultation = fxmlLoader.getController();
+                     ordonnanceService ordService = new ordonnanceService(); 
+                         if(ordService.recupererbycons(cons.getId())==null)
+        {
+            listconsultation.setModif_ord();
+                    listconsultation.setSupp_ord();
+                    listconsultation.setaff_ord();
+        }
 
+                                        
+                        
                     listconsultation.setData(cons);
+                   
 
                     contenu.getChildren().add(hBox);
                 } catch (IOException ex) {
@@ -67,6 +91,7 @@ public class DashMedecinController implements Initializable {
         }
     }
 
+    @FXML
     public void AjouterConsultation(ActionEvent event) throws SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/AjoutConsultation.fxml"));
         Parent root;

@@ -76,11 +76,17 @@ public class ModifierConsultationController implements Initializable {
         }
 
     }
-
     void initialize(Consulation cons) throws SQLException {
         heureD.setValue(cons.getHeuredebut().toLocalDateTime().toLocalDate());
         heureF.setValue(cons.getHeurefin().toLocalDateTime().toLocalDate());
         this.cons=cons;
+    }
+    public void Retour() throws IOException, SQLException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+        Parent root;
+        root = loader.load();
+
     }
 
 }
