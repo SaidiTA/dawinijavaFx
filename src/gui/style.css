@@ -1,0 +1,25 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.profile-layout{
+    -fx-background-color: #33ccff;
+    -fx-background-radius: 0 0 50 50;
+    
+}
+.button{
+    -fx-background-color: #EBC95E;
+    -fx-background-raduis:50 50 50 50;
+}
+.white-background{
+    -fx-background-color: #fff;
+}
+.transparent{
+    -fx-background-color:rgba(0,0,0,0);
+}
+.light-gray-background{
+    
+}
