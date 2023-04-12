@@ -48,6 +48,12 @@ public class Sujet  {
         this.replaySujets = replaySujets;
     }
 
+    public Sujet(String title, String message, String description) {
+        this.title = title;
+        this.message = message;
+        this.description = description;
+    }
+
     public Sujet(Date date, String title, String message, String description) {
         this.date = date;
         this.title = title;

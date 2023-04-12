@@ -3,23 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ListMedecinController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ItemController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/DeleteController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/entities/Sujet.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/entities/ReplaySujet.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/DeleteSpecialitesController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/deleteSpecialites.fxml</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/entities/Specialites.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/util/MyDB.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ModifierSpecialites.fxml</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ModifierMedecinController.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ItemsujetController.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/services/sujetService.java</file>
             <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/itemspecialiteController.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/SujetController.java</file>
             <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ModifierSpecialitesController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/AddMedecinController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ListeSpecialitesController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/test/Dawini.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ModifierSujetController.java</file>
             <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/services/specialitesService.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/test/Dawini.java</file>
             <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/AddSpecialitesController.java</file>
         </group>
     </open-files>

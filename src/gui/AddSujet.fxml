@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.HTMLEditor?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.AddSujetController">
+   <children>
+      <ImageView fitHeight="64.0" fitWidth="834.0" layoutX="75.0" layoutY="756.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="449.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
+      <MenuButton fx:id="Specialite" layoutX="79.0" layoutY="360.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="834.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Specialite">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="primary-color" />
+         </styleClass>
+      </MenuButton>
+      <Button fx:id="AjouterSujet" layoutX="721.0" layoutY="756.0" mnemonicParsing="false" onAction="#AjouterSujet" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Ajouter Sujet">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="transparent" />
+         </styleClass>
+      </Button>
+      <Pane layoutX="10.0" layoutY="9.0" prefHeight="94.0" prefWidth="972.0" style="-fx-background-color: #dbe8ff;" styleClass="shadow" stylesheets="@add.css">
+         <children>
+            <Label layoutX="108.0" layoutY="32.0" prefHeight="30.0" prefWidth="212.0" styleClass="shadow" stylesheets="@add.css" text="Ajouter Sujet" textFill="#1c0a94">
+               <font>
+                  <Font name="FreeSerif Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="47.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
+               <image>
+                  <Image url="@../images/logo_small-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btncrosse" layoutX="877.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="47.0" style="-fx-background-color: #dbe8ff;" styleClass="transparent" stylesheets="@add.css">
+               <graphic>
+                  <ImageView fx:id="btncross" fitHeight="23.0" fitWidth="24.0" onDragDetected="#handleButtonAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/7782775.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <TextArea fx:id="btntitle" layoutX="76.0" layoutY="142.0" prefHeight="65.0" prefWidth="834.0" promptText="Title" styleClass="shadow" stylesheets="@add.css" />
+      <TextArea fx:id="btnmessage" layoutX="79.0" layoutY="250.0" prefHeight="63.0" prefWidth="834.0" promptText="Message" styleClass="shadow" stylesheets="@add.css" />
+      <HTMLEditor fx:id="btndescription" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="76.0" layoutY="464.0" prefHeight="200.0" prefWidth="834.0" />
+   </children>
+</AnchorPane>
