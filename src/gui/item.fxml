@@ -9,6 +9,7 @@
 
 <HBox alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="1212.0" style="-fx-border-image-insets: 0; -fx-background-color: #F1F7FD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ItemController">
    <children>
+      <Label fx:id="btnid" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="142.0" />
       <Label fx:id="lblNom" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="142.0" text="Ben Foulen">
          <HBox.margin>
             <Insets right="10.0" />
@@ -30,11 +31,6 @@
          </HBox.margin>
       </Label>
       <Label fx:id="lblMedecin" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="142.0" text="Medecin">
-         <HBox.margin>
-            <Insets right="10.0" />
-         </HBox.margin>
-      </Label>
-      <Label fx:id="lblspecialites" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="180.0" text="Diabetes">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
@@ -75,7 +71,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnDelete" alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #E37A7A;" stylesheets="@style.css">
+            <Button fx:id="btnDelete" alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#supprimer" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #E37A7A;" stylesheets="@style.css">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>

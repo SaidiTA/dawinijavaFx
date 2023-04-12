@@ -33,56 +33,56 @@
          <center>
             <Pane prefHeight="883.0" prefWidth="794.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField layoutX="63.0" layoutY="123.0" prefHeight="50.0" prefWidth="219.0" promptText="Nom" />
-                  <TextField layoutX="294.0" layoutY="123.0" prefHeight="50.0" prefWidth="197.0" promptText="Prenom" />
-                  <TextField layoutX="501.0" layoutY="123.0" prefHeight="50.0" prefWidth="235.0" promptText="Email" />
-                  <TextField layoutX="63.0" layoutY="199.0" prefHeight="51.0" prefWidth="219.0" promptText="Telephone" />
-                  <TextField layoutX="501.0" layoutY="200.0" prefHeight="50.0" prefWidth="237.0" promptText="CIN" />
-                  <PasswordField layoutX="63.0" layoutY="353.0" prefHeight="57.0" prefWidth="330.0" promptText="Mot De Passe" />
-                  <PasswordField layoutX="418.0" layoutY="353.0" prefHeight="57.0" prefWidth="319.0" promptText="Confirmer Mot De Passe" />
-                  <MenuButton layoutX="418.0" layoutY="433.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="319.0" text="Gouvernorat">
+                  <TextField fx:id="lblNom" layoutX="63.0" layoutY="123.0" prefHeight="50.0" prefWidth="219.0" promptText="Nom" />
+                  <TextField fx:id="lblPrenom" layoutX="294.0" layoutY="123.0" prefHeight="50.0" prefWidth="197.0" promptText="Prenom" />
+                  <TextField fx:id="lblEmail" layoutX="501.0" layoutY="123.0" prefHeight="50.0" prefWidth="235.0" promptText="Email" />
+                  <TextField fx:id="lblTelephone" layoutX="63.0" layoutY="199.0" prefHeight="51.0" prefWidth="219.0" promptText="Telephone" />
+                  <TextField fx:id="lblcin" layoutX="501.0" layoutY="200.0" prefHeight="50.0" prefWidth="237.0" promptText="CIN" />
+                  <PasswordField fx:id="lblpassword" layoutX="63.0" layoutY="353.0" prefHeight="57.0" prefWidth="330.0" promptText="Mot De Passe" />
+                  <PasswordField fx:id="lblconfirm" layoutX="418.0" layoutY="353.0" prefHeight="57.0" prefWidth="319.0" promptText="Confirmer Mot De Passe" />
+                  <MenuButton fx:id="lblgouv" layoutX="418.0" layoutY="433.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="319.0" text="Gouvernorat">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
-                  <MenuButton layoutX="462.0" layoutY="279.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Genre">
+                  <MenuButton fx:id="lblgenre" layoutX="462.0" layoutY="279.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Genre">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Action 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
                   </MenuButton>
-                  <TextArea layoutX="66.0" layoutY="587.0" prefHeight="63.0" prefWidth="668.0" promptText=" Adresse Cabinet" />
+                  <TextArea fx:id="lblcabinet" layoutX="66.0" layoutY="587.0" prefHeight="63.0" prefWidth="668.0" promptText=" Adresse Cabinet" />
                   <Hyperlink layoutX="628.0" layoutY="42.0" text="Êtes-vous Patient ?" />
-                  <Button layoutX="628.0" layoutY="848.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="165.0" text="Enregistrer" />
+                  <Button fx:id="btn" layoutX="628.0" layoutY="848.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="48.0" prefWidth="165.0" text="Enregistrer" />
                   <Text fill="#19abe4" layoutX="63.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSCRIPTION DE MEDECIN" wrappingWidth="272.22135162353516">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
                   <ImageView fitHeight="64.0" fitWidth="669.0" layoutX="65.0" layoutY="746.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text layoutX="340.0" layoutY="783.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
-                  <MenuButton layoutX="612.0" layoutY="279.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="126.0" text="CNAM">
+                  <Text fx:id="lblimge" layoutX="340.0" layoutY="783.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
+                  <MenuButton fx:id="lblcnam" layoutX="612.0" layoutY="279.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="126.0" text="CNAM">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Action 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
                   </MenuButton>
-                  <MenuButton layoutX="294.0" layoutY="279.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="162.0" text="Titre">
+                  <MenuButton fx:id="lbltitre" layoutX="294.0" layoutY="279.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="162.0" text="Titre">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Action 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
                   </MenuButton>
-                  <MenuButton layoutX="63.0" layoutY="433.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="331.0" text="Specialite">
+                  <MenuButton fx:id="lblspec" layoutX="63.0" layoutY="433.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="331.0" text="Specialite">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Action 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
                   </MenuButton>
-                  <TextField layoutX="63.0" layoutY="277.0" prefHeight="50.0" prefWidth="221.0" promptText="Tarif" />
-                  <TextField layoutX="294.0" layoutY="200.0" prefHeight="50.0" prefWidth="200.0" promptText="Fixe" />
-                  <TextArea layoutX="66.0" layoutY="668.0" prefHeight="66.0" prefWidth="668.0" promptText="Adresse" />
-                  <TextArea layoutX="63.0" layoutY="503.0" prefHeight="65.0" prefWidth="674.0" promptText="Diplome Et Formation" />
+                  <TextField fx:id="lbltarif" layoutX="63.0" layoutY="277.0" prefHeight="50.0" prefWidth="221.0" promptText="Tarif" />
+                  <TextField fx:id="lblFixe" layoutX="294.0" layoutY="200.0" prefHeight="50.0" prefWidth="200.0" promptText="Fixe" />
+                  <TextArea fx:id="lbladress" layoutX="66.0" layoutY="668.0" prefHeight="66.0" prefWidth="668.0" promptText="Adresse" />
+                  <TextArea fx:id="lbldiplome" layoutX="63.0" layoutY="503.0" prefHeight="65.0" prefWidth="674.0" promptText="Diplome Et Formation" />
                </children>
             </Pane>
          </center>

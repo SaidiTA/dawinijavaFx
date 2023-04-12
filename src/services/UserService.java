@@ -6,6 +6,7 @@ package services;
 
 import entities.User;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 import java.util.List;
@@ -63,4 +64,40 @@ Connection cnx;
         return u;
     
     }
+     
+     public int login(String email, String password) {
+    try {
+        String sql = "SELECT COUNT(1), id, role FROM utilisateur WHERE email=? AND password=?";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setString(1, email);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            if (rs.getInt(1) == 1) {
+                int id = rs.getInt("id");
+                ArrayList<String> roles = new ArrayList<String>();
+                int role = rs.getInt("role");
+                if (role == 1) {
+                    roles.add("[\"ROLE_ADMIN\"]");
+                } else if (role == 2) {
+                    roles.add("[\"ROLE_MEDECIN\"]");
+                } else if (role == 3) {
+                    roles.add("[\"ROLE_PATIENT\"]");
+                }
+                  else if (role == 4) {
+                    roles.add("[\"ROLE_ASSISTANT\"]");
+                }
+                // Return a User object with the retrieved data
+                
+                return id;
+            } else {
+                return 0;
+            }
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return 0;
+}
 }

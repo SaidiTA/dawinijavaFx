@@ -4,6 +4,7 @@
  */
 package gui;
 
+import entities.Medecin;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,15 +19,20 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import services.MedecinService;
 
 /**
  *
@@ -51,8 +57,6 @@ private double x, y;
     @FXML
     private Label Titre;
     @FXML
-    private Label Specialites;
-    @FXML
     private Label Tarif;
     @FXML
     private Label Adresse;
@@ -60,32 +64,37 @@ private double x, y;
     private Label Action;
     @FXML
     private Label ListeMedecin;
+    @FXML
+    private Label btnid;
    
 
     
 
       public void initialize(URL location, ResourceBundle resources) {
-        Node[] nodes = new Node[13];
-        for (int i = 0; i < nodes.length; i++) {
-            try {
+           MedecinService medecinService = new MedecinService();
+         List<Medecin> medecins = null;
 
-                final int j = i;
-                nodes[i] = FXMLLoader.load(getClass().getResource("/gui/item.fxml"));
+    try {
+        medecins = medecinService.recuperer();
+    } catch (SQLException ex) {
+        System.out.println(ex);
+    }
+          
+      
 
-                //give the items some effect
 
-                nodes[i].setOnMouseEntered(event -> {
-                    nodes[j].setStyle("-fx-background-color : #F1F7FD");
-                });
-                nodes[i].setOnMouseExited(event -> {
-                    nodes[j].setStyle("-fx-background-color : #6C9FC1");
-                });
-                pnitems.getChildren().add(nodes[i]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            
-            }
+
+    for (Medecin medecin : medecins) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/item.fxml"));
+            Node node = loader.load();
+            ItemController itemController = loader.getController();
+            itemController.setData(medecin);
+            pnitems.getChildren().add(node);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 
     }
 @FXML
@@ -139,6 +148,8 @@ private double x, y;
        }
     
     }
+
+    
 
     
 

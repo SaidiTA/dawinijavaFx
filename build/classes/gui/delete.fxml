@@ -26,7 +26,7 @@
             <Font name="SansSerif Regular" size="15.0" />
          </font>
       </Text>
-      <Button fx:id="btnSupprimer" layoutX="180.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="182.0" style="-fx-background-color: #dd0000;" stylesheets="@add.css" text="Supprimer" textFill="#252424">
+      <Button fx:id="btnSupprimer" layoutX="180.0" layoutY="186.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="47.0" prefWidth="182.0" style="-fx-background-color: #dd0000;" stylesheets="@add.css" text="Supprimer" textFill="#252424">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

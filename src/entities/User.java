@@ -11,6 +11,47 @@ import java.util.ArrayList;
  * @author soumayaab
  */
 public class User {
+
+    public User(int id, String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image) {
+        this.id = id;
+        this.email = email;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.cin = cin;
+        this.sexe = sexe;
+        this.telephone = telephone;
+        this.gouvernorat = gouvernorat;
+        this.adresse = adresse;
+        this.image = image;
+    }
+
+    public User(String email, String prenom, String nom, String password, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image) {
+        this.email = email;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.password = password;
+        this.cin = cin;
+        this.sexe = sexe;
+        this.telephone = telephone;
+        this.gouvernorat = gouvernorat;
+        this.adresse = adresse;
+        this.confirm_password = confirm_password;
+        this.image = image;
+    }
+    
+    public User(String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image) {
+        this.email = email;
+        this.prenom = prenom;
+        this.nom = nom;
+        
+        this.cin = cin;
+        this.sexe = sexe;
+        this.telephone = telephone;
+        this.gouvernorat = gouvernorat;
+        this.adresse = adresse;
+        
+        this.image = image;
+    }
     
     private int id;
     private String email;
@@ -19,7 +60,7 @@ public class User {
     
     private ArrayList<String> roles;
     private String password;
-    private int cin;
+    int cin;
     private String sexe;
     private String telephone;
     private String gouvernorat;
@@ -34,6 +75,21 @@ public class User {
         this.id = id;
         this.email = email;
         this.roles = roles;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.sexe = sexe;
+        this.telephone = telephone;
+        this.gouvernorat = gouvernorat;
+        this.adresse = adresse;
+        this.confirm_password = confirm_password;
+        this.image = image;
+    }
+    
+    public User(int id, String email, String password, String nom, String prenom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image) {
+        this.id = id;
+        this.email = email;
         this.password = password;
         this.nom = nom;
         this.prenom = prenom;

@@ -28,7 +28,8 @@ Connection cnx;
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pst = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, t.getEmail());
-        pst.setString(2, String.join(",", t.getRoles()));
+        //pst.setString(2, String.join(",", t.getRoles()));
+        pst.setString(2, t.getRoles() != null ? String.join(",", t.getRoles()) : "");
         pst.setString(3, t.getPassword());
         pst.setString(4, t.getNom());
         pst.setString(5, t.getPrenom());
@@ -57,7 +58,7 @@ Connection cnx;
         }
     }
 
-    @Override
+        @Override
     public void modifier(Medecin t) throws SQLException {
         String req = "UPDATE user SET email=?, password=?, nom=?, prenom=?, cin=?, sexe=?, telephone=?, gouvernorat=?, adresse=?, confirm_password=?, image=? WHERE id="+t.getId();
         PreparedStatement pst = cnx.prepareStatement(req);
@@ -72,10 +73,11 @@ Connection cnx;
         pst.setString(9, t.getAdresse());
         pst.setString(10, t.getConfirm_password());
         pst.setString(11, t.getImage());
+      
         
        
         pst.executeUpdate();
-        String req2 = "UPDATE medecin SET titre=?, adresse_cabinet=?, fixe=?, diplome_formation=?, tarif=?, cnam=? WHERE id=?";
+        String req2 = "UPDATE medecin SET titre=?, adresse_cabinet=?, fixe=?, diplome_formation=?, tarif=?, cnam=? WHERE id="+t.getId();
         PreparedStatement p = cnx.prepareStatement(req2);
         p.setString(1, t.getTitre());
         p.setString(2, t.getAdresse_cabinet());
@@ -83,8 +85,9 @@ Connection cnx;
         p.setString(4, t.getDiplome_formation());
         p.setFloat(5, t.getTarif());
         p.setBoolean(6, t.isCnam());
-        p.setInt(7, t.getId());
+       
          p.executeUpdate();
+           
         }
     
 
@@ -94,6 +97,7 @@ Connection cnx;
     PreparedStatement pst = cnx.prepareStatement(req);
     pst.setInt(1, medecin.getId());
     pst.executeUpdate();
+      System.out.println("Médecin supprimer avec succès !");
 }
 
     @Override
@@ -127,7 +131,12 @@ public List<Medecin> recuperer() throws SQLException {
         medecin.setTarif(rs.getFloat("tarif"));
         medecin.setCnam(rs.getBoolean("cnam"));
  String rolesString = rs.getString("roles");
-        ArrayList<String> roles = new ArrayList<>(Arrays.asList(rolesString.substring(1, rolesString.length() - 1).split(", ")));
+        ArrayList<String> roles;
+if (rolesString.length() > 2) {
+    roles = new ArrayList<>(Arrays.asList(rolesString.substring(1, rolesString.length() - 1).split(", ")));
+} else {
+    roles = new ArrayList<>();
+}
         medecin.setRoles(roles);
         medecins.add(medecin);
     }
@@ -165,6 +174,9 @@ public List<Medecin> recuperer() throws SQLException {
         medecin.setCnam(rs.getBoolean("cnam"));
     }
     return medecin;
-    }}
+    }
+
+   
+}
     
 

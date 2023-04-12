@@ -16,7 +16,7 @@
 <AnchorPane id="AnchorPane" prefHeight="652.0" prefWidth="972.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierMedecinController">
    <Pane prefHeight="893.0" prefWidth="972.0">
       <children>
-         <MenuButton layoutX="385.0" layoutY="360.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="249.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Genre">
+         <MenuButton fx:id="lblGenre" layoutX="385.0" layoutY="360.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="249.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Genre">
             <items>
                <MenuItem mnemonicParsing="false" text="Action 1" />
                <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -26,10 +26,10 @@
                <String fx:value="primary-color" />
             </styleClass>
          </MenuButton>
-         <TextArea layoutX="66.0" layoutY="587.0" prefHeight="63.0" prefWidth="834.0" promptText=" Adresse Cabinet" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="cabinet" layoutX="66.0" layoutY="587.0" prefHeight="63.0" prefWidth="834.0" promptText=" Adresse Cabinet" styleClass="shadow" stylesheets="@add.css" />
          <ImageView fitHeight="64.0" fitWidth="834.0" layoutX="65.0" layoutY="746.0" pickOnBounds="true" preserveRatio="true" />
-         <Text layoutX="457.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
-         <MenuButton layoutX="679.0" layoutY="359.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="CNAM">
+         <Text fx:id="upimage" layoutX="457.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
+         <MenuButton fx:id="lblCnam" layoutX="679.0" layoutY="359.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="CNAM">
             <items>
                <MenuItem mnemonicParsing="false" text="Action 1" />
                <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -39,7 +39,7 @@
                <String fx:value="primary-color" />
             </styleClass>
          </MenuButton>
-         <MenuButton layoutX="66.0" layoutY="358.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="270.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Titre">
+         <MenuButton fx:id="lbltitre" layoutX="66.0" layoutY="358.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="270.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Titre">
             <items>
                <MenuItem mnemonicParsing="false" text="Action 1" />
                <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -49,7 +49,7 @@
                <String fx:value="primary-color" />
             </styleClass>
          </MenuButton>
-         <MenuButton layoutX="63.0" layoutY="433.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="374.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Specialite">
+         <MenuButton fx:id="spes" layoutX="63.0" layoutY="433.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="374.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Specialite">
             <items>
                <MenuItem mnemonicParsing="false" text="Action 1" />
                <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -59,9 +59,9 @@
                <String fx:value="primary-color" />
             </styleClass>
          </MenuButton>
-         <TextArea layoutX="66.0" layoutY="668.0" prefHeight="66.0" prefWidth="834.0" promptText="Adresse" styleClass="shadow" stylesheets="@add.css" />
-         <TextArea layoutX="63.0" layoutY="503.0" prefHeight="65.0" prefWidth="834.0" promptText="Diplome Et Formation" styleClass="shadow" stylesheets="@add.css" />
-         <MenuButton layoutX="511.0" layoutY="433.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="388.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Gouvernorat">
+         <TextArea fx:id="adress" layoutX="66.0" layoutY="668.0" prefHeight="66.0" prefWidth="834.0" promptText="Adresse" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="diplome" layoutX="63.0" layoutY="503.0" prefHeight="65.0" prefWidth="834.0" promptText="Diplome Et Formation" styleClass="shadow" stylesheets="@add.css" />
+         <MenuButton fx:id="gouv" layoutX="511.0" layoutY="433.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="388.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Gouvernorat">
             <items>
                <MenuItem mnemonicParsing="false" text="Action 1" />
                <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -71,7 +71,7 @@
                <String fx:value="primary-color" />
             </styleClass>
          </MenuButton>
-         <Button fx:id="btnModifier" layoutX="679.0" layoutY="820.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Modifier Medecin">
+         <Button fx:id="btnModifier" layoutX="679.0" layoutY="820.0" mnemonicParsing="false" onAction="#modifyMed" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Modifier Medecin">
             <styleClass>
                <String fx:value="shadow" />
                <String fx:value="transparent" />
@@ -98,13 +98,13 @@
                   </graphic></Button>
             </children>
          </Pane>
-         <TextArea layoutX="66.0" layoutY="146.0" prefHeight="53.0" prefWidth="374.0" promptText="Nom" styleClass="shadow" stylesheets="@add.css" />
-         <TextArea layoutX="510.0" layoutY="150.0" prefHeight="53.0" prefWidth="374.0" promptText="Prenom" styleClass="shadow" stylesheets="@add.css" />
-         <TextArea layoutX="66.0" layoutY="215.0" prefHeight="53.0" prefWidth="374.0" promptText="Telephone" styleClass="shadow" stylesheets="@add.css" />
-         <TextArea layoutX="510.0" layoutY="223.0" prefHeight="52.0" prefWidth="374.0" promptText="Email" styleClass="shadow" stylesheets="@add.css" />
-         <TextArea layoutX="66.0" layoutY="286.0" prefHeight="53.0" prefWidth="270.0" promptText="Fixe" styleClass="shadow" stylesheets="@add.css" />
-         <TextArea layoutX="385.0" layoutY="286.0" prefHeight="53.0" prefWidth="249.0" promptText="Tarif" styleClass="shadow" stylesheets="@add.css" />
-         <TextArea layoutX="676.0" layoutY="295.0" prefHeight="53.0" prefWidth="221.0" promptText="Cin" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="Nom" layoutX="66.0" layoutY="146.0" prefHeight="53.0" prefWidth="374.0" promptText="Nom" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="Prenom" layoutX="510.0" layoutY="150.0" prefHeight="53.0" prefWidth="374.0" promptText="Prenom" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="Telephone" layoutX="66.0" layoutY="215.0" prefHeight="53.0" prefWidth="374.0" promptText="Telephone" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="Email" layoutX="510.0" layoutY="223.0" prefHeight="52.0" prefWidth="374.0" promptText="Email" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="Fixe" layoutX="66.0" layoutY="286.0" prefHeight="53.0" prefWidth="270.0" promptText="Fixe" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="tariff" layoutX="385.0" layoutY="286.0" prefHeight="53.0" prefWidth="249.0" promptText="Tarif" styleClass="shadow" stylesheets="@add.css" />
+         <TextArea fx:id="cinn" layoutX="676.0" layoutY="295.0" prefHeight="53.0" prefWidth="221.0" promptText="Cin" styleClass="shadow" stylesheets="@add.css" />
       </children>
    </Pane>
 </AnchorPane>

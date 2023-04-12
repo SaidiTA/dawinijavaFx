@@ -4,7 +4,10 @@
  */
 package gui;
 
+import entities.Medecin;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import services.MedecinService;
 
 /**
  *
@@ -41,5 +45,20 @@ public class DeleteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void supprimer(ActionEvent event) throws SQLException {
+                
+           MedecinService dc = new MedecinService();
+            List<Medecin> medecins = dc.recuperer();
+                 for (Medecin d : medecins) {
+                    
+                     dc.supprimer(d);
+                     
+                 break;
+                 
+        }
+    }
+    }
     
-}
+
