@@ -4,10 +4,17 @@
  */
 package gui;
 
+import entities.User;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,20 +22,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 import services.UserService;
+import util.MyDB;
 
 /**
  *
  * @author soumayaab
  */
 public class SignInUserController implements Initializable {
-    
+
     @FXML
     private Label label;
     @FXML
@@ -41,35 +52,88 @@ public class SignInUserController implements Initializable {
     private TextField loginCol;
     @FXML
     private PasswordField mdpCol;
-    
-   
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        btnlogin.setOnAction((ActionEvent event) -> {
+            try {
+                login(event);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (IOException ex) {
+                System.err.println(ex);
+            }
+
+        });
+    }
 
     @FXML
-    private void login(ActionEvent event) {
-         if(loginCol.getText().isEmpty() == false && mdpCol.getText().isEmpty() == false){
-        UserService serv = new UserService();
-        int res = serv.login(loginCol.getText(), mdpCol.getText());
-      
-           Parent root ;
-                try{
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListMedecin.fxml"));
-                    root = loader.load();
-                    ListMedecinController listUsers = loader.getController();
+    private void login(ActionEvent event) throws SQLException, IOException {
+        PreparedStatement st = null;
 
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    stage.setTitle("List Utilisateur");
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
+        Connection cnx = MyDB.getInstance().getCnx();
+
+        PreparedStatement pst = cnx.prepareStatement("SELECT * FROM user WHERE email=?");
+        pst.setString(1, loginCol.getText());
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+            String hashedPassword = rs.getString("password");
+            System.out.println("*hash " + hashedPassword);
+            System.out.println("*loginCol.getText() " + mdpCol.getText());
+
+            boolean passwordMatch = BCrypt.checkpw(mdpCol.getText(), hashedPassword);
+            System.out.println("passwordMatch " + passwordMatch);
+
+            if (BCrypt.checkpw(mdpCol.getText(), hashedPassword)) {
+                // Passwords match
+                String roles = rs.getString("roles");
+                if (roles.equals("[\"ROLE_ADMIN\"]")) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Home.fxml"));
+                    Parent root = loader.load();
+                    // get the controller for the new scene and set any necessary parameters
+                    HomeController controller = loader.getController();
+                    // controller.setLoggedInUser(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
+                    // show the new scene
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(root));
                     stage.show();
-                }catch(IOException e){
-                    System.out.println(e.getMessage());
+                } else if (roles.equals("[\"ROLE_MEDECIN\"]")) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListMedecin.fxml"));
+                    Parent root = loader.load();
+                    // get the controller for the new scene and set any necessary parameters
+                    ListMedecinController controller = loader.getController();
+                    // controller.setLoggedInUser(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
+                    // show the new scene
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } else if (roles.equals("[\"ROLE_PATIENT\"]")) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListPatients.fxml"));
+                    Parent root = loader.load();
+                    // get the controller for the new scene and set any necessary parameters
+                    ListPatientsController controller = loader.getController();
+                    // controller.setLoggedInUser(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
+                    // show the new scene
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } else {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListAssistant.fxml"));
+                    Parent root = loader.load();
+                    // get the controller for the new scene and set any necessary parameters
+                    ListAssistantController controller = loader.getController();
+                    // controller.setLoggedInUser(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
+                    // show the new scene
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(root));
+                    stage.show();
                 }
+            } else {
+                // Passwords don't match
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid email or password", ButtonType.OK);
+                alert.showAndWait();
 
-      
-}
+            }
+        }
     }
-       }
+}

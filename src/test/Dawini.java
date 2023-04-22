@@ -30,7 +30,7 @@ public class Dawini extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/ListMedecin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/ListAvis.fxml"));
         primaryStage.setScene(new Scene(root));
         //set stage borderless
         primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -61,15 +61,3 @@ public class Dawini extends Application {
 }
  
 
-//public class Dawini extends Application {
-    
-   
-    //public void start(Stage primaryStage) throws Exception {
-       //  Parent root = FXMLLoader.load(getClass().getResource("/gui/SignInUser.fxml"));
-       // Scene scene = new Scene(root);
-        
-        //primaryStage.setTitle("Sign In User");
-        //primaryStage.setScene(scene);
-        //primaryStage.show();
-    //}
-  //  

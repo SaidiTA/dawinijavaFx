@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -58,6 +59,11 @@ public class DeleteController implements Initializable {
                  break;
                  
         }
+                  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Suppression réussie");
+    alert.setHeaderText(null);
+    alert.setContentText("Le médecin a été supprimé avec succès !");
+    alert.showAndWait();
     }
     }
     

@@ -12,6 +12,15 @@ import java.util.ArrayList;
  */
 public class User {
 
+    public User(int id) {
+        this.id = id;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public User(int id, String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image) {
         this.id = id;
         this.email = email;
@@ -61,7 +70,7 @@ public class User {
     private ArrayList<String> roles;
     private String password;
     int cin;
-    private String sexe;
+    String sexe;
     private String telephone;
     private String gouvernorat;
     private String adresse;

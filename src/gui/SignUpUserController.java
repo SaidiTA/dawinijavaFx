@@ -29,6 +29,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 import services.MedecinService;
 
 /**
@@ -190,13 +191,13 @@ private void createAccount(ActionEvent event) throws SQLException, IOException {
     }
     
     
+   
+   
     Medecin medecin = new Medecin(email, prenom, nom, password, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image, titre,adresse_cabinet,fixe,diplome_formation, tarif, cnam);
     MedecinService medecinService = new MedecinService();
-    
-   
-    
-    
     medecinService.ajouter(medecin);
+    
+  
     
     // Afficher un message de succès et vider les champs de saisie
     Alert alert = new Alert(AlertType.INFORMATION);

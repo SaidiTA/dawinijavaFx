@@ -311,6 +311,38 @@
                <HBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </HBox.margin>
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="77.0" prefWidth="132.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="77.0" prefWidth="123.0">
+                           <children>
+                              <Button fx:id="btnRef1" mnemonicParsing="false" onAction="#refreshTable" prefHeight="53.0" prefWidth="59.0" stylesheets="@../../../Dawini_v1/src/gui/add.css">
+                                 <styleClass>
+                                    <String fx:value="button" />
+                                    <String fx:value="transparent" />
+                                    <String fx:value="whit_background" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="rect-round" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="FreeSerif" size="19.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fx:id="btnRef" fitHeight="34.0" fitWidth="29.0" onDragDetected="#refreshTable" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/ref-removebg.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="7.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
             </HBox>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" prefWidth="647.0" HBox.hgrow="ALWAYS">
                <HBox.margin>

@@ -47,6 +47,10 @@ public class Medecin extends  User{
         this.cnam = cnam;
     }
 
+    public Medecin(int id) {
+        super(id);
+    }
+
     public Medecin(String email, ArrayList<String> roles, String password, String nom, String prenom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image, String titre, String adresse_cabinet, String fixe, String diplome_formation, float tarif, boolean cnam) {
         super(email, roles, password, nom, prenom, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
         this.titre = titre;

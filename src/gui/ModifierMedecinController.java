@@ -5,6 +5,7 @@
 package gui;
 
 import entities.Medecin;
+import entities.User;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -72,9 +73,18 @@ public class ModifierMedecinController implements Initializable {
     private Text upimage;
     @FXML
     private TextArea tariff;
-   
+    private Medecin medecin;
+
+    public Medecin getMedecin() {
+        return medecin;
+    }
+
+    public void setMedecin(Medecin medecin) {
+        this.medecin = medecin;
+    }
     
     public void setData(Medecin medecin) {
+        this.medecin = medecin;
         Nom.setText(medecin.getNom());
         Prenom.setText(medecin.getPrenom());
         gouv.setText(medecin.getGouvernorat());
@@ -86,22 +96,17 @@ public class ModifierMedecinController implements Initializable {
         adress.setText(medecin.getAdresse());
         Fixe.setText(medecin.getFixe());
        cinn.setText(String.valueOf(medecin.getCin()));
+       lblCnam.setText(String.valueOf(lblCnam.getText()));
       tariff.setText(String.valueOf(medecin.getTarif()));
         
         diplome.setText(medecin.getDiplome_formation());
        upimage.setText(medecin.getImage());
        
-       boolean cnam = Boolean.parseBoolean(lblCnam.getText());
-       if (!tariff.getText().isEmpty()) {
-   
-    
-}
+      
+      
 
     
       
-        if (!cinn.getText().isEmpty()) {
-    int cin = Integer.parseInt(cinn.getText());
-}
         
        
         
@@ -195,34 +200,48 @@ public class ModifierMedecinController implements Initializable {
 
     @FXML
    private void modifyMed(ActionEvent event) {
-    Medecin t = new Medecin();
-    t.setEmail(Email.getText());
-    t.setNom(Nom.getText());
-    t.setPrenom(Prenom.getText());
-    t.setCin(Integer.parseInt(cinn.getText()));
-    t.setSexe(lblGenre.getText());
-    t.setTelephone(Telephone.getText());
-    t.setGouvernorat(gouv.getText());
-    t.setAdresse(adress.getText());
-    t.setImage(upimage.getText());
-    t.setTitre(lbltitre.getText());
-    t.setAdresse_cabinet(cabinet.getText());
-    t.setFixe(Fixe.getText());
-    t.setDiplome_formation(diplome.getText());
-    t.setTarif(Float.parseFloat(tariff.getText()));
-    t.setCnam(Boolean.parseBoolean(lblCnam.getText()));
-         
+    MedecinService sc = new MedecinService();
     
-    boolean cnam = Boolean.parseBoolean(lblCnam.getText());
+   // id du médecin à modifier
+    medecin.setEmail(Email.getText());
+    medecin.setNom(Nom.getText());
+    medecin.setPrenom(Prenom.getText());
+    medecin.setCin(Integer.parseInt(cinn.getText()));
+    medecin.setSexe(lblGenre.getText());
+    medecin.setTelephone(Telephone.getText());
+    medecin.setGouvernorat(gouv.getText());
+    medecin.setAdresse(adress.getText());
+   // Ajouter ce champ si nécessaire
+    medecin.setImage(upimage.getText());
+    medecin.setTitre(lbltitre.getText());
+    medecin.setAdresse_cabinet(cabinet.getText());
+    medecin.setFixe(Fixe.getText());
+    medecin.setDiplome_formation(diplome.getText());
+    medecin.setTarif(Float.parseFloat(tariff.getText()));
+    medecin.setCnam(Boolean.parseBoolean(lblCnam.getText()));
+   
+       
+        
+ 
 
-    MedecinService medecinService = new MedecinService();
+
+        
+   
 
     try {
-        medecinService.modifier(t);
+        sc.modifier(medecin);
         System.out.println("Médecin modifié avec succès !");
     } catch (SQLException e) {
         System.err.println("Erreur lors de la modification du médecin : " + e.getMessage());
     }
+       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Succès");
+    alert.setHeaderText("Le compte a été créé avec succès !");
+    alert.showAndWait();
+
+    // Fermer la fenêtre d'ajout de médecin
+    Stage stage = (Stage) btnModifier.getScene().getWindow();
+    stage.close();
 }
 
      

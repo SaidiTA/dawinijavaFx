@@ -4,23 +4,29 @@
  */
 package gui;
 
+import entities.Avis;
 import entities.Medecin;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import services.AvisService;
 import services.MedecinService;
 
 /**
@@ -29,23 +35,6 @@ import services.MedecinService;
  */
 public class ItemAvisController implements Initializable {
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
- /*    private double x, y;
-   @FXML
-    private Button btnshow;
-  @FXML
-    private Button btnDelete;
-@FXML
-    private Button btnModify;
-
-   
-    
-    @FXML
-    private HBox lblAction;
-    private Label btnid;
     @FXML
     private Label lblid;
     @FXML
@@ -58,155 +47,128 @@ public class ItemAvisController implements Initializable {
     private Label lblmedecin;
     @FXML
     private Label lblpat;
-
-   
     @FXML
-    void handleButtonClick(ActionEvent event) throws SQLException {
-       try{
-        // Récupération des données du dossier sélectionné
-         
-       int id = Integer.parseInt(btnid.getText());
-       MedecinService dc = new MedecinService();
-        List<Medecin> spec = dc.recuperer();
-        Medecin medecin = null;
-        for (Medecin d : spec) {
-            if (d.getId() == id) {
-                medecin = d;
-                break;
-            }
-        }
-        
-        // Chargement de la fenêtre de modification
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ModifierMedecin.fxml"));
-        Parent parent = fxmlLoader.load();
-        ModifierMedecinController controller = fxmlLoader.getController();
+    private HBox lblAction;
+    @FXML
+    private Button btnshow;
+    @FXML
+    private Button btnModify;
+    @FXML
+    private Button btnDelete;
 
-        // Transmission des données du dossier à la fenêtre de modification
-        controller.setData(medecin);
+    private AvisService avisService;
+    private Avis avis;
 
-        // Affichage de la fenêtre de modification
-        Stage stage = new Stage();
-        stage.setScene(new Scene(parent));
-        stage.show();
-       
-    } catch (IOException ex) {
-        
+    public void setAvisService(AvisService avisService) {
+        this.avisService = avisService;
     }
-        
-        
-     if(event.getSource()== btnshow){
-      showAsDialog("infoMedecin");
-      }
-     if(event.getSource()== btnDelete){
-      showDialog("delete");
-      }
-     }
-     
-  private void showAsDialog(String fxml)
-    {
-       try {
-           Parent parent = FXMLLoader.load(getClass().getResource("/gui/infoMedecin.fxml"));
-           Stage stage = new Stage();
-           Scene scene = new Scene(parent);
-           stage.setScene(scene);
-              stage.initStyle(StageStyle.UNDECORATED);
 
-        //drag it here
-        parent.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
-        parent.setOnMouseDragged(event -> {
-
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-
-        });
-           stage.show();
-        
-        //primaryStage.setTitle("Sign In User");
-       
-       
-           
-           
-           
-           
-       } catch (IOException ex) {
-           ex.printStackTrace();
-       }
-    
+    public void setAvis(Avis avis) {
+        this.avis = avis;
+        setData(avis);
     }
-     private void showDialog(String fxml)
-    {
-       try {
-           Parent parent = FXMLLoader.load(getClass().getResource("/gui/delete.fxml"));
-           Stage stage = new Stage();
-           Scene scene = new Scene(parent);
-           stage.setScene(scene);
-              stage.initStyle(StageStyle.UNDECORATED);
 
-        //drag it here
-        parent.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
-        parent.setOnMouseDragged(event -> {
-
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-
-        });
-           stage.show();
-        
-        //primaryStage.setTitle("Sign In User");
-       
-       
-           
-           
-           
-           
-       } catch (IOException ex) {
-           ex.printStackTrace();
-       }
-    
-    }
-    
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-      public void setData(Medecin medecin) {
-       
-       int id=medecin.getId();
-        btnid.setText(Integer.toString(id));
+    public void initialize(URL location, ResourceBundle resources) {
+        // Ne rien faire pour l'instant
+    }
 
-       
-        lblNom.setText(medecin.getNom());
-        lblPrenom.setText(medecin.getPrenom());
-        lblEmail.setText(medecin.getEmail());
-        lblTelephone.setText(medecin.getTelephone());
-        lblMedecin.setText(medecin.getTitre());
-        //lblspecialites.setText(medecin.getSpecialite());
-        lblTARIF.setText(medecin.getTarif() + " DT");
-        lblAdresse.setText(medecin.getAdresse());
-       
+    @FXML
+    private void Affiche(ActionEvent event) {
+         int id = Integer.parseInt(lblid.getText());
+        AvisService ms = new AvisService();
+        try {
+            Avis avis = ms.recupererById(id);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/infoAvis.fxml"));
+            Parent parent = fxmlLoader.load();
+            InfoAvisController controller = fxmlLoader.getController();
+            controller.setAvis(avis);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println("Erreur lors du chargement de la fenêtre d'affichage des informations du médecin: " + ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("Erreur lors de la récupération des informations du médecin: " + ex.getMessage());
+        }
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+      
     
-    
-}
+
+    @FXML
+    private void handleButtonClick(ActionEvent event) throws SQLException {
+        try {
+            // Récupération des données du dossier sélectionné
+
+            int id = Integer.parseInt(lblid.getText());
+            AvisService dc = new AvisService();
+            List<Avis> spec = dc.recuperer();
+            Avis avis = null;
+            for (Avis d : spec) {
+                if (d.getId() == id) {
+                    avis = d;
+                    break;
+                }
+            }
+
+            // Chargement de la fenêtre de modification
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ModifierAvis.fxml"));
+            Parent parent = fxmlLoader.load();
+            ModifierAvisController controller = fxmlLoader.getController();
+
+            // Transmission des données du dossier à la fenêtre de modification
+            controller.setData(avis);
+
+            // Affichage de la fenêtre de modification
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+        } catch (IOException ex) {
+
+        }
+    }
 
     @FXML
     private void supprimer(ActionEvent event) throws SQLException {
-                int id = Integer.parseInt(btnid.getText());
-           MedecinService dc = new MedecinService();
-            List<Medecin> medecins = dc.recuperer();
-                 for (Medecin d : medecins) {
-                     if (d.getId() == id) {
-                     dc.supprimer(d);
-                     
-                 break;
-                 
+         int id = Integer.parseInt(lblid.getText());
+        AvisService dc = new AvisService();
+        List<Avis> avi = dc.recuperer();
+        for (Avis d : avi) {
+            if (d.getId() == id) {
+                dc.supprimer(d);
+
+                break;
+
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Suppression réussie");
+            alert.setHeaderText(null);
+            alert.setContentText("L'avis  a été supprimé avec succès !");
+            alert.showAndWait();
         }
     }
+
+    void setData(Avis avis) {
+          int id = avis.getId();
+        lblid.setText(String.valueOf(avis.getId()));
+        lblnote.setText(String.valueOf(avis.getNote()));
+        lblcomment.setText(avis.getText());
+        lbldate.setText(avis.getDate().toString());
+        lblmedecin.setText(avis.getMedecin().getNom() + " " + avis.getMedecin().getPrenom());
+        lblpat.setText(avis.getPatient().getNom() + " " + avis.getPatient().getPrenom());
     }
-*/
 }

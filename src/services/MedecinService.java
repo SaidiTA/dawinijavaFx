@@ -4,12 +4,14 @@
  */
 package services;
 
+
 import entities.Medecin;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 import util.MyDB;
 
 /**
@@ -22,41 +24,49 @@ Connection cnx;
     public MedecinService() {
         cnx = MyDB.getInstance().getCnx();
     }
-    @Override
-    public void ajouter(Medecin t) throws SQLException {
-        String req = "INSERT INTO user(email,roles,password,nom,prenom, cin, sexe, telephone, gouvernorat,adresse,  confirm_password,Type,image) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement pst = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
-        pst.setString(1, t.getEmail());
-        //pst.setString(2, String.join(",", t.getRoles()));
-        pst.setString(2, t.getRoles() != null ? String.join(",", t.getRoles()) : "");
-        pst.setString(3, t.getPassword());
-        pst.setString(4, t.getNom());
-        pst.setString(5, t.getPrenom());
-        pst.setInt(6, t.getCin());
-        pst.setString(7, t.getSexe());
-        pst.setString(8, t.getTelephone());
-        pst.setString(9, t.getGouvernorat());
-        pst.setString(10, t.getAdresse());
-        pst.setString(11, t.getConfirm_password());
-        pst.setString(12,"medecin");
-        pst.setString(13, t.getImage());
-        pst.executeUpdate();
-        ResultSet rs = pst.getGeneratedKeys();
-        if (rs.next()) {
-            int id = rs.getInt(1);
-            String req2 = "INSERT INTO medecin(id, titre, adresse_cabinet, fixe, diplome_formation, tarif, cnam) " + "VALUES(?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement p = cnx.prepareStatement(req2);
-            p.setInt(1, id);
-            p.setString(2, t.getTitre());
-            p.setString(3, t.getAdresse_cabinet());
-            p.setString(4, t.getFixe());
-            p.setString(5, t.getDiplome_formation());
-            p.setFloat(6, t.getTarif());
-            p.setBoolean(7, t.isCnam());
-            p.executeUpdate();
-        }
+   @Override
+public void ajouter(Medecin t) throws SQLException {
+    String req = "INSERT INTO user(email,roles,password,nom,prenom, cin, sexe, telephone, gouvernorat,adresse,  confirm_password,Type,image) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    PreparedStatement pst = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+    pst.setString(1, t.getEmail());
+    pst.setString(2, t.getRoles() != null ? String.join(",", t.getRoles()) + ",ROLE_MEDECIN" : "[\"ROLE_MEDECIN\"]");
+    String hashedPassword = BCrypt.hashpw(t.getPassword(), BCrypt.gensalt(10));
+    pst.setString(3, hashedPassword);
+ 
+    pst.setString(4, t.getNom());
+    pst.setString(5, t.getPrenom());
+    pst.setInt(6, t.getCin());
+    pst.setString(7, t.getSexe());
+    pst.setString(8, t.getTelephone());
+    pst.setString(9, t.getGouvernorat());
+    pst.setString(10, t.getAdresse());
+   // String hashedConfirmPassword = BCrypt.hashpw(t.getConfirm_password(), BCrypt.gensalt(10));
+    pst.setString(11, t.getConfirm_password());
+    pst.setString(12,"medecin");
+    pst.setString(13, t.getImage());
+    pst.executeUpdate();
+
+    ResultSet rs = pst.getGeneratedKeys();
+    if (rs.next()) {
+        int id = rs.getInt(1);
+        String req2 = "INSERT INTO medecin(id, titre, adresse_cabinet, fixe, diplome_formation, tarif, cnam) " + "VALUES(?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement p = cnx.prepareStatement(req2);
+        p.setInt(1, id);
+        p.setString(2, t.getTitre());
+        p.setString(3, t.getAdresse_cabinet());
+        p.setString(4, t.getFixe());
+        p.setString(5, t.getDiplome_formation());
+        p.setFloat(6, t.getTarif());
+        p.setBoolean(7, t.isCnam());
+        p.executeUpdate();
+
+        boolean passwordMatch = BCrypt.checkpw(t.getPassword(), hashedPassword);
+       
+    } else {
+        throw new SQLException("Record insertion failed");
     }
+}
 
         @Override
     public void modifier(Medecin t) throws SQLException {
@@ -98,6 +108,7 @@ Connection cnx;
     pst.setInt(1, medecin.getId());
     pst.executeUpdate();
       System.out.println("Médecin supprimer avec succès !");
+      
 }
 
     @Override

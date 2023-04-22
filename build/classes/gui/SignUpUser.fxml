@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="822.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SignUpUserController">
+<AnchorPane id="AnchorPane" prefHeight="822.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SignUpController">
    <children>
       <BorderPane layoutY="-1.0" prefHeight="822.0" prefWidth="1210.0">
          <left>
@@ -33,34 +33,34 @@
          <center>
             <Pane prefHeight="787.0" prefWidth="794.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField layoutX="63.0" layoutY="123.0" prefHeight="50.0" prefWidth="308.0" promptText="Nom" />
-                  <TextField layoutX="413.0" layoutY="123.0" prefHeight="50.0" prefWidth="303.0" promptText="Prenom" />
-                  <TextField layoutX="63.0" layoutY="220.0" prefHeight="56.0" prefWidth="311.0" promptText="Email" />
-                  <TextField layoutX="414.0" layoutY="219.0" prefHeight="57.0" prefWidth="305.0" promptText="Telephone" />
-                  <TextField layoutX="63.0" layoutY="411.0" prefHeight="50.0" prefWidth="321.0" promptText="CIN" />
-                  <PasswordField layoutX="63.0" layoutY="317.0" prefHeight="57.0" prefWidth="317.0" promptText="Mot De Passe" />
-                  <PasswordField layoutX="411.0" layoutY="317.0" prefHeight="57.0" prefWidth="309.0" promptText="Confirmer Mot De Passe" />
-                  <MenuButton layoutX="540.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="185.0" text="Gouvernorat">
+                  <TextField fx:id="NOM" layoutX="63.0" layoutY="123.0" prefHeight="50.0" prefWidth="308.0" promptText="Nom" />
+                  <TextField fx:id="PRENOM" layoutX="413.0" layoutY="123.0" prefHeight="50.0" prefWidth="303.0" promptText="Prenom" />
+                  <TextField fx:id="EMAIL" layoutX="63.0" layoutY="220.0" prefHeight="56.0" prefWidth="311.0" promptText="Email" />
+                  <TextField fx:id="TELEPHONE" layoutX="414.0" layoutY="219.0" prefHeight="57.0" prefWidth="305.0" promptText="Telephone" />
+                  <TextField fx:id="CIN" layoutX="63.0" layoutY="411.0" prefHeight="50.0" prefWidth="321.0" promptText="CIN" />
+                  <PasswordField fx:id="PASSWORD" layoutX="63.0" layoutY="317.0" prefHeight="57.0" prefWidth="317.0" promptText="Mot De Passe" />
+                  <PasswordField fx:id="CONFIRME" layoutX="411.0" layoutY="317.0" prefHeight="57.0" prefWidth="309.0" promptText="Confirmer Mot De Passe" />
+                  <MenuButton fx:id="GOUV" layoutX="540.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="185.0" text="Gouvernorat">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
-                  <MenuButton layoutX="411.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Genre">
+                  <MenuButton fx:id="GENRE" layoutX="411.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Genre">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Action 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
                   </MenuButton>
-                  <TextArea layoutX="57.0" layoutY="516.0" prefHeight="95.0" prefWidth="668.0" promptText="Adresse" />
+                  <TextArea fx:id="ADRESSE" layoutX="57.0" layoutY="516.0" prefHeight="95.0" prefWidth="668.0" promptText="Adresse" />
                   <Hyperlink layoutX="628.0" layoutY="42.0" text="Êtes-vous Médecin ?" />
-                  <Button layoutX="604.0" layoutY="731.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="165.0" text="Enregistrer" />
+                  <Button fx:id="btn" layoutX="604.0" layoutY="731.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="48.0" prefWidth="165.0" text="Enregistrer" />
                   <Text fill="#19abe4" layoutX="63.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSCRIPTION DE PATIENT" wrappingWidth="272.22135162353516">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
                   <ImageView fitHeight="64.0" fitWidth="669.0" layoutX="58.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text layoutX="343.0" layoutY="666.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
+                  <Text fx:id="IMAGE" layoutX="343.0" layoutY="666.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
                </children>
             </Pane>
          </center>

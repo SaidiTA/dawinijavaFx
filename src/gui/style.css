@@ -8,7 +8,41 @@
 -fx-background-color:#EBC95E;
 -fx-background-radius: 50;
 }
+.whit_background{
+-fx-background-color:#fff;
 
+}
+.password-field .text-input {
+    -fx-background-color: #F4F5F9;
+    -fx-border-color: #EBC95E;
+    -fx-border-width: 0,0,0,1;
+    -fx-font-size: 14px;
+    -fx-background-color:rgba(0,0,0,0);
+
+}
+.shadow
+{ 
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1),10,0,0,10);
+}
+
+.rect-round{
+    -fx-background-radius: 20;
+}
+.anchorpane-round {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+.transparent{
+    -fx-background-color:rgba(0,0,0,0);
+}
+
+
+.password-field .text-input:focused {
+    -fx-border-color: #0066CC;
+    -fx-border-width: 0 0 2px 0;
+}
 
 
 

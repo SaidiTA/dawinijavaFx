@@ -12,21 +12,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="769.0" prefWidth="1154.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InfoMedecinController">
+<AnchorPane prefHeight="827.0" prefWidth="1141.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InfoMedecinController">
    <children>
-      <Pane prefHeight="102.0" prefWidth="1199.0" style="-fx-background-color: #dbe8ff;" styleClass="shadow" stylesheets="@add.css">
+      <Pane prefHeight="120.0" prefWidth="1165.0" style="-fx-background-color: #dbe8ff;" styleClass="shadow" stylesheets="@add.css">
          <children>
-            <Label layoutX="133.0" layoutY="36.0" prefHeight="30.0" prefWidth="212.0" styleClass="shadow" stylesheets="@add.css" text="Details De Medecin" textFill="#1c0a94">
+            <Label layoutX="134.0" layoutY="45.0" prefHeight="30.0" prefWidth="212.0" styleClass="shadow" stylesheets="@add.css" text="Details De Medecin" textFill="#1c0a94">
                <font>
                   <Font name="FreeSerif Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="75.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
+            <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="75.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
                <image>
                   <Image url="@../images/logo_small-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button fx:id="btncrosse" layoutX="1117.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #dbe8ff;" styleClass="transparent" stylesheets="@add.css">
+            <Button fx:id="btncrosse" layoutX="1094.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #dbe8ff;" styleClass="transparent" stylesheets="@add.css">
                <graphic>
                   <ImageView fx:id="btncross" fitHeight="23.0" fitWidth="26.0" onDragDetected="#handleButtonAction" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,9 +37,9 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutY="102.0" prefHeight="686.0" prefWidth="1148.0">
+      <Pane layoutY="87.0" prefHeight="752.0" prefWidth="1165.0">
          <children>
-            <HBox layoutX="61.0" layoutY="69.0" prefHeight="473.0" prefWidth="1083.0">
+            <HBox layoutX="58.0" layoutY="33.0" prefHeight="487.0" prefWidth="1083.0">
                <children>
                   <VBox prefHeight="494.0" prefWidth="416.0">
                      <children>
@@ -51,7 +51,7 @@
                               <Insets left="60.0" top="60.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="ID" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -67,7 +67,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="NOM" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -86,7 +86,7 @@
                               <Insets />
                            </VBox.margin>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="PRENOM" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -102,7 +102,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="EMAIL" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -118,7 +118,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="GENRE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -137,7 +137,7 @@
                               <Insets left="60.0" top="60.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="TEL" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -153,7 +153,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="FIXE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -169,7 +169,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="CIN" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -185,7 +185,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="TARIF" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -201,7 +201,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="GOUV" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -221,7 +221,7 @@
                               <Insets left="43.0" top="60.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="TITRE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -237,7 +237,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="SPEC" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -253,7 +253,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="CNAM" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -269,7 +269,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="ADRESSE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -285,7 +285,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
+                        <Text fx:id="CABINET" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="272.0">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -305,7 +305,7 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <Text layoutX="161.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0">
+            <Text fx:id="FORMATION" layoutX="161.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0">
                <font>
                   <Font size="19.0" />
                </font>

@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -67,11 +68,13 @@ public class AddMedecinController implements Initializable {
     @FXML
     private Button btnAdd;
     @FXML
-    private TextArea Password;
+    private PasswordField Password;
     @FXML
-    private TextArea ConfirmPassword;
+    private PasswordField ConfirmPassword;
     @FXML
     private Text upimage;
+    @FXML
+    private MenuButton Specialite;
     
     
     @FXML
@@ -222,24 +225,11 @@ public class AddMedecinController implements Initializable {
     // Fermer la fenêtre d'ajout de médecin
     Stage stage = (Stage) btnAdd.getScene().getWindow();
     stage.close();
-}}
-    //private void addMedecin(ActionEvent event) {
-       // if(githubCol.getText().isEmpty() != true && linkedinCol.getText().isEmpty() != true 
-          //      && pdf != null && image != null){
-         //   MedecinService serv = new MedecinService();
-           // Medecin med = new Medecin();
-           
-           // cv.setCv(pdf);
-            //cv.setGit(githubCol.getText());
-           // cv.setLinkedin(linkedinCol.getText());
-            //cv.setImg(image);
-            
-          
-           // serv.ajouter(med);
-        //}else{
-           // System.out.print("il manque encore des champs ! ");
-       // }
-    //}
+}
+
+    
+}
+    
 
   //
 

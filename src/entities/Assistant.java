@@ -11,7 +11,21 @@ import java.util.ArrayList;
  * @author soumayaab
  */
 public class Assistant extends User  {
+
+    private int medecinId;
+
+    public Assistant(int medecinId, String email, String prenom, String nom, String password, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image) {
+        super(email, prenom, nom, password, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
+        this.medecinId = medecinId;
+    }
+  
+    public Assistant(String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image) {
+    super(email, prenom, nom, cin, sexe, telephone, gouvernorat, adresse, image);
+    this.medecin = medecin;
+}
     private Medecin medecin;
+
+    
 
     public Medecin getMedecin() {
         return medecin;
@@ -165,5 +179,17 @@ public class Assistant extends User  {
         super(email, roles, password, nom, prenom, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
          this.medecin=medecin;
          
+    }
+      public Assistant(String email, String password, String nom, String prenom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image,Medecin medecin) {
+        super(email,  password, nom, prenom, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
+         this.medecin=medecin;
+         
+    }
+    
+    
+
+
+    public Assistant(Medecin medecin) {
+        this.medecin = medecin;
     }
 }

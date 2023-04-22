@@ -4,6 +4,7 @@
  */
 package gui;
 
+import entities.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,7 +20,9 @@ public class HomeMedecinController implements Initializable {
     
     @FXML
     private Label label;
+    private User user;
     
+    private User loggedInUser;
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -30,5 +33,12 @@ public class HomeMedecinController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
+    void setUser(User user) {
+this.user = user;    }
+
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+    }
+   
 }

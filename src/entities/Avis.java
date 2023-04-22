@@ -14,7 +14,7 @@ public class Avis {
     private int id;
     private Medecin medecin;
     private Patient patient;
-    private String text;
+    private String text,statut;
     private double note;
     private Date date;
     
@@ -25,21 +25,23 @@ public class Avis {
     public Avis() {
     }
 
-    public Avis(int id, Medecin medecin, Patient patient, String text, double note, Date date) {
+    public Avis(int id, Medecin medecin, Patient patient, String text, double note, Date date,String statut) {
         this.id = id;
         this.medecin = medecin;
         this.patient = patient;
         this.text = text;
         this.note = note;
+        this.statut = statut;
         this.date = date;
     }
     
 
-    public Avis(Medecin medecin, Patient patient, String text, double note, Date date) {
+    public Avis(Medecin medecin, Patient patient, String text, double note, Date date,String statut) {
         this.medecin = medecin;
         this.patient = patient;
         this.text = text;
         this.note = note;
+        this.statut = statut;
         this.date = date;
     }
 
@@ -89,6 +91,14 @@ public class Avis {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 
     @Override

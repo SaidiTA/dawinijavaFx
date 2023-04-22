@@ -6,35 +6,26 @@ package gui;
 
 import entities.Avis;
 import entities.Medecin;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import services.AvisService;
 import services.MedecinService;
+
+
+
 
 /**
  *
@@ -42,19 +33,6 @@ import services.MedecinService;
  */
 public class ListAvisController implements Initializable {
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-/*private double x, y;
-    @FXML
-    private VBox pnitems = null;
-    private Button btnAdd;
-    private ImageView btnAddplus1;   
-    @FXML
-    private Label Action;
-    @FXML
-    private Label ListeMedecin;
     @FXML
     private Label btnid;
     @FXML
@@ -67,16 +45,25 @@ public class ListAvisController implements Initializable {
     private Label lblmed;
     @FXML
     private Label lblpati;
-   
+    @FXML
+    private Label Action;
+    private double x, y;
+    @FXML
+    private VBox pnitems = null;
+    @FXML
+    private Label ListeMedecin;
+    @FXML
+    private Button btnRef1;
+    @FXML
+    private ImageView btnRef;
 
-    
-
-      public void initialize(URL location, ResourceBundle resources) {
-           AvisService avisService = new AvisService();
-         List<Medecin> medecins = null;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+            AvisService aviService = new AvisService();
+         List<Avis> avi = null;
 
     try {
-        medecins = avisService.recuperer();
+        avi = aviService.recuperer();
     } catch (SQLException ex) {
         System.out.println(ex);
     }
@@ -85,12 +72,12 @@ public class ListAvisController implements Initializable {
 
 
 
-    for (Avis avi : avis) {
+    for (Avis avii : avi) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/itemAvis.fxml"));
             Node node = loader.load();
             ItemAvisController itemController = loader.getController();
-            itemController.setData(avi);
+            itemController.setData(avii);
             pnitems.getChildren().add(node);
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,12 +86,37 @@ public class ListAvisController implements Initializable {
 
     }
 
-    
-   
-      */ 
-           
-           
-           
+  
+
+    @FXML
+    private void refreshTable(ActionEvent event) {
+        pnitems.getChildren().clear();
+        AvisService aviService = new AvisService();
+         List<Avis> avi = null;
+
+    try {
+        avi = aviService.recuperer();
+    } catch (SQLException ex) {
+        System.out.println(ex);
+    }
+          
+      
+
+
+
+    for (Avis avii : avi) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/itemAvis.fxml"));
+            Node node = loader.load();
+            ItemAvisController itemController = loader.getController();
+            itemController.setData(avii);
+            pnitems.getChildren().add(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
            
       
     

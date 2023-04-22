@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public class Patient extends User{
 
+    public Patient(String email, String prenom, String nom, String password, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image) {
+        super(email, prenom, nom, password, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
+    }
+//private int id;
     @Override
     public String toString() {
         return super.toString(); 

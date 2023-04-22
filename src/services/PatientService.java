@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 import util.MyDB;
 
 /**
@@ -28,8 +29,10 @@ Connection cnx;
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pst = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, t.getEmail());
-        pst.setString(2, String.join(",", t.getRoles()));
-        pst.setString(3, t.getPassword());
+        pst.setString(2, t.getRoles() != null ? String.join(",", t.getRoles()) + ",ROLE_PATIENT" : "[\"ROLE_PATIENT\"]");
+        String hashedPassword = BCrypt.hashpw(t.getPassword(), BCrypt.gensalt(10));
+        pst.setString(3, hashedPassword);
+ 
         pst.setString(4, t.getNom());
         pst.setString(5, t.getPrenom());
         pst.setInt(6, t.getCin());
@@ -48,7 +51,12 @@ Connection cnx;
             PreparedStatement p = cnx.prepareStatement(req2);
             p.setInt(1, id);
             p.executeUpdate();
-    }}
+             boolean passwordMatch = BCrypt.checkpw(t.getPassword(), hashedPassword);
+       
+    } else {
+        throw new SQLException("Record insertion failed");
+    }
+    }
 
     @Override
     public void modifier(Patient t) throws SQLException{

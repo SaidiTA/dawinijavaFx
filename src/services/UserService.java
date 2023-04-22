@@ -64,40 +64,63 @@ Connection cnx;
         return u;
     
     }
-     
-     public int login(String email, String password) {
-    try {
-        String sql = "SELECT COUNT(1), id, role FROM utilisateur WHERE email=? AND password=?";
-        PreparedStatement ps = cnx.prepareStatement(sql);
-        ps.setString(1, email);
-        ps.setString(2, password);
-        ResultSet rs = ps.executeQuery();
 
-        while (rs.next()) {
-            if (rs.getInt(1) == 1) {
-                int id = rs.getInt("id");
-                ArrayList<String> roles = new ArrayList<String>();
-                int role = rs.getInt("role");
-                if (role == 1) {
-                    roles.add("[\"ROLE_ADMIN\"]");
-                } else if (role == 2) {
-                    roles.add("[\"ROLE_MEDECIN\"]");
-                } else if (role == 3) {
-                    roles.add("[\"ROLE_PATIENT\"]");
-                }
-                  else if (role == 4) {
-                    roles.add("[\"ROLE_ASSISTANT\"]");
-                }
-                // Return a User object with the retrieved data
-                
-                return id;
-            } else {
-                return 0;
-            }
+    public String getUserRole(String email, String password) {
+    Connection connection = null;
+    PreparedStatement statement = null;
+    ResultSet resultSet = null;
+    String role = null;
+    
+    try {
+        connection = MyDB.getInstance().getCnx();
+        statement = connection.prepareStatement("SELECT roles FROM user WHERE email = ?");
+        statement.setString(1, email);
+        resultSet = statement.executeQuery();
+        
+        if (resultSet.next()) {
+            role = resultSet.getString("roles");
         }
     } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+        System.err.println(ex.getMessage());
+    } finally {
+        try {
+            if (resultSet != null) resultSet.close();
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
-    return 0;
+    
+    return role;
 }
+
+   public boolean login(String email, String password) throws SQLException {
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    Connection cnx = MyDB.getInstance().getCnx();
+    try {
+        pst = cnx.prepareStatement("SELECT * FROM user WHERE email=? AND password=?");
+        pst.setString(1, email);
+        pst.setString(2, password);
+        rs = pst.executeQuery();
+        if (rs.next()) {
+            // login successful
+            return true;
+        } else {
+            // login failed
+            return false;
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    } finally {
+        // close the resources
+        if (pst != null) {
+            pst.close();
+        }
+        if (rs != null) {
+            rs.close();
+        }
+    }
+   }
 }

@@ -66,6 +66,10 @@ private double x, y;
     private Label ListeMedecin;
     @FXML
     private Label btnid;
+    @FXML
+    private Button btnRef1;
+    @FXML
+    private ImageView btnRef;
    
 
     
@@ -149,9 +153,36 @@ private double x, y;
     
     }
 
-    
+   
+   
 
-    
+    @FXML
+    private void refreshTable() {
+    pnitems.getChildren().clear();
+    MedecinService medecinService = new MedecinService();
+    List<Medecin> medecins = null;
+
+    try {
+        medecins = medecinService.recuperer();
+    } catch (SQLException ex) {
+        System.out.println(ex);
+    }
+
+    for (Medecin medecin : medecins) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/item.fxml"));
+            Node node = loader.load();
+            ItemController itemController = loader.getController();
+            itemController.setData(medecin);
+            pnitems.getChildren().add(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
+  
+
 
     
     

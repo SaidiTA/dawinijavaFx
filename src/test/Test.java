@@ -32,8 +32,8 @@ public class Test {
         ArrayList<String> role=new ArrayList();
          //role.add("[\"ROLE_MEDECIN\"]");
          //role.add("[\"ROLE_PATIENT\"]");
-         //role.add("[\"ROLE_ASSISTANT\"]");
-         role.add("[\"ROLE_ADMIN\"]");
+         role.add("[\"ROLE_ASSISTANT\"]");
+         //role.add("[\"ROLE_ADMIN\"]");
          
           // Création de l'assistant
     Admin admin = new Admin();
@@ -124,7 +124,7 @@ try {
          
          
          ////////////////////////////partie Assistant///////////////////////
-       /*          
+               
          
          Medecin medecin = new Medecin();
     medecin.setId(67); // Remplacer 1 par l'id du médecin existant dans la base de données
@@ -132,8 +132,8 @@ try {
     // Création de l'assistant
     Assistant assistant = new Assistant();
      
-  assistant.setId(208);
-    assistant.setEmail("anna@test.com");
+  assistant.setId(272);
+    assistant.setEmail("an@test.com");
     assistant.setPassword("password");
     assistant.setRoles(role);
     assistant.setNom("mmm");
@@ -159,7 +159,7 @@ try {
     } catch (SQLException ex) {
         System.out.println("Erreur lors de l'ajout de l'assistant : " + ex.getMessage());
     }
-       
+        /*
    // modifier de l'assistant
          try {
         assistantService.modifier(assistant);
@@ -281,7 +281,7 @@ try {
      
      
      
-     
+     /*
           MedecinService medecinService = new MedecinService();
    Medecin medecin = new Medecin();
   // medecin.setId(199);
@@ -357,7 +357,8 @@ try {
         // System.out.println("Médecin supprimé avec succès !");
     // } catch (SQLException e) {
         // System.out.println("Erreur lors de la suppression du médecin : " + e.getMessage());
-     //}}}
+     //}
+    }}
 
     
 
