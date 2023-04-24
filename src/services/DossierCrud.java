@@ -6,22 +6,35 @@
 package services;
 
 import entities.Dossier;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.sql.Connection;
 import util.MyDB;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.Cell;
 
 /**
  *
  * @author msi
  */
 public class DossierCrud {
+    Connection cnx;
      public void ajouter_dossier(Dossier d) {
         try {
             String requete1 = "INSERT INTO dossier(numero,code_apci,description) VALUES(?,?,?)";
@@ -48,7 +61,7 @@ public class DossierCrud {
             while (rs.next()) {
                 Dossier rec = new Dossier();
                 rec.setId(rs.getInt(1));
-               //rec.setPatient_id(rs.getInt("patient_id));
+               //rec.setPatient_id(rs.getInt("patient_id"));
                //rec.setMedecin_id(rs.getInt("medecin_id"));
                 
                 rec.setNumero(rs.getInt("numero"));
@@ -175,4 +188,109 @@ public void modifier_dos(Dossier r, int numero, String code_apci ,String descrip
         return (badWord.replace(badNew, "") + " ");
     }
     */
+
+   public List<Dossier> RechercheDossier(String numero) {
+ List<Dossier> dossier = new ArrayList<>();
+        try {
+            String req ="select * from dossier WHERE numero = '"+numero+"'";
+           // Statement st = cnx.createStatement();
+           // ResultSet rs = st.executeQuery(req);
+             Statement st = MyDB.getInstance().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next())
+            {
+               Dossier d = new Dossier();
+               d.setId(rs.getInt("id"));
+               d.setNumero(rs.getInt("numero"));
+               d.setCode_apci(rs.getString("code_apci"));
+               d.setDescription(rs.getString("Description"));
+               
+               dossier.add(d);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());        }
+            
+return dossier;    
+   }
+   
+     public ObservableList<Dossier> chercherDossier(String chaine){
+          String sql="SELECT * FROM dossier WHERE (numero LIKE ? or id LIKE ? or description LIKE ? or code_apci LIKE ? )";
+            
+             Connection cnx= MyDB.getInstance().getCnx();
+            String ch=""+chaine+"%";
+         System.out.println(sql);
+            ObservableList<Dossier> myList= FXCollections.observableArrayList();
+        try {
+           
+            Statement ste= cnx.createStatement();
+           // PreparedStatement pst = myCNX.getCnx().prepareStatement(requete6);
+            PreparedStatement stee =cnx.prepareStatement(sql);  
+            stee.setString(1, ch);
+            stee.setString(2, ch);
+            stee.setString(3, ch);
+            stee.setString(4, ch);
+         System.out.println(stee);
+
+            ResultSet rs = stee.executeQuery();
+            while (rs.next()){
+                Dossier d = new Dossier ();
+                d.setId(rs.getInt(3));
+                d.setCode_apci(rs.getString(4));
+                d.setNumero(rs.getInt(5));
+                d.setDescription(rs.getString(6));
+                
+
+                myList.add(d);
+                System.out.println("dossier trouvé! ");
+            }
+            if (myList.isEmpty()) {
+            System.out.println("Aucun dossier trouvé !");
+        }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+      }
+      //---------------------------------------- Excel -----------------------------------------------------------//
+     
+     public void getDefendants( String db) throws Exception  { 
+        
+        @SuppressWarnings("unused")
+        Workbook rbook = WorkbookFactory.create(new FileInputStream("C:\\Users\\msi\\Documents\\pidev\\test2.xls") );
+        @SuppressWarnings("resource")
+        Workbook writeWorkbook = (Workbook) new HSSFWorkbook();
+        Sheet desSheet = writeWorkbook.createSheet("new sheet");
+
+        Statement stmt = null;
+        ResultSet rs = null;
+        try{
+            String query ="SELECT * FROM dossier"+db;
+
+            stmt = cnx.createStatement();
+            rs = stmt.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+
+            Row desRow1 = desSheet.createRow(0);
+            for(int col=0 ;col < columnsNumber;col++) {
+                Cell newpath = desRow1.createCell(col);
+                newpath.setCellValue(rsmd.getColumnLabel(col+1));
+            }
+            while(rs.next()) {
+                System.out.println("Row number" + rs.getRow() );
+                Row desRow = desSheet.createRow(rs.getRow());
+                for(int col=0 ;col < columnsNumber;col++) {
+                    Cell newpath = desRow.createCell(col);
+                    newpath.setCellValue(rs.getString(col+1));  
+                }
+                FileOutputStream fileOut = new FileOutputStream("C:\\Users\\msi\\Documents\\pidev\\test2.xls");
+                writeWorkbook.write(fileOut);
+                fileOut.close();
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Failed to get data from database");
+        }
+    }
+     
 }

@@ -7,6 +7,7 @@ package gui;
 
 import entities.Diagnostique;
 import entities.Dossier;
+import entities.Pdf;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -20,10 +21,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import services.DiagnostiqueCrud;
 import services.DossierCrud;
 
@@ -185,6 +188,51 @@ public class Diagnostique_itemController implements Initializable {
         }
     }
     updateDiagnostiques();
+    }
+
+    @FXML
+    private void print(ActionEvent event) {
+  
+    }
+
+    @FXML
+    private void pdf(ActionEvent event) {
+         try {
+        int id = Integer.parseInt(idCol.getText());
+        DiagnostiqueCrud dc = new DiagnostiqueCrud();
+        DossierCrud dosc = new DossierCrud();
+        List<Diagnostique> diagnostiques = dc.listerDiagnostiques();
+        Diagnostique diagnostique = null;
+        Dossier dossier = null;
+        for (Diagnostique d : diagnostiques) {
+            if (d.getId() == id) {
+                diagnostique = d;
+              //  dossier = dosc.getDossiers_id(d.getDossiers_id());
+                break;
+            }
+        }
+
+        Pdf pdf = new Pdf();
+        String filename = "diagnostique_" + diagnostique.getId();
+        pdf.GeneratePdf(filename, diagnostique, diagnostique.getId());
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succès");
+        alert.setHeaderText("Le fichier PDF a été généré avec succès.");
+        alert.setContentText("Le fichier PDF a été enregistré sous le nom: " + filename + ".pdf");
+        alert.showAndWait();
+    } catch (Exception ex) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Impossible de générer le fichier PDF.");
+        alert.setContentText("Une erreur est survenue lors de la génération du fichier PDF:\n" + ex.getMessage());
+        alert.showAndWait();
+    }
+       
+    }
+
+    @FXML
+    private void onSelection(MouseEvent event) {
     }
 
    

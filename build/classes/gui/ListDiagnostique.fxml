@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -132,7 +133,11 @@
                   </Button>
                </children>
             </HBox>
-            <HBox prefHeight="54.0" prefWidth="990.0" styleClass="white-background" stylesheets="@style.css" />
+            <HBox prefHeight="54.0" prefWidth="990.0" styleClass="white-background" stylesheets="@style.css">
+               <children>
+                  <HBox prefHeight="54.0" prefWidth="815.0" />
+                  <ComboBox fx:id="Trie" onAction="#Trie" prefHeight="31.0" prefWidth="154.0" promptText="Trie par date" />
+               </children></HBox>
             <Label text="Liste des diagnostiques" textFill="#33ccff">
                <font>
                   <Font name="Corbel Bold" size="32.0" />
@@ -150,7 +155,7 @@
                      <content>
                         <VBox fx:id="dos" prefHeight="649.0" prefWidth="983.0" styleClass="white-background" stylesheets="@style.css">
                            <children>
-                              <HBox prefHeight="64.0" prefWidth="200.0" spacing="10.0" styleClass="light-gray-background" stylesheets="@style.css">
+                              <HBox fx:id="HB" prefHeight="64.0" prefWidth="200.0" spacing="10.0" styleClass="light-gray-background" stylesheets="@style.css">
                                  <children>
                                     <Label prefHeight="64.0" prefWidth="33.0" text="ID">
                                        <font>

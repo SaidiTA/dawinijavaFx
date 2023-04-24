@@ -7,6 +7,7 @@ package services;
 
 import entities.Diagnostique;
 import entities.Dossier;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,13 @@ import util.MyDB;
  * @author msi
  */
 public class DiagnostiqueCrud {
+    
+    Connection cnx;
+
+    public DiagnostiqueCrud() {
+        cnx = MyDB.getInstance().getCnx();
+    }
+
     
       public void ajouter_diagnostique(Diagnostique d) {
         try {
@@ -41,11 +49,26 @@ public class DiagnostiqueCrud {
             System.out.println(ex.getMessage());
         }
     }
+      
+      public void ajouter(Diagnostique t) {
+        try {
+            String req = "insert into diagnostique(dossiers_id,date,symptome,resultat_test,diag_final) values( " +t.getDossiers_id()+",' " + t.getDate()+ "','" + t.getSymptome()+ "','"
+                    + t.getResultat_test()+",' " + t.getDiag_final()+ "');";
+          
+            Statement st = MyDB .getInstance().getCnx().createStatement();
+            st.executeUpdate(req);
+            System.out.println("Diagnostique ajoutée");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+      
+      
        public ObservableList<Diagnostique> listerDiagnostiques() {
         ObservableList<Diagnostique> myList = FXCollections.observableArrayList();
         try {
 
-            String requete2 = "Select * FROM diagnostique";
+            String requete2 = "Select * FROM diagnostique ";
             Statement st = MyDB.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete2);
             while (rs.next()) {
@@ -68,7 +91,7 @@ public class DiagnostiqueCrud {
         return myList;
     }
        
-     /*  public ObservableList<Diagnostique> listerDiagnostique(int dossiers_id) {
+     /*public ObservableList<Diagnostique> listerDiagnostique(int dossiers_id) {
     ObservableList<Diagnostique> myList = FXCollections.observableArrayList();
     try {
         String requete2 = "SELECT * FROM diagnostique WHERE dossiers_id = ?";
@@ -90,10 +113,10 @@ public class DiagnostiqueCrud {
     return myList;
 }*/
 
-       public ObservableList<Diagnostique> listerDiagnostique(int dossierId) { // renommer le paramètre en dossierId pour suivre la convention de nommage
+       public ObservableList<Diagnostique> listerDiag(int dossierId) { // renommer le paramètre en dossierId pour suivre la convention de nommage
     ObservableList<Diagnostique> myList = FXCollections.observableArrayList();
     try {
-            String requete2 = "SELECT * FROM diagnostique d,dossier do WHERE d.dossiers_id = do.id";
+            String requete2 = "SELECT * FROM diagnostique WHERE dossiers_id ='"+dossierId+"';";
         PreparedStatement st = MyDB.getInstance().getCnx().prepareStatement(requete2);
         st.setInt(1, dossierId);
         ResultSet rs = st.executeQuery();
@@ -202,4 +225,45 @@ public void modifier_diag(Diagnostique d,Date date,String symptome ,String resul
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }}
+
+
+public Diagnostique recupererById(int id) throws SQLException {
+        String req = "select count(*) as nbr from diagnostique where dossiers_id = ?";
+        PreparedStatement st = cnx.prepareStatement(req);
+        st.setInt(1, id);
+        ResultSet rs = st.executeQuery();
+        Diagnostique p = new Diagnostique();
+        rs.next();
+        p.setId(rs.getInt("id"));
+        p.setSymptome(rs.getString("symptome"));
+        p.setDate(rs.getDate("date"));
+        p.setDiag_final(rs.getString("diag_fianl"));
+        //p.setDossiers_id(id);
+        p.setResultat_test("resultat_test");
+        rs.getInt("nbr");
+
+        return p;
+    }
+
+   //--------------------------- NB Voyage ---------------------------------------------//
+     public int calculnb(Date datef) {
+
+        PreparedStatement pre;
+        int count = 19;
+        try {
+            Statement stmt = cnx.createStatement();
+
+            String query = "SELECT COUNT(*) FROM diagnostique WHERE date='"+datef+"'";
+
+            ResultSet rs = stmt.executeQuery(query);
+
+            rs.next();
+            count = rs.getInt(1);
+            return count;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return 0;
+
+    }
 }
