@@ -31,7 +31,7 @@ public void ajouter(Medecin t) throws SQLException {
     PreparedStatement pst = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
     pst.setString(1, t.getEmail());
     pst.setString(2, t.getRoles() != null ? String.join(",", t.getRoles()) + ",ROLE_MEDECIN" : "[\"ROLE_MEDECIN\"]");
-    String hashedPassword = BCrypt.hashpw(t.getPassword(), BCrypt.gensalt(10));
+    String hashedPassword = BCrypt.hashpw(t.getPassword(), BCrypt.gensalt());
     pst.setString(3, hashedPassword);
  
     pst.setString(4, t.getNom());
@@ -70,7 +70,7 @@ public void ajouter(Medecin t) throws SQLException {
 
         @Override
     public void modifier(Medecin t) throws SQLException {
-        String req = "UPDATE user SET email=?, password=?, nom=?, prenom=?, cin=?, sexe=?, telephone=?, gouvernorat=?, adresse=?, confirm_password=?, image=? WHERE id="+t.getId();
+        String req = "UPDATE user SET email=?, password=?, nom=?, prenom=?, cin=?, sexe=?, telephone=?, gouvernorat=?, adresse=?, confirm_password=?, image=?, enabled=? WHERE id="+t.getId();
         PreparedStatement pst = cnx.prepareStatement(req);
         pst.setString(1, t.getEmail());
         pst.setString(2, t.getPassword());
@@ -83,9 +83,7 @@ public void ajouter(Medecin t) throws SQLException {
         pst.setString(9, t.getAdresse());
         pst.setString(10, t.getConfirm_password());
         pst.setString(11, t.getImage());
-      
-        
-       
+        pst.setInt(12, t.getEnabled());
         pst.executeUpdate();
         String req2 = "UPDATE medecin SET titre=?, adresse_cabinet=?, fixe=?, diplome_formation=?, tarif=?, cnam=? WHERE id="+t.getId();
         PreparedStatement p = cnx.prepareStatement(req2);

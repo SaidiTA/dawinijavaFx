@@ -30,24 +30,40 @@ Connection cnx;
         st.executeUpdate(req);
     }
 
-    @Override
-    public void modifier(User t) throws SQLException{
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  @Override
+public void modifier(User t) throws SQLException{
+    String req = "update user set nom=?, prenom=? where id=?";
+    PreparedStatement st = cnx.prepareStatement(req);
+    st.setString(1, t.getNom());
+    st.setString(2, t.getPrenom());
+    st.setInt(3, t.getId());
+    st.executeUpdate();
+}
 
-    @Override
-    public void supprimer(User t) throws SQLException{
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+@Override
+public void supprimer(User t) throws SQLException{
+    String req = "delete from user where id=?";
+    PreparedStatement st = cnx.prepareStatement(req);
+    st.setInt(1, t.getId());
+    st.executeUpdate();
+}
 
-  
-
-    @Override
-    public List<User> recuperer() throws SQLException{
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+@Override
+public List<User> recuperer() throws SQLException{
+    List<User> users = new ArrayList<>();
+    String req = "select * from user";
+    Statement st = cnx.createStatement();
+    ResultSet rs = st.executeQuery(req);
+    while (rs.next()) {
+        User u = new User();
+        u.setId(rs.getInt("id"));
+        u.setNom(rs.getString("nom"));
+        u.setPrenom(rs.getString("prenom"));
+        users.add(u);
     }
-    
-    
+    return users;
+}
+
      public User recupererById(int id) throws SQLException {
         String req = "select count(*) as nbr from User where id = ?";
         PreparedStatement st = cnx.prepareStatement(req);

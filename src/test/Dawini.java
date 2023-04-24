@@ -30,7 +30,7 @@ public class Dawini extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/ListAvis.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/SignInUser.fxml"));
         primaryStage.setScene(new Scene(root));
         //set stage borderless
         primaryStage.initStyle(StageStyle.UNDECORATED);

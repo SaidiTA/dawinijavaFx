@@ -11,6 +11,29 @@ import java.util.ArrayList;
  * @author soumayaab
  */
 public class User {
+    private int id;
+    private String email;
+    private String prenom;
+    private String nom;
+    
+    private ArrayList<String> roles;
+    private String password;
+    int cin;
+    String sexe;
+    private String telephone;
+    private String gouvernorat;
+    private String adresse;
+    private String confirm_password;
+    private String image;
+    private int enabled;
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
 
     public User(int id) {
         this.id = id;
@@ -21,7 +44,7 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image) {
+    public User(int id, String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image,int enabled) {
         this.id = id;
         this.email = email;
         this.prenom = prenom;
@@ -32,6 +55,7 @@ public class User {
         this.gouvernorat = gouvernorat;
         this.adresse = adresse;
         this.image = image;
+        this.enabled = enabled;
     }
 
     public User(String email, String prenom, String nom, String password, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image) {
@@ -62,21 +86,7 @@ public class User {
         this.image = image;
     }
     
-    private int id;
-    private String email;
-    private String prenom;
-    private String nom;
-    
-    private ArrayList<String> roles;
-    private String password;
-    int cin;
-    String sexe;
-    private String telephone;
-    private String gouvernorat;
-    private String adresse;
-    private String confirm_password;
-    private String image;
-
+   
     public User() {
     }
 

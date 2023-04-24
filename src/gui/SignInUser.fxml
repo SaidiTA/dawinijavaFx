@@ -39,7 +39,7 @@
                         <Font name="DejaVu Sans" size="19.0" />
                      </font>
                   </Button>
-                  <Hyperlink layoutX="557.0" layoutY="435.0" text="Forgot Password ?">
+                  <Hyperlink layoutX="557.0" layoutY="435.0" onAction="#ForgotPassword" text="Mot de Passe oublié ?">
                      <font>
                         <Font size="14.0" />
                      </font>

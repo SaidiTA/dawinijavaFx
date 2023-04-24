@@ -58,7 +58,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="382.0" stylesheets="@add.css" text="Medecins">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#MED" prefHeight="53.0" prefWidth="382.0" stylesheets="@add.css" text="Medecins">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -79,7 +79,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Assistants">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#Assistants" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Assistants">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -100,7 +100,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Patients">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#Patients" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Patients">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -121,7 +121,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Articles">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#Articles" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Articles">
                <graphic>
                   <ImageView fitHeight="49.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -184,7 +184,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Avis">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#AVIS" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Avis">
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>

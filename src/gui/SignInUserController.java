@@ -72,11 +72,13 @@ public class SignInUserController implements Initializable {
         PreparedStatement st = null;
 
         Connection cnx = MyDB.getInstance().getCnx();
-
+        
         PreparedStatement pst = cnx.prepareStatement("SELECT * FROM user WHERE email=?");
         pst.setString(1, loginCol.getText());
         ResultSet rs = pst.executeQuery();
+        
         if (rs.next()) {
+            if(rs.getInt("enabled")==1){
             String hashedPassword = rs.getString("password");
             System.out.println("*hash " + hashedPassword);
             System.out.println("*loginCol.getText() " + mdpCol.getText());
@@ -130,10 +132,31 @@ public class SignInUserController implements Initializable {
                 }
             } else {
                 // Passwords don't match
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid email or password", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Invalid email or password", ButtonType.OK);
                 alert.showAndWait();
 
             }
+        }else{
+             Alert alert = new Alert(Alert.AlertType.WARNING, "Compte désactivé", ButtonType.OK);
+                alert.showAndWait();
+
         }
+        }
+    }
+
+    @FXML
+    private void ForgotPassword(ActionEvent event) {
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Mailing.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
     }
 }

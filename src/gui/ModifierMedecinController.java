@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -74,6 +75,8 @@ public class ModifierMedecinController implements Initializable {
     @FXML
     private TextArea tariff;
     private Medecin medecin;
+    @FXML
+    private MenuButton Status;
 
     public Medecin getMedecin() {
         return medecin;
@@ -102,7 +105,14 @@ public class ModifierMedecinController implements Initializable {
         diplome.setText(medecin.getDiplome_formation());
        upimage.setText(medecin.getImage());
        
-      
+       int Stat=medecin.getEnabled();
+      if(Stat==1){
+        Status.setText("Activé");
+    
+    }else{
+      Status.setText("Désactivé");
+    
+    }
       
 
     
@@ -114,21 +124,22 @@ public class ModifierMedecinController implements Initializable {
 }
    @FXML
     private void handleButtonAction(ActionEvent event) {
-      if(event.getSource() == btncrosse) {
-        // Get the Stage that contains the button
-        Stage stage = (Stage) btncrosse.getScene().getWindow();
+       if (event.getSource() == btncrosse) {
+            // Get the Stage that contains the button
+            Stage stage = (Stage) btncrosse.getScene().getWindow();
+
+            // Close the stage
+            stage.close();
+
+        }
+        if (event.getSource() == btncross) {
+            // Get the Stage that contains the button
+            Stage stage = (Stage) btncross.getScene().getWindow();
+
+            // Close the stage
+            stage.close();
+
         
-        // Close the stage
-        stage.close();
-      
-    }
-       if(event.getSource() == btncross) {
-        // Get the Stage that contains the button
-        Stage stage = (Stage) btncross.getScene().getWindow();
-        
-        // Close the stage
-        stage.close();
-      
     }
     }
     
@@ -195,6 +206,17 @@ public class ModifierMedecinController implements Initializable {
     });
     lbltitre.getItems().addAll(t1, t2);
 
+    MenuItem AciverItem = new MenuItem("Activé");
+    AciverItem.setOnAction(e -> {
+        Status.setText(AciverItem.getText());
+    });
+
+    MenuItem DesactiveItem = new MenuItem("Desactivé");
+    DesactiveItem.setOnAction(e -> {
+        Status.setText(DesactiveItem.getText());
+    });
+
+    Status.getItems().addAll(AciverItem, DesactiveItem);
     
     }    
 
@@ -219,7 +241,19 @@ public class ModifierMedecinController implements Initializable {
     medecin.setDiplome_formation(diplome.getText());
     medecin.setTarif(Float.parseFloat(tariff.getText()));
     medecin.setCnam(Boolean.parseBoolean(lblCnam.getText()));
-   
+    String Stat=Status.getText();
+        
+    if(Stat.equals("Activé")){
+        
+    medecin.setEnabled(1);
+    
+    }else{
+     medecin.setEnabled(0);
+    
+    }
+    
+     
+  
        
         
  
@@ -247,15 +281,16 @@ public class ModifierMedecinController implements Initializable {
      
     
     // Modifier le dossier correspondant dans la base de données
+
+  
        
 
-    
+}
        
        
         
     // Close the window
-    
-}
+
 
   
  

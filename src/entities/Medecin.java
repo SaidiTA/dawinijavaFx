@@ -10,17 +10,19 @@ import java.util.ArrayList;
  *
  * @author soumayaab
  */
-public class Medecin extends  User{
+public class Medecin extends User {
 
-    public Medecin(int id, String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image) {
-        super(id, email, prenom, nom, cin, sexe, telephone, gouvernorat, adresse, image);
+    public Medecin(int id, String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image, int enabled) {
+        super(id, email, prenom, nom, cin, sexe, telephone, gouvernorat, adresse, image, enabled);
     }
+
+   
 
     public Medecin(String email, String prenom, String nom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String image, String titre1, String adresse_cabinet1, String fixe1, String diplome_formation1, float tarif1, boolean cnam1) {
         super(email, prenom, nom, cin, sexe, telephone, gouvernorat, adresse, image);
     }
 
-    public Medecin(int id, String email, String password,int cin, String nom, String prenom, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image, String genre, String gouvernorat1, String cnam1, String adresse1, String diplomeText) {
+    public Medecin(int id, String email, String password, int cin, String nom, String prenom, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image, String genre, String gouvernorat1, String cnam1, String adresse1, String diplomeText) {
         super(id, email, password, nom, prenom, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
     }
 
@@ -28,14 +30,12 @@ public class Medecin extends  User{
         super(email, prenom, nom, password, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
     }
 
-    
     private String titre;
     private String adresse_cabinet;
     private String fixe;
     private String diplome_formation;
     private float tarif;
     private boolean cnam;
-    
 
     public Medecin(int id, String email, ArrayList<String> roles, String password, String nom, String prenom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image, String titre, String adresse_cabinet, String fixe, String diplome_formation, float tarif, boolean cnam) {
         super(id, email, roles, password, nom, prenom, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
@@ -60,8 +60,9 @@ public class Medecin extends  User{
         this.tarif = tarif;
         this.cnam = cnam;
     }
- public Medecin(String email, String password, String nom, String prenom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image, String titre, String adresse_cabinet, String fixe, String diplome_formation, float tarif, boolean cnam) {
-        super(email,  password, nom, prenom, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
+
+    public Medecin(String email, String password, String nom, String prenom, int cin, String sexe, String telephone, String gouvernorat, String adresse, String confirm_password, String image, String titre, String adresse_cabinet, String fixe, String diplome_formation, float tarif, boolean cnam) {
+        super(email, password, nom, prenom, cin, sexe, telephone, gouvernorat, adresse, confirm_password, image);
         this.titre = titre;
         this.adresse_cabinet = adresse_cabinet;
         this.fixe = fixe;
@@ -69,7 +70,6 @@ public class Medecin extends  User{
         this.tarif = tarif;
         this.cnam = cnam;
     }
- 
 
     public String getTitre() {
         return titre;
@@ -126,5 +126,5 @@ public class Medecin extends  User{
 
     public Medecin() {
     }
-    
+
 }
