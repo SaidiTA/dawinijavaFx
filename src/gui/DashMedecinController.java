@@ -58,26 +58,33 @@ public class DashMedecinController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
+            // Récupérer la liste des consultations pour l'utilisateur connecté
 
             Consultations = new ArrayList<>(consService.recupererByIdPatient(2));
+            // Pour chaque consultation, on crée une carte (CardConsultationController) 
+
             for (Consulation cons : Consultations) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cardConsultation.fxml"));
 
                 try {
+                    // On charge le fxml de la carte
+
                     HBox hBox = fxmlLoader.load();
                     CardConsultationController listconsultation = fxmlLoader.getController();
-                     ordonnanceService ordService = new ordonnanceService(); 
-                         if(ordService.recupererbycons(cons.getId())==null)
-        {
-            listconsultation.setModif_ord();
-                    listconsultation.setSupp_ord();
-                    listconsultation.setaff_ord();
-        }
+                                        // On vérifie s'il y a une ordonnance pour cette consultation
 
-                                        
-                        
+                    ordonnanceService ordService = new ordonnanceService();
+                    if (ordService.recupererbycons(cons.getId()) == null) {
+                                                // S'il n'y a pas d'ordonnance, on permet à l'utilisateur de modifier/supprimer/l'afficher
+
+                        listconsultation.setModif_ord();
+                        listconsultation.setSupp_ord();
+                        listconsultation.setaff_ord();
+                    }
+                    // On initialise les données de la carte avec les données de la consultation
+
                     listconsultation.setData(cons);
-                   
+                    // On ajoute la carte à la VBox
 
                     contenu.getChildren().add(hBox);
                 } catch (IOException ex) {
@@ -97,7 +104,11 @@ public class DashMedecinController implements Initializable {
         Parent root;
         try {
             root = loader.load();
-            AjoutConsultationController ajC = loader.getController();
+                    // Obtenir le contrôleur de la vue AjoutConsultation
+
+            AjoutConsultationController ajC = loader.getController(); 
+            // Remplacer la vue actuelle par la vue AjoutConsultation
+
             ConsultationAddButton.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

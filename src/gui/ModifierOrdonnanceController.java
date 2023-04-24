@@ -68,7 +68,7 @@ public class ModifierOrdonnanceController implements Initializable {
 
     @FXML
     private void retour2(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/DashMedecin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Dash.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -128,7 +128,7 @@ public class ModifierOrdonnanceController implements Initializable {
                 JOptionPane.showMessageDialog(null, "il faut importer l'image d'ordonnance!");
             } else {
                 ordService.modifier(ord);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Dash.fxml"));
                 Parent root;
 
                 root = loader.load();

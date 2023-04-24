@@ -58,13 +58,18 @@ public class ModifierConsultationController implements Initializable {
     @FXML
     public void modifierconsultation() throws IOException {
         try {
+            // On crée une instance de ConsulationService pour pouvoir accéder à la méthode "modifier"
 
             ConsulationService consulationService = new ConsulationService();
+                        // On met à jour les attributs de l'instance de Consulation avec les nouvelles valeurs
+
             cons.setHeuredebut(Timestamp.valueOf(heureD.getValue().atStartOfDay()));
             cons.setHeurefin(Timestamp.valueOf(heureF.getValue().atStartOfDay()));
+                        // On appelle la méthode "modifier" pour mettre à jour la consultation dans la base de données
+
             consulationService.modifier(cons);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Dash.fxml"));
             Parent root;
 
             root = loader.load();
@@ -76,6 +81,8 @@ public class ModifierConsultationController implements Initializable {
         }
 
     }
+        //initialiser les champs de date et heure de début et de fin avec les valeurs de l'instance de Consulation à modifier
+
     void initialize(Consulation cons) throws SQLException {
         heureD.setValue(cons.getHeuredebut().toLocalDateTime().toLocalDate());
         heureF.setValue(cons.getHeurefin().toLocalDateTime().toLocalDate());
@@ -83,7 +90,7 @@ public class ModifierConsultationController implements Initializable {
     }
     public void Retour() throws IOException, SQLException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Dash.fxml"));
         Parent root;
         root = loader.load();
 

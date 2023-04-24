@@ -77,12 +77,22 @@ public class AjouterOrdonnanceController implements Initializable {
     @FXML
     private void add_ordonnance(ActionEvent event) throws IOException, SQLException {
         System.out.println(this.consulation_id);
+        // Récupération de la description de l'ordonnance à partir de la zone de texte
         String description = desc.getText();
+            // création d'une instance d'ordonnance avec la description récupérée
+
         ordonnance or = new ordonnance(description);
+            // création d'une instance de service pour l'ajout d'une ordonnance en base de données
+
         ordonnanceService os = new ordonnanceService();
+            // création d'une instance de service pour la mise à jour de la consultation en base de données
+
         ConsulationService cons = new ConsulationService();
+            // affectation de l'identifiant de la consultation à l'ordonnance
+
         or.setConsulation_id(this.consulation_id);
-        
+            // récupération de la date courante
+
         Calendar calendar = Calendar.getInstance();
         java.util.Date currentDate = calendar.getTime();
         Date dt = new Date(currentDate.getTime());
@@ -124,8 +134,12 @@ public class AjouterOrdonnanceController implements Initializable {
         file = fileChooser.showOpenDialog(null);
 
         try {
+            // Lit l'image sélectionnée par l'utilisateur
             BufferedImage image = ImageIO.read(file);
+                // Convertit l'image de BufferedImage en WritableImage pour pouvoir l'afficher dans l'interface utilisateur
             WritableImage imagee = SwingFXUtils.toFXImage(image, null);
+                // Affiche l'image dans l'interface utilisateur
+
             affimage.setImage(imagee);
             affimage.setFitWidth(200);
             affimage.setFitHeight(200);
@@ -136,6 +150,8 @@ public class AjouterOrdonnanceController implements Initializable {
 
         try {
             // save image to PNG file
+                    // Enregistre l'image dans un fichier PNG avec un nom de fichier généré aléatoirement
+
             this.lien=UUID.randomUUID().toString();
             File f=new File("src\\uploads\\" + this.lien + ".png");
             System.out.println(f.toURI().toString());

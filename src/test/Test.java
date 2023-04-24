@@ -59,7 +59,7 @@ public class Test extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/DashMedecin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Dash.fxml"));
         
         Scene scene = new Scene(root);
         

@@ -41,12 +41,13 @@ public class AjoutConsultationController implements Initializable {
     private Button suivant;
     @FXML
     private Button commencer;
-
+    // URL pour créer une nouvelle réunion Google Meet
     private String MEET_URL = "https://meet.google.com/new";
     @FXML
     private TextField tURL;
-    @FXML
     private Button retour;
+    @FXML
+    private Button retour1;
 
     /**
      * Initializes the controller class.
@@ -77,57 +78,66 @@ public class AjoutConsultationController implements Initializable {
     @FXML
     public void newConsultation() throws SQLException {
         String url = tURL.getText();
+        // On récupère la date et l'heure actuelles
         Calendar calendar = Calendar.getInstance();
         java.util.Date currentDate = calendar.getTime();
         Date dt = new Date(currentDate.getTime());
         Timestamp heure = new Timestamp(System.currentTimeMillis());
-
+// On crée une nouvelle consultation avec ces informations
         Consulation c = new Consulation(dt, heure, heure, url, "0");
         ConsulationService cons = new ConsulationService();
+        //controle
         if (tURL.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "il faut remplir le champ pour recuperer l'url  !");
-                } else {
-                    
-                
-        try {
-            cons.ajouter(c);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/AjouterOrdonnance.fxml"));
-        Parent root;
+            JOptionPane.showMessageDialog(null, "il faut remplir le champ pour recuperer l'url  !");
+        } else {
 
-        try {
-            root = loader.load();
+            try {
+                cons.ajouter(c);
 
-            AjouterOrdonnanceController ordonnanceController = loader.getController();
-            //b3atht el id cons mel controllerajoutcons lel  w 3malt el set mta3 id cons 
-            ordonnanceController.setConsulation_id(cons.recupererByURL(url));
-            
-            suivant.getScene().setRoot(root);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/AjouterOrdonnance.fxml"));
+            Parent root;
+
+            try {
+                 // Charger le contenu de la fenêtre à partir du fichier FXML
+                root = loader.load();
+
+                AjouterOrdonnanceController ordonnanceController = loader.getController();
+                //b3atht el id cons mel controllerajoutcons lel  w 3malt el set mta3 id cons 
+                // On envoie l'ID de la consultation à la fenêtre AjouterOrdonnance.fxml
+
+                ordonnanceController.setConsulation_id(cons.recupererByURL(url));
+// On change la fenêtre active
+                suivant.getScene().setRoot(root);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
-}
     }
-     @FXML
+@FXML
     public void Retour() throws IOException, SQLException {
+    // On charge le fichier FXML qui contient la fenêtre Dash.fxml
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DashMedecin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Dash.fxml"));
         Parent root;
         root = loader.load();
+    // On change la fenêtre active
 
         retour.getScene().setRoot(root);
 
     }
-     @FXML
-    private void retour2(MouseEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("/gui/DashMedecin.fxml"));
-              Scene scene = new Scene(root);
-              Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-              stage.setScene(scene);
-              stage.show();
+@FXML
+    private void retour2(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Dash.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
+
+    
+   
 
 }

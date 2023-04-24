@@ -6,23 +6,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="597.0" prefWidth="816.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashMedecinController">
+<AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="904.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashMedecinController">
    <children>
-      <AnchorPane layoutY="89.0" prefHeight="538.0" prefWidth="167.0" styleClass="sidebar">
+      <AnchorPane layoutY="89.0" prefHeight="538.0" prefWidth="203.0" styleClass="sidebar">
          <children>
-            <Pane layoutX="15.0" layoutY="29.0" prefHeight="18.0" prefWidth="119.0" styleClass="labbtn">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="119.0" text="Medecin" textFill="#1153ec">
-                     <font>
-                        <Font name="AdobePiStd" size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
             <HBox layoutX="15.0" layoutY="142.0" prefHeight="26.0" prefWidth="119.0">
                <children>
                   <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
@@ -45,14 +35,15 @@
             </HBox>
             <HBox layoutX="15.0" layoutY="83.0" prefHeight="27.0" prefWidth="99.0">
                <children>
-                  <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/icons8_windows_homegroup_32px.png" />
-                     </image>
-                  </ImageView>
                   <Label text="Mes patients" textFill="WHITE" />
                </children>
             </HBox>
+            <Button layoutX="-3.0" layoutY="213.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="203.0" text="Mes patients" />
+            <ImageView fitHeight="26.0" fitWidth="21.0" layoutX="26.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_windows_homegroup_32px.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <ImageView fitHeight="81.0" fitWidth="131.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
@@ -60,15 +51,15 @@
             <Image url="@../image/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <VBox fx:id="contenu" layoutX="170.0" layoutY="222.0" prefHeight="363.0" prefWidth="638.0" />
-      <Label fx:id="id_consultation" contentDisplay="CENTER" layoutX="187.0" layoutY="196.0" prefHeight="18.0" prefWidth="90.0" text="id" textAlignment="CENTER" textFill="#6a12e5" textOverrun="CLIP" underline="true">
+      <VBox fx:id="contenu" layoutX="211.0" layoutY="227.0" prefHeight="363.0" prefWidth="682.0" />
+      <Label fx:id="id_consultation" contentDisplay="CENTER" layoutX="210.0" layoutY="196.0" prefHeight="18.0" prefWidth="68.0" text="id" textAlignment="CENTER" textFill="#6a12e5" textOverrun="CLIP" underline="true">
          <font>
             <Font name="Berlin Sans FB" size="12.0" />
          </font></Label>
-      <Label fx:id="date" layoutX="277.0" layoutY="196.0" prefHeight="18.0" prefWidth="74.0" text="date" textFill="#6a12e5" underline="true" />
-      <Label fx:id="heureD" layoutX="355.0" layoutY="196.0" prefHeight="18.0" prefWidth="90.0" text="heure debut" textFill="#6a12e5" underline="true" />
-      <Label fx:id="heureF" layoutX="470.0" layoutY="196.0" prefHeight="18.0" prefWidth="90.0" text="heure fin" textFill="#6a12e5" underline="true" />
-      <VBox layoutX="187.0" layoutY="103.0" prefHeight="79.0" prefWidth="374.0">
+      <Label fx:id="date" layoutX="305.0" layoutY="196.0" prefHeight="18.0" prefWidth="74.0" text="date" textFill="#6a12e5" underline="true" />
+      <Label fx:id="heureD" layoutX="404.0" layoutY="196.0" prefHeight="18.0" prefWidth="90.0" text="heure debut" textFill="#6a12e5" underline="true" />
+      <Label fx:id="heureF" layoutX="535.0" layoutY="196.0" prefHeight="18.0" prefWidth="90.0" text="heure fin" textFill="#6a12e5" underline="true" />
+      <VBox layoutX="217.0" layoutY="101.0" prefHeight="79.0" prefWidth="374.0">
          <children>
             <Label prefHeight="27.0" prefWidth="265.0" text="List des consultations" textFill="#2262c6">
                <font>
@@ -83,11 +74,11 @@
             </Button>
          </children>
       </VBox>
-      <Label fx:id="action" layoutX="584.0" layoutY="196.0" prefHeight="18.0" prefWidth="54.0" text="Action" textFill="#6a12e5" underline="true">
+      <Label fx:id="action" layoutX="668.0" layoutY="196.0" prefHeight="18.0" prefWidth="54.0" text="Action" textFill="#6a12e5" underline="true">
          <font>
             <Font name="Berlin Sans FB" size="12.0" />
          </font></Label>
-      <Label fx:id="ord" layoutX="742.0" layoutY="196.0" prefHeight="18.0" prefWidth="74.0" text="ordonnance" textFill="#6a12e5" underline="true">
+      <Label fx:id="ord" layoutX="800.0" layoutY="196.0" prefHeight="18.0" prefWidth="74.0" text="ordonnance" textFill="#6a12e5" underline="true">
          <font>
             <Font name="Berlin Sans FB" size="12.0" />
          </font>
