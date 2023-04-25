@@ -66,7 +66,6 @@ public void setData(Sujet sujet){
 
         btndescription.setHtmlText(sujet.getDescription());
     }   
-@FXML
     private void AjouterSujet(ActionEvent event) {
          String title = btntitle.getText();
          String message = btnmessage.getText();
@@ -105,7 +104,27 @@ public void setData(Sujet sujet){
     }
     }
 
+    @FXML
+    private void buttonOnAction(ActionEvent event) {
+         String title = btntitle.getText();
+         String message = btnmessage.getText();
+
+    String description = btndescription.getHtmlText();
+    
+    // Modifier le dossier correspondant dans la base de données
+    sujetService sujetCrud = new sujetService();
+    sujetCrud.modifier_sujet(sujet ,message,title, description);
+    
+    // Fermer la fenêtre de modification
+    Stage stage = (Stage) btntitle.getScene().getWindow();
+    stage.close();
+    
+    }
+
+    }
+
+
     
 
     
-}
+

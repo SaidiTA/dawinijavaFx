@@ -4,6 +4,7 @@
  */
 package gui;
 
+import entities.Specialites;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -151,5 +152,9 @@ public class ItemController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    void setData(Specialites specialite) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

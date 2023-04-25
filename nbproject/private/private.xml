@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ItemsujetController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/services/sujetService.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ItemReponseController.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ReponseController.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/AddSujet.fxml</file>
             <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/itemspecialiteController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/SujetController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ModifierSpecialitesController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ModifierSujetController.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/services/specialitesService.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/test/Dawini.java</file>
-            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/AddSpecialitesController.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/services/ReplaySujetService.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/AddReponseController.java</file>
+            <file>file:/C:/Users/jlidi/Downloads/pidev3A26EM-master/Dawinii/src/gui/ListeSpecialitesController.java</file>
         </group>
     </open-files>
 </project-private>

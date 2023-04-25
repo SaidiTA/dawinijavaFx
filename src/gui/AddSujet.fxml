@@ -9,6 +9,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ComboBox?>
+
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -19,16 +21,7 @@
    <children>
       <ImageView fitHeight="64.0" fitWidth="834.0" layoutX="75.0" layoutY="756.0" pickOnBounds="true" preserveRatio="true" />
       <Text layoutX="449.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
-      <MenuButton fx:id="Specialite" layoutX="79.0" layoutY="360.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="834.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Specialite">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
-         </items>
-         <styleClass>
-            <String fx:value="shadow" />
-            <String fx:value="primary-color" />
-         </styleClass>
-      </MenuButton>
+      <ComboBox fx:id="tfCat" layoutX="79.0" layoutY="250.0" prefHeight="63.0" prefWidth="834.0" style="-fx-background-radius: 10;" />
       <Button fx:id="AjouterSujet" layoutX="721.0" layoutY="756.0" mnemonicParsing="false" onAction="#AjouterSujet" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Ajouter Sujet">
          <styleClass>
             <String fx:value="shadow" />

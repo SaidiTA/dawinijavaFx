@@ -30,6 +30,10 @@ public class ReplaySujet {
         this.date = date;
     }
 
+    public ReplaySujet(String message) {
+        this.message = message;
+    }
+
     public int getId() {
         return id;
     }

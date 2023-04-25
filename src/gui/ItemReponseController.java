@@ -5,8 +5,7 @@
  */
 package gui;
 
-import entities.Specialites;
-import entities.Sujet;
+import entities.ReplaySujet;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -23,46 +22,37 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import services.specialitesService;
-import services.sujetService;
+import services.ReplaySujetService;
 
 /**
  * FXML Controller class
  *
  * @author jlidi
  */
-public class ItemsujetController implements Initializable {
+public class ItemReponseController implements Initializable {
 
-    @FXML
-    private Label btnid;
-     private Sujet sujet;
-
-    @FXML
-    private Label btntitle;
-    @FXML
-    private Label btnmessage;
-    @FXML
-    private Label btndescription;
     @FXML
     private Label btndate;
+    @FXML
+    private Label btnmessage;
     @FXML
     private Button btnModify;
     @FXML
     private ImageView btnmodifier;
+                 private ReplaySujet ReplaySujet;
+
     @FXML
     private Button btnDelete;
-    
-public void setData(Sujet sujet){
-        int id=sujet.getId();
+    @FXML
+    private Label btnid;
+
+        
+public void setData(ReplaySujet replaysujet){
+        int id=replaysujet.getId();
         btnid.setText(Integer.toString(id));
 
-                      btntitle.setText(sujet.getTitle());
-                btnmessage.setText(sujet.getMessage());
+        btnmessage.setText(replaysujet.getMessage()); 
 
-        btndescription.setText(sujet.getDescription());
-
-        
-        
     }
     /**
      * Initializes the controller class.
@@ -74,26 +64,26 @@ public void setData(Sujet sujet){
 
     @FXML
     private void handleButtonClick(ActionEvent event) {
-        try {
+   try {
         // Récupération des données du dossier sélectionné
         int id = Integer.parseInt(btnid.getText());
-        sujetService dc = new sujetService();
-        List<Sujet> spec = dc.listerSujet();
-        Sujet sujet = null;
-        for (Sujet d : spec) {
+        ReplaySujetService dc = new ReplaySujetService();
+        List<ReplaySujet> spec = dc.listerReponse();
+        ReplaySujet reponse = null;
+        for (ReplaySujet d : spec) {
             if (d.getId() == id) {
-                sujet = d;
+                reponse = d;
                 break;
             }
         }
         
         // Chargement de la fenêtre de modification
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ModifierSujet.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ModfierReponse.fxml"));
         Parent parent = fxmlLoader.load();
-        ModifierSujetController controller = fxmlLoader.getController();
+        ModfierReponseController controller = fxmlLoader.getController();
 
         // Transmission des données du dossier à la fenêtre de modification
-        controller.setData(sujet);
+        controller.setData(reponse);
 
         // Affichage de la fenêtre de modification
         Stage stage = new Stage();
@@ -105,14 +95,12 @@ public void setData(Sujet sujet){
     } 
 }
 
-    
-
     @FXML
     private void sup_spec(ActionEvent event) {
-         int id = Integer.parseInt(btnid.getText());
-           sujetService dc = new sujetService();
-            List<Sujet> sujet = dc.listerSujet();
-                 for (Sujet d : sujet) {
+   int id = Integer.parseInt(btnid.getText());
+          ReplaySujetService dc = new ReplaySujetService();
+            List<ReplaySujet> reponse = dc.listerReponse();
+                 for (ReplaySujet d : reponse) {
                      if (d.getId() == id) {
                      dc.supprimer(d);
                      
@@ -122,6 +110,5 @@ public void setData(Sujet sujet){
     }
     
     }
-    }
     
-
+}

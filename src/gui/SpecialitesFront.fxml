@@ -13,87 +13,86 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.SpecialitesFrontController">
-   <children>
-      <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="757.0" prefWidth="1152.0">
-         <children>
-            <Pane prefHeight="136.0" prefWidth="1152.0" style="-fx-background-color: azure;">
-               <children>
-                  <ImageView fitHeight="123.0" fitWidth="200.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../logo.jpg" />
-                     </image>
-                  </ImageView>
-                  <DialogPane layoutX="251.0" layoutY="43.0" prefHeight="58.0" prefWidth="762.0" />
-                  <Hyperlink layoutX="312.0" layoutY="58.0" text="Accuiel" />
-                  <Hyperlink layoutX="416.0" layoutY="58.0" text="Rendez-vous" />
-                  <Hyperlink layoutX="555.0" layoutY="55.0" text="Article" />
-                  <Hyperlink layoutX="660.0" layoutY="55.0" text="Forum" />
-                  <Hyperlink layoutX="777.0" layoutY="58.0" text="A propos" />
-               </children>
-            </Pane>
-            <Pane layoutX="14.0" layoutY="228.0" prefHeight="502.0" prefWidth="1133.0" style="-fx-background-color: azure;">
-               <children>
-                  <Pane layoutX="115.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../cardiologie.jpg" />
-                           </image>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SpecialitesFrontController">
+    <children>
+        <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="757.0" prefWidth="1152.0">
+            <children>
+                <Pane prefHeight="136.0" prefWidth="1152.0" style="-fx-background-color: azure;">
+                    <children>
+                        <ImageView fitHeight="123.0" fitWidth="200.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/logo-dawini.png" />
+                            </image>
                         </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="483.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../DiabetesMedicationUpdatePart1Oral490x368.jpg" />
-                           </image>
+                        <DialogPane layoutX="251.0" layoutY="43.0" prefHeight="58.0" prefWidth="762.0" />
+                        <Hyperlink layoutX="312.0" layoutY="58.0" text="Accuiel" />
+                        <Hyperlink layoutX="416.0" layoutY="58.0" text="Rendez-vous" />
+                        <Hyperlink layoutX="555.0" layoutY="55.0" text="Article" />
+                        <Hyperlink layoutX="660.0" layoutY="55.0" text="Forum" />
+                        <Hyperlink layoutX="777.0" layoutY="58.0" text="A propos" />
+                    </children>
+                </Pane>
+                <Pane layoutX="14.0" layoutY="228.0" prefHeight="502.0" prefWidth="1133.0" style="-fx-background-color: azure;">
+                    <children>
+                        <Pane layoutX="115.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;">
+                            <children>
+                                <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/cardiologie.jpg" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="483.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;">
+                            <children>
+                                <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/DiabetesMedicationUpdatePart1Oral490x368.jpg" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="818.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;">
+                            <children>
+                                <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/DiabetesMedicationUpdatePart1Oral490x368.jpg" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Button layoutX="465.0" layoutY="430.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="214.0" text="Consulter" />
+                        <Pagination layoutX="362.0" layoutY="340.0" prefHeight="72.0" prefWidth="442.0" />
+                        <Label fx:id="nomspecialites" layoutX="180.0" layoutY="319.0" prefHeight="21.0" prefWidth="71.0" />
+                        <Label layoutX="566.0" layoutY="319.0" text="Label" />
+                        <Label layoutX="902.0" layoutY="306.0" text="Label" />
+                    </children>
+                </Pane>
+                <Button fx:id="btnAdd" layoutX="874.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="56.0" prefWidth="240.0" style="-fx-background-color: skyblue;" text="Ajouter Sujet">
+                    <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="transparent" />
+                        <String fx:value="whit_background" />
+                        <String fx:value="shadow" />
+                        <String fx:value="rect-round" />
+                    </styleClass>
+                    <graphic>
+                        <ImageView fx:id="btnAddplus1" fitHeight="46.0" fitWidth="66.0" onDragDetected="#handleButtonClick" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/images__1_-removebg-preview.png" />
+                            </image>
                         </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="818.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../DiabetesMedicationUpdatePart1Oral490x368.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Button layoutX="465.0" layoutY="430.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="214.0" text="Consulter" />
-                  <Pagination layoutX="362.0" layoutY="340.0" prefHeight="72.0" prefWidth="442.0" />
-                  <Label fx:id="nomspecialites" layoutX="180.0" layoutY="319.0" prefHeight="21.0" prefWidth="71.0" />
-                  <Label layoutX="566.0" layoutY="319.0" text="Label" />
-                  <Label layoutX="902.0" layoutY="306.0" text="Label" />
-               </children>
-            </Pane>
-            <Button fx:id="btnAdd" layoutX="874.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="56.0" prefWidth="240.0" text="Ajouter Specialité">
-               <styleClass>
-                  <String fx:value="button" />
-                  <String fx:value="transparent" />
-                  <String fx:value="whit_background" />
-                  <String fx:value="shadow" />
-                  <String fx:value="rect-round" />
-               </styleClass>
-               <graphic>
-                  <ImageView fx:id="btnAddplus1" fitHeight="46.0" fitWidth="66.0" onDragDetected="#handleButtonClick" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/images__1_-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="FreeSerif" size="19.0" />
-               </font>
-               <stylesheets>
-                  <URL value="@add.css" />
-                  <URL value="@style.css" />
-               </stylesheets>
-            </Button>
-            <Label fx:id="nomspecialites1" layoutX="190.0" layoutY="329.0" prefHeight="21.0" prefWidth="71.0" />
-         </children>
-      </Pane>
-   </children>
+                    </graphic>
+                    <font>
+                        <Font name="FreeSerif" size="19.0" />
+                    </font>
+                    <stylesheets>
+                        <URL value="@add.css" />
+                        <URL value="@style.css" />
+                    </stylesheets>
+                </Button>
+                <Label fx:id="nomspecialites1" layoutX="190.0" layoutY="329.0" prefHeight="21.0" prefWidth="71.0" />
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import util.MyDB;
@@ -20,7 +21,8 @@ import util.MyDB;
  * @author jlidi
  */
 public class specialitesService {
-    
+
+   
     Connection cnx;
 
     public void ajouter(Specialites d) {
@@ -93,6 +95,20 @@ public void supprimer(Specialites s) {
             System.err.println(ex.getMessage());
         }
 
+    }
+public Specialites recupererBynom(String nom) throws SQLException {
+        String req = "select * from Specialites where nom = ?";
+        PreparedStatement st = cnx.prepareStatement(req);
+
+        st.setString(1, nom);
+        ResultSet rs = st.executeQuery();
+        Specialites p = new Specialites();
+        rs.next();
+        p.setId(rs.getInt("id"));
+        p.setNom(rs.getString("nom"));
+        p.setDescription(rs.getString("description"));
+
+        return p;
     }
 }
 

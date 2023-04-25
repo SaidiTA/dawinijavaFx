@@ -13,19 +13,29 @@ import java.util.List;
  * @author jlidi
  */
 public class Sujet  {
-    private int id ;
+    private int id ,specialites_id;
     private Date date;
+    
     private String title,message,description;
-    private Specialites specialite;
     private List<ReplaySujet> replaySujets;
 
-    public Specialites getSpecialite() {
-        return specialite;
+    public Sujet(int id, int specialites_id, String title, String message, String description) {
+        this.id = id;
+        this.specialites_id = specialites_id;
+        this.title = title;
+        this.message = message;
+        this.description = description;
     }
 
-    public void setSpecialite(Specialites specialite) {
-        this.specialite = specialite;
+    public Sujet(String message, String title, String description, int specialites_id) {
+        this.specialites_id = specialites_id;
+        this.title = title;
+        this.message = message;
+        this.description = description;
     }
+
+   
+   
 
     public List<ReplaySujet> getReplaySujets() {
         return replaySujets;
@@ -44,7 +54,6 @@ public class Sujet  {
         this.title = title;
         this.message = message;
         this.description = description;
-        this.specialite = specialite;
         this.replaySujets = replaySujets;
     }
 
@@ -107,6 +116,14 @@ public class Sujet  {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getSpecialites_id() {
+        return specialites_id;
+    }
+
+    public void setSpecialites_id(int specialites_id) {
+        this.specialites_id = specialites_id;
     }
 
     @Override

@@ -1,11 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.SujetController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SujetController">
    <children>
-      <VBox fx:id="pnitems" layoutX="10.0" layoutY="10.0" prefHeight="764.0" prefWidth="1207.0" style="-fx-background-color: #F1F7FD;" />
+      <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="927.0" prefWidth="1247.0">
+         <children>
+            <Pane layoutX="-8.0" layoutY="-118.0" prefHeight="200.0" prefWidth="200.0" />
+            <Pane layoutX="5.0" prefHeight="136.0" prefWidth="1237.0" style="-fx-background-color: azure;">
+               <children>
+                  <ImageView fitHeight="123.0" fitWidth="200.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo-dawini.png" />
+                     </image>
+                  </ImageView>
+                  <DialogPane layoutX="251.0" layoutY="43.0" prefHeight="58.0" prefWidth="762.0" style="-fx-background-color: white;" />
+                  <Hyperlink layoutX="312.0" layoutY="58.0" text="Accuiel" />
+                  <Hyperlink layoutX="416.0" layoutY="58.0" text="Rendez-vous" />
+                  <Hyperlink layoutX="555.0" layoutY="55.0" text="Article" />
+                  <Hyperlink layoutX="660.0" layoutY="55.0" text="Forum" />
+                  <Hyperlink layoutX="777.0" layoutY="58.0" text="A propos" />
+               </children>
+            </Pane>
+            <Pane layoutX="1.0" layoutY="159.0" prefHeight="208.0" prefWidth="1247.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="75.0" fitWidth="157.0" layoutX="31.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/DiabetesMedicationUpdatePart1Oral490x368.jpg" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="190.0" layoutY="28.0" prefHeight="155.0" prefWidth="1006.0" style="-fx-background-color: azure;">
+                     <children>
+                        <Label layoutX="52.0" layoutY="32.0" text="Diabetes">
+                           <effect>
+                              <Bloom threshold="0.91" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="59.0" layoutY="90.0" text="Description sur le diabetes" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label layoutX="60.0" layoutY="461.0" text="Tous les Questions :" />
+            <HBox alignment="CENTER" layoutX="38.0" layoutY="383.0" maxHeight="-Infinity" prefHeight="53.0" prefWidth="330.0" stylesheets="@add.css">
+               <children>
+                  <TextField fx:id="search" onAction="#buttonSearch" prefHeight="36.0" prefWidth="247.0" promptText="Search" styleClass="transparent" stylesheets="@add.css">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <ImageView fx:id="btnsearch" fitHeight="30.0" fitWidth="33.0" onDragDetected="#buttonSearch" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Search_52px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <styleClass>
+                  <String fx:value="primary-color" />
+                  <String fx:value="rect-round" />
+                  <String fx:value="shadow" />
+                  <String fx:value="whit_background" />
+               </styleClass>
+            </HBox>
+             <ScrollPane layoutY="488.0" prefHeight="424.0" prefWidth="1247.0">
+                     <content>
+                        <VBox fx:id="pnitems" prefHeight="462.0" prefWidth="1209.0" style="-fx-background-color: #F1F7FD;" />
+                     </content>
+                  </ScrollPane>
+         </children>
+      </Pane>
+      <Pane layoutX="11.0" layoutY="169.0" prefHeight="208.0" prefWidth="1247.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="157.0" layoutX="31.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/DiabetesMedicationUpdatePart1Oral490x368.jpg" />
+               </image>
+            </ImageView>
+            <Pane layoutX="190.0" layoutY="28.0" prefHeight="155.0" prefWidth="1006.0" style="-fx-background-color: azure;">
+               <children>
+                  <Label layoutX="52.0" layoutY="32.0" text="Diabetes">
+                     <effect>
+                        <Bloom threshold="0.91" />
+                     </effect>
+                  </Label>
+                  <Label layoutX="59.0" layoutY="90.0" text="Description sur le diabetes" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -29,7 +29,7 @@ public class Dawini extends Application {
 
     @Override
    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/SpecialitesFront.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/sujet.fxml"));
         
         Scene scene = new Scene(root);
         

@@ -8,6 +8,7 @@ package gui;
 import entities.Specialites;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -47,7 +48,11 @@ private double x, y;
     private Button btnAdd;
     @FXML
     private ImageView btnAddplus1;
-
+  @FXML
+    private Button btnRef1;
+    @FXML
+    private ImageView btnRef;
+   
     /**
      * Initializes the controller class.
      */
@@ -68,19 +73,6 @@ private double x, y;
             }
         }
     }
-
-    
-
-
-  
- 
-
-    
-
-  
-       
-
-    
               
     @FXML
     private void handleButtonClick(ActionEvent event) {
@@ -138,6 +130,32 @@ private double x, y;
         List<Specialites> specialites = ps.listerSpecialites();
         return specialites;
     }
+
+   
+
+    @FXML
+    private void refreshTable() {
+    pnitems.getChildren().clear();
+     specialitesService Service = new specialitesService();
+    List<Specialites> specialites = null;
+
+    specialites = Service.listerSpecialites();
+
+    for (Specialites specialite : specialites) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/itemspecialite.fxml"));
+            Node node = loader.load();
+            itemspecialiteController itemController = loader.getController();
+            itemController.setData(specialite);
+            pnitems.getChildren().add(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+}
+
+    
     
 
     
@@ -147,4 +165,4 @@ private double x, y;
    
     
     
-}
+
