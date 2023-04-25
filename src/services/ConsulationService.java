@@ -7,11 +7,13 @@ package services;
 
 import entities.Consulation;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import util.MyDB;
@@ -119,5 +121,50 @@ public void ajouter(Consulation t) throws SQLException {
         }
         return consultations;
     }
+     public List<Consulation> recupererByDate(Date date) throws SQLException {
+    List<Consulation> consultations = new ArrayList<>();
+    String req = "select * from consulation where date = ?";
+    PreparedStatement st = cnx.prepareStatement(req);
+
+    st.setDate(1, date);
+    ResultSet rs = st.executeQuery();
+
+    while (rs.next()) {
+        Consulation c = new Consulation();
+        c.setId(rs.getInt("id"));
+        c.setDate(rs.getDate("date"));
+        c.setHeuredebut(rs.getTimestamp("heuredebut"));
+        c.setHeurefin(rs.getTimestamp("heurefin"));
+        consultations.add(c);
+    }
+    return consultations;
+}
+
+     
+     
+     public List<Consulation> getCalendarActivitiesMonth(ZonedDateTime mth) throws SQLException {
+        String req = "select * from Consulation where Month(Heuredebut) = ? and year(Heuredebut)=?";
+         
+        PreparedStatement st = cnx.prepareStatement(req);
+        st.setObject(1, mth.getMonthValue());
+        st.setObject(2, mth.getYear());
+        ResultSet rs = st.executeQuery();
+         List<Consulation> Consulations = new ArrayList<>();
+          while (rs.next()) {
+            Consulation p = new Consulation();
+            p.setId(rs.getInt("id"));
+            p.setMedecin_id(rs.getInt("medecin_id"));
+             p.setPatients_id(rs.getInt("patients_id"));
+             p.setEst_termine(rs.getString("est_termine"));
+            p.setDate(rs.getDate("Date"));
+            p.setHeuredebut(rs.getTimestamp("heuredebut"));
+            p.setHeurefin(rs.getTimestamp("heurefin"));
+            
+
+            Consulations.add(p);
+        }
+        return Consulations;
+    }
+     
 
 }

@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -56,6 +57,8 @@ public class AfficheOrdonnanceController implements Initializable {
         id1.setText(String.valueOf(ord.getId()));
         desc1.setText(ord.getDescription());
         date1.setText(ord.getDate().toString());
+        System.out.println(ord.getImage());
+        aff_img.setImage(new Image("file:src/uploads/"+ord.getImage()+".png"));
     }
 
     @FXML

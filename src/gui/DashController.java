@@ -8,10 +8,14 @@ package gui;
 import entities.Consulation;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +23,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import services.ConsulationService;
@@ -48,53 +54,63 @@ private List<Consulation> Consultations;
     private Label action;
     @FXML
     private Label ord;
+    @FXML
+    private TextField chercher;
+    @FXML
+    private Button calendar;
 
     /**
      * Initializes the controller class.
      */
-    @Override
+    @Override 
     public void initialize(URL url, ResourceBundle rb) {
-     try {
-            // Récupérer la liste des consultations pour l'utilisateur connecté
+    try {
+        // Récupérer la liste des consultations pour l'utilisateur connecté
+        Consultations = new ArrayList<>(consService.recupererByIdPatient(2));
 
-            Consultations = new ArrayList<>(consService.recupererByIdPatient(2));
-            // Pour chaque consultation, on crée une carte (CardConsultationController) 
-
-            for (Consulation cons : Consultations) {
+        // Initialiser la pagination
+        Pagination pagination = new Pagination();
+        pagination.setPageCount((int) Math.ceil(Consultations.size() / 5.0)); // 5 consultations par page
+        pagination.setPageFactory((Integer pageIndex) -> {
+            VBox pageContent = new VBox();
+            int pageStart = pageIndex * 5;
+            int pageEnd = Math.min(pageStart + 5, Consultations.size());
+            for (int i = pageStart; i < pageEnd; i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cardConsultation.fxml"));
-
                 try {
-                    // On charge le fxml de la carte
-
                     HBox hBox = fxmlLoader.load();
                     CardConsultationController listconsultation = fxmlLoader.getController();
-                                        // On vérifie s'il y a une ordonnance pour cette consultation
 
+                    // Vérifier s'il y a une ordonnance pour cette consultation
                     ordonnanceService ordService = new ordonnanceService();
-                    if (ordService.recupererbycons(cons.getId()) == null) {
-                                                // S'il n'y a pas d'ordonnance, on permet à l'utilisateur de modifier/supprimer/l'afficher
-
+                    if (ordService.recupererbycons(Consultations.get(i).getId()) == null) {
+                        // S'il n'y a pas d'ordonnance, on permet à l'utilisateur de modifier/supprimer/l'afficher
                         listconsultation.setModif_ord();
                         listconsultation.setSupp_ord();
                         listconsultation.setaff_ord();
                     }
-                    // On initialise les données de la carte avec les données de la consultation
 
-                    listconsultation.setData(cons);
-                    // On ajoute la carte à la VBox
+                    // Initialiser les données de la carte avec les données de la consultation
+                    listconsultation.setData(Consultations.get(i));
 
-                    contenu.getChildren().add(hBox);
+                    // Ajouter la carte à la page actuelle
+                    pageContent.getChildren().add(hBox);
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
+                } catch (SQLException ex) {
+                    Logger.getLogger(DashController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            return pageContent;
+        });
 
-        }
+        // Ajouter la pagination à la VBox principale
+        contenu.getChildren().add(pagination);
+
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
-
+}
     @FXML
     public void AjouterConsultation(ActionEvent event) throws SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/AjoutConsultation.fxml"));
@@ -111,5 +127,13 @@ private List<Consulation> Consultations;
             System.out.println(ex.getMessage());
         }
     }
-    
+
+    @FXML
+    private void gotocalendar(ActionEvent event) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Calendar.fxml"));
+        
+        Parent root = loader.load();
+        calendar.getScene().setRoot(root);
+    }
+   
 }
