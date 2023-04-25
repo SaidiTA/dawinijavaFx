@@ -12,10 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="652.0" prefWidth="972.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddMedecinController">
-   <Pane prefHeight="947.0" prefWidth="973.0">
+   <Pane prefHeight="972.0" prefWidth="973.0">
       <children>
          <MenuButton fx:id="Genre" layoutX="385.0" layoutY="360.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="249.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Genre">
             <items>
@@ -28,8 +27,6 @@
             </styleClass>
          </MenuButton>
          <TextArea fx:id="Adresse_Cabinet" layoutX="63.0" layoutY="679.0" prefHeight="63.0" prefWidth="834.0" promptText=" Adresse Cabinet" styleClass="shadow" stylesheets="@add.css" />
-         <ImageView fitHeight="64.0" fitWidth="834.0" layoutX="56.0" layoutY="807.0" pickOnBounds="true" preserveRatio="true" />
-         <Text fx:id="upimage" layoutX="420.0" layoutY="859.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
          <MenuButton fx:id="Cnam" layoutX="679.0" layoutY="359.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="CNAM">
             <items>
                <MenuItem mnemonicParsing="false" text="Action 1" />
@@ -72,7 +69,7 @@
                <String fx:value="primary-color" />
             </styleClass>
          </MenuButton>
-         <Button fx:id="btnAdd" layoutX="688.0" layoutY="862.0" mnemonicParsing="false" onAction="#addMedecin" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Ajouter Medecin">
+         <Button fx:id="btnAdd" layoutX="686.0" layoutY="900.0" mnemonicParsing="false" onAction="#addMedecin" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Ajouter Medecin">
             <styleClass>
                <String fx:value="shadow" />
                <String fx:value="transparent" />
@@ -118,6 +115,7 @@
                <String fx:value="whit_background" />
             </styleClass>
          </PasswordField>
+         <Button fx:id="btnUploadImage" layoutX="356.0" layoutY="847.0" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="48.0" prefWidth="270.0" style="-fx-background-color: silver;" styleClass="shadow" stylesheets="@add.css" text="Upload Image" />
       </children>
    </Pane>
 </AnchorPane>

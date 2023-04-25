@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="652.0" prefWidth="972.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierMedecinController">
-   <Pane prefHeight="928.0" prefWidth="972.0">
+   <Pane prefHeight="1000.0" prefWidth="972.0">
       <children>
          <MenuButton fx:id="lblGenre" layoutX="385.0" layoutY="360.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="249.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Genre">
             <items>
@@ -26,8 +26,6 @@
             </styleClass>
          </MenuButton>
          <TextArea fx:id="cabinet" layoutX="66.0" layoutY="587.0" prefHeight="63.0" prefWidth="834.0" promptText=" Adresse Cabinet" styleClass="shadow" stylesheets="@add.css" />
-         <ImageView fitHeight="64.0" fitWidth="834.0" layoutX="56.0" layoutY="796.0" pickOnBounds="true" preserveRatio="true" />
-         <Text fx:id="upimage" layoutX="426.0" layoutY="840.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
          <MenuButton fx:id="lblCnam" layoutX="679.0" layoutY="359.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="CNAM">
             <items>
              
@@ -67,7 +65,7 @@
                <String fx:value="primary-color" />
             </styleClass>
          </MenuButton>
-         <Button fx:id="btnModifier" layoutX="679.0" layoutY="860.0" mnemonicParsing="false" onAction="#modifyMed" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Modifier Medecin">
+         <Button fx:id="btnModifier" layoutX="679.0" layoutY="907.0" mnemonicParsing="false" onAction="#modifyMed" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Modifier Medecin">
             <styleClass>
                <String fx:value="shadow" />
                <String fx:value="transparent" />
@@ -107,6 +105,7 @@
             
            </items>
          </MenuButton>
+         <Button fx:id="btnUploadImage" layoutX="363.0" layoutY="833.0" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="48.0" prefWidth="270.0" style="-fx-background-color: silver;" styleClass="shadow" stylesheets="@add.css" text="Upload Image" />
       </children>
    </Pane>
 </AnchorPane>

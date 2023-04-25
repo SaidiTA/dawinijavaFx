@@ -192,4 +192,15 @@ public class Assistant extends User  {
     public Assistant(Medecin medecin) {
         this.medecin = medecin;
     }
+
+    @Override
+    public void setEnabled(int enabled) {
+        super.setEnabled(enabled); 
+    }
+
+    @Override
+    public int getEnabled() {
+        return super.getEnabled(); 
+    }
+    
 }

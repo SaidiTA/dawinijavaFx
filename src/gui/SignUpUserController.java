@@ -5,8 +5,13 @@
 package gui;
 
 import entities.Medecin;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,6 +33,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import services.MedecinService;
@@ -61,8 +67,7 @@ public class SignUpUserController implements Initializable {
     private TextArea lblcabinet;
     @FXML
     private Button btn;
-    @FXML
-    private Text lblimge;
+   
     @FXML
     private MenuButton lblcnam;
     @FXML
@@ -77,6 +82,8 @@ public class SignUpUserController implements Initializable {
     private TextArea lbladress;
     @FXML
     private TextArea lbldiplome;
+    @FXML
+    private Button btnUploadImage;
  
     
     @Override
@@ -171,7 +178,7 @@ private void createAccount(ActionEvent event) throws SQLException, IOException {
         String gouvernorat = lblgouv.getText();
          String adresse = lbladress.getText();
     String confirm_password = lblconfirm.getText();
-  String image = lblimge.getText();
+  String image = btnUploadImage.getText();
     String titre = lbltitre.getText();
     String adresse_cabinet = lblcabinet.getText();
     String fixe = lblFixe.getText();
@@ -179,7 +186,7 @@ private void createAccount(ActionEvent event) throws SQLException, IOException {
      float tarif = Float.parseFloat(lbltarif.getText());
     boolean cnam = Boolean.parseBoolean(lblcnam.getText());
     //String specialite = Specialite.getText();
-   
+
      if (!password.equals(confirm_password)) {
         // Afficher un message d'erreur si les mots de passe ne correspondent pas
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -235,7 +242,7 @@ private void createAccount(ActionEvent event) throws SQLException, IOException {
        lblcin.setText(String.valueOf(medecin.getCin()));
      
         lbldiplome.setText(medecin.getDiplome_formation());
-       lblimge.setText(medecin.getImage());
+       btnUploadImage.setText(medecin.getImage());
        
       
         Parent root = FXMLLoader.load(getClass().getResource("/gui/SignInUser.fxml"));
@@ -245,6 +252,32 @@ private void createAccount(ActionEvent event) throws SQLException, IOException {
     stage.show();
    
     
+}
+
+    @FXML
+    private void handleUploadImage(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choose Image File");
+
+    // Set the extension filter
+    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png");
+    fileChooser.getExtensionFilters().add(extFilter);
+
+    // Show the file chooser dialog
+    File file = fileChooser.showOpenDialog(btnUploadImage.getScene().getWindow());
+
+    if (file != null) {
+        // Display the selected file name
+        btnUploadImage.setText(file.getName());
+
+        // Save the selected file to the "images" directory in the project folder
+        Path imagePath = Paths.get("images", file.getName());
+        try {
+            Files.copy(file.toPath(), imagePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
 
     

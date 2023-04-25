@@ -90,10 +90,10 @@ public class SignInUserController implements Initializable {
                 // Passwords match
                 String roles = rs.getString("roles");
                 if (roles.equals("[\"ROLE_ADMIN\"]")) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Home.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListMedecin.fxml"));
                     Parent root = loader.load();
                     // get the controller for the new scene and set any necessary parameters
-                    HomeController controller = loader.getController();
+                    ListMedecinController controller = loader.getController();
                     // controller.setLoggedInUser(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
                     // show the new scene
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -110,10 +110,10 @@ public class SignInUserController implements Initializable {
                     stage.setScene(new Scene(root));
                     stage.show();
                 } else if (roles.equals("[\"ROLE_PATIENT\"]")) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListPatients.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Home.fxml"));
                     Parent root = loader.load();
                     // get the controller for the new scene and set any necessary parameters
-                    ListPatientsController controller = loader.getController();
+                    HomeController controller = loader.getController();
                     // controller.setLoggedInUser(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
                     // show the new scene
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -147,7 +147,7 @@ public class SignInUserController implements Initializable {
     @FXML
     private void ForgotPassword(ActionEvent event) {
           try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Mailing.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SendSms.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
        

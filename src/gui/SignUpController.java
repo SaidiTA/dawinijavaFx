@@ -6,8 +6,13 @@ package gui;
 
 import entities.Medecin;
 import entities.Patient;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,6 +30,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.MedecinService;
 import services.PatientService;
@@ -58,8 +64,9 @@ public class SignUpController implements Initializable {
     private TextArea ADRESSE;
     @FXML
     private Button btn;
+  
     @FXML
-    private Text IMAGE;
+    private Button btnUploadImage;
 
     /**
      * Initializes the controller class.
@@ -130,7 +137,7 @@ public class SignUpController implements Initializable {
         String gouvernorat = GOUV.getText();
          String adresse = ADRESSE.getText();
     String confirm_password = CONFIRME.getText();
-  String image = IMAGE.getText();
+  String image = btnUploadImage.getText();
    
   
     
@@ -189,7 +196,7 @@ public class SignUpController implements Initializable {
        CIN.setText(String.valueOf(patient.getCin()));
      
         
-       IMAGE.setText(patient.getImage());
+       btnUploadImage.setText(patient.getImage());
        
       
     Parent root = FXMLLoader.load(getClass().getResource("/gui/SignInUser.fxml"));
@@ -201,6 +208,31 @@ public class SignUpController implements Initializable {
     
 }
 
+     @FXML
+    private void handleUploadImage(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choose Image File");
+
+    // Set the extension filter
+    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png");
+    fileChooser.getExtensionFilters().add(extFilter);
+
+    // Show the file chooser dialog
+    File file = fileChooser.showOpenDialog(btnUploadImage.getScene().getWindow());
+
+    if (file != null) {
+        // Display the selected file name
+        btnUploadImage.setText(file.getName());
+
+        // Save the selected file to the "images" directory in the project folder
+        Path imagePath = Paths.get("images", file.getName());
+        try {
+            Files.copy(file.toPath(), imagePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
     
     
 }

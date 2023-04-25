@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.MenuButton?>
@@ -33,34 +34,49 @@
          <center>
             <Pane prefHeight="787.0" prefWidth="794.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="NOM" layoutX="63.0" layoutY="123.0" prefHeight="50.0" prefWidth="308.0" promptText="Nom" />
-                  <TextField fx:id="PRENOM" layoutX="413.0" layoutY="123.0" prefHeight="50.0" prefWidth="303.0" promptText="Prenom" />
-                  <TextField fx:id="EMAIL" layoutX="63.0" layoutY="220.0" prefHeight="56.0" prefWidth="311.0" promptText="Email" />
-                  <TextField fx:id="TELEPHONE" layoutX="414.0" layoutY="219.0" prefHeight="57.0" prefWidth="305.0" promptText="Telephone" />
-                  <TextField fx:id="CIN" layoutX="63.0" layoutY="411.0" prefHeight="50.0" prefWidth="321.0" promptText="CIN" />
-                  <PasswordField fx:id="PASSWORD" layoutX="63.0" layoutY="317.0" prefHeight="57.0" prefWidth="317.0" promptText="Mot De Passe" />
-                  <PasswordField fx:id="CONFIRME" layoutX="411.0" layoutY="317.0" prefHeight="57.0" prefWidth="309.0" promptText="Confirmer Mot De Passe" />
-                  <MenuButton fx:id="GOUV" layoutX="540.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="185.0" text="Gouvernorat">
+                  <TextField fx:id="NOM" layoutX="63.0" layoutY="123.0" prefHeight="50.0" prefWidth="308.0" promptText="Nom">
+                     <styleClass>
+                        <String fx:value="text-input" />
+                        <String fx:value="shadow" />
+                     </styleClass></TextField>
+                  <TextField fx:id="PRENOM" layoutX="413.0" layoutY="123.0" prefHeight="50.0" prefWidth="303.0" promptText="Prenom" stylesheets="@style.css" />
+                  <TextField fx:id="EMAIL" layoutX="63.0" layoutY="220.0" prefHeight="56.0" prefWidth="311.0" promptText="Email" stylesheets="@style.css" />
+                  <TextField fx:id="TELEPHONE" layoutX="414.0" layoutY="219.0" prefHeight="57.0" prefWidth="305.0" promptText="Telephone" stylesheets="@style.css" />
+                  <TextField fx:id="CIN" layoutX="63.0" layoutY="411.0" prefHeight="50.0" prefWidth="321.0" promptText="CIN" stylesheets="@style.css" />
+                  <PasswordField fx:id="PASSWORD" layoutX="63.0" layoutY="317.0" prefHeight="57.0" prefWidth="317.0" promptText="Mot De Passe" stylesheets="@style.css" />
+                  <PasswordField fx:id="CONFIRME" layoutX="411.0" layoutY="317.0" prefHeight="57.0" prefWidth="309.0" promptText="Confirmer Mot De Passe" stylesheets="@style.css" />
+                  <MenuButton fx:id="GOUV" layoutX="540.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="185.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Gouvernorat">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
+                     <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                   </MenuButton>
-                  <MenuButton fx:id="GENRE" layoutX="411.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Genre">
+                  <MenuButton fx:id="GENRE" layoutX="411.0" layoutY="413.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Genre">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Action 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
+                     <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                   </MenuButton>
-                  <TextArea fx:id="ADRESSE" layoutX="57.0" layoutY="516.0" prefHeight="95.0" prefWidth="668.0" promptText="Adresse" />
+                  <TextArea fx:id="ADRESSE" layoutX="63.0" layoutY="522.0" prefHeight="95.0" prefWidth="668.0" promptText="Adresse" stylesheets="@style.css" />
                   <Hyperlink layoutX="628.0" layoutY="42.0" text="Êtes-vous Médecin ?" />
-                  <Button fx:id="btn" layoutX="604.0" layoutY="731.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="48.0" prefWidth="165.0" text="Enregistrer" />
-                  <Text fill="#19abe4" layoutX="63.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSCRIPTION DE PATIENT" wrappingWidth="272.22135162353516">
+                  <Button fx:id="btn" layoutX="543.0" layoutY="731.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="48.0" prefWidth="189.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Se Connecter">
+                     <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="shadow" />
+                     </styleClass></Button>
+                  <Text fill="#3057a4" layoutX="63.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSCRIPTION DE PATIENT" wrappingWidth="272.22135162353516">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <ImageView fitHeight="64.0" fitWidth="669.0" layoutX="58.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="IMAGE" layoutX="343.0" layoutY="666.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image upload" wrappingWidth="119.12109375" />
+                  <Button fx:id="btnUploadImage" layoutX="276.0" layoutY="658.0" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="48.0" prefWidth="270.0" style="-fx-background-color: silver;" styleClass="shadow" stylesheets="@add.css" text="Upload Image" />
                </children>
             </Pane>
          </center>

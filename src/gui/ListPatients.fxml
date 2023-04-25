@@ -26,7 +26,7 @@
                   <Image url="@../images/logo-dawini.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="168.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnUploadImage" fitHeight="168.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Paul_Circle.png" />
                </image>

@@ -127,4 +127,9 @@ public class Medecin extends User {
     public Medecin() {
     }
 
+    @Override
+    public String getImage() {
+        return super.getImage(); 
+    }
+
 }

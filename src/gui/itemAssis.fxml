@@ -63,15 +63,6 @@
                   <Insets top="3.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnModify" alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #EBC95E;" stylesheets="@style.css">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/1976055_edit_edit%20document_edit%20file_edited_editing_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="btnDelete" alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#supprimer" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #E37A7A;" stylesheets="@style.css">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">

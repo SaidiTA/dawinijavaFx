@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -52,8 +53,6 @@ public class ItemAssController implements Initializable {
     private HBox lblAction;
     @FXML
     private Button btnshow;
-    @FXML
-    private Button btnModify;
     @FXML
     private Button btnDelete;
 private Assistant assistant;
@@ -103,8 +102,7 @@ private Assistant assistant;
         }
     }
 
-   @FXML
-    void handleButtonClick(ActionEvent event) throws SQLException {
+   void handleButtonClick(ActionEvent event) throws SQLException {
         try {
             // Récupération des données du dossier sélectionné
 
@@ -141,7 +139,23 @@ private Assistant assistant;
 
     }
     @FXML
-    private void supprimer(ActionEvent event) {
+    private void supprimer(ActionEvent event) throws SQLException {
+          int id = Integer.parseInt(btnid.getText());
+        AssistantService dc = new AssistantService();
+        List<Assistant> assistants = dc.recuperer();
+        for (Assistant d : assistants) {
+            if (d.getId() == id) {
+                dc.supprimer(d);
+
+                break;
+
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Suppression réussie");
+            alert.setHeaderText(null);
+            alert.setContentText("Le médecin a été supprimé avec succès !");
+            alert.showAndWait();
+        }
     }
 
     void setData(Assistant assistant) {
@@ -157,11 +171,10 @@ private Assistant assistant;
         lblgenre.setText(assistant.getSexe());
         lblAdresse.setText(assistant.getAdresse());
  Medecin medecin = assistant.getMedecin();
-        if (!medecin.equals(null)) {
+        
             lblMedecin.setText(medecin.getNom() + " " + medecin.getPrenom());
-        } else {
-            lblMedecin.setText("Aucun médecin associé.");
-        }}
+       
+        }
 
     }
     

@@ -26,7 +26,15 @@ public class User {
     private String confirm_password;
     private String image;
     private int enabled;
+    private String VerifCode;
 
+    public String getVerifCode() {
+        return VerifCode;
+    }
+
+    public void setVerifCode(String VerifCode) {
+        this.VerifCode = VerifCode;
+    }
     public int getEnabled() {
         return enabled;
     }

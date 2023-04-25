@@ -6,8 +6,14 @@ package gui;
 
 import entities.Assistant;
 import entities.Medecin;
+import java.io.File;
+import java.io.IOException;
 
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.AssistantService;
 import services.MedecinService;
@@ -39,8 +46,7 @@ public class AddAssistantController implements Initializable {
 
     @FXML
     private MenuButton Genre;
-    @FXML
-    private Text upimage;
+   
     @FXML
     private TextArea Adresse;
     @FXML
@@ -70,6 +76,8 @@ public class AddAssistantController implements Initializable {
     private MedecinService medecinService;
 
     private Medecin selectedMedecin;
+    @FXML
+    private Button btnUploadImage;
 
     public MedecinService getMedecinService() {
         return medecinService;
@@ -180,7 +188,7 @@ public class AddAssistantController implements Initializable {
         String telephone = Telephone.getText();
         String gouvernorat = Gouvernorat.getText();
         String adresse = Adresse.getText();
-        String image = upimage.getText();
+        String image = btnUploadImage.getText();
         String confirmPassword = ConfirmPassword.getText();
         String medecinName = MEDECIN.getText();
 if (medecinName.isEmpty()) {
@@ -262,5 +270,33 @@ int medecinId = selectedMedecin.getId();
 
         }
     }
+
+  
+
+  @FXML
+    private void handleUploadImage(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choose Image File");
+
+    // Set the extension filter
+    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png");
+    fileChooser.getExtensionFilters().add(extFilter);
+
+    // Show the file chooser dialog
+    File file = fileChooser.showOpenDialog(btnUploadImage.getScene().getWindow());
+
+    if (file != null) {
+        // Display the selected file name
+        btnUploadImage.setText(file.getName());
+
+        // Save the selected file to the "images" directory in the project folder
+        Path imagePath = Paths.get("images", file.getName());
+        try {
+            Files.copy(file.toPath(), imagePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
 
 }

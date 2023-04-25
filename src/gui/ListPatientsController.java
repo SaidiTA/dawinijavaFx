@@ -58,12 +58,15 @@ public class ListPatientsController implements Initializable {
     private ImageView btnRef;
     @FXML
     private Label ListeMedecin;
+    @FXML
+    private ImageView btnUploadImage;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      
         PatientService patientService = new PatientService();
          List<Patient> patients = null;
 
@@ -109,6 +112,10 @@ public class ListPatientsController implements Initializable {
             e.printStackTrace();
         }
     }
+    }
+
+    @FXML
+    private void refreshTable(MouseEvent event) {
     }
     
 }

@@ -162,6 +162,15 @@ public class Patient extends User{
 
     public Patient() {
     }
+
+    @Override
+    public void setEnabled(int enabled) {
+        super.setEnabled(enabled); 
+    }
+
+    @Override
+    public int getEnabled() {
+        return super.getEnabled(); 
     
-    
+    }
 }

@@ -25,8 +25,8 @@ Connection cnx;
     @Override
     public void ajouter(Patient t) throws SQLException{
         
-       String req = "INSERT INTO user(email,roles,password,nom,prenom, cin, sexe, telephone, gouvernorat,adresse,  confirm_password,Type,image) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+       String req = "INSERT INTO user(email,roles,password,nom,prenom, cin, sexe, telephone, gouvernorat,adresse,  confirm_password,Type,image,enabled) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
         PreparedStatement pst = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, t.getEmail());
         pst.setString(2, t.getRoles() != null ? String.join(",", t.getRoles()) + ",ROLE_PATIENT" : "[\"ROLE_PATIENT\"]");
@@ -43,6 +43,7 @@ Connection cnx;
         pst.setString(11, t.getConfirm_password());
         pst.setString(12,"patient");
         pst.setString(13, t.getImage());
+        pst.setInt(14, 1);
         pst.executeUpdate();
         ResultSet rs = pst.getGeneratedKeys();
         if (rs.next()) {

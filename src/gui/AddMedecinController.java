@@ -5,7 +5,13 @@
 package gui;
 
 import entities.Medecin;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.MedecinService;
 
@@ -71,10 +78,11 @@ public class AddMedecinController implements Initializable {
     private PasswordField Password;
     @FXML
     private PasswordField ConfirmPassword;
-    @FXML
-    private Text upimage;
+    
     @FXML
     private MenuButton Specialite;
+    @FXML
+    private Button btnUploadImage;
     
     
     @FXML
@@ -190,7 +198,7 @@ public class AddMedecinController implements Initializable {
     String gouvernorat = Gouvernorat.getText();
     String adresse = Adresse.getText();
     String confirm_password = ConfirmPassword.getText();
-    String image = upimage.getText();
+    String image = btnUploadImage.getText();
     String titre = Titre.getText();
     String adresse_cabinet = Adresse_Cabinet.getText();
     String fixe = Fixe.getText();
@@ -228,6 +236,35 @@ public class AddMedecinController implements Initializable {
 }
 
     
+
+   @FXML
+    private void handleUploadImage(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choose Image File");
+
+    // Set the extension filter
+    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png");
+    fileChooser.getExtensionFilters().add(extFilter);
+
+    // Show the file chooser dialog
+    File file = fileChooser.showOpenDialog(btnUploadImage.getScene().getWindow());
+
+    if (file != null) {
+        // Display the selected file name
+        btnUploadImage.setText(file.getName());
+
+        // Save the selected file to the "images" directory in the project folder
+        Path imagePath = Paths.get("images", file.getName());
+        try {
+            Files.copy(file.toPath(), imagePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+    @FXML
+    private void handleButtonAction(MouseEvent event) {
+    }
 }
     
 
