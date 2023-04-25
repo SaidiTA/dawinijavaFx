@@ -5,7 +5,9 @@ package entities;
  * @author Islem
  */
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Article {
 private int id;
@@ -13,7 +15,14 @@ private int id;
     private String description;
     private Date date;
     private Medecin medecin;
+    private Images images;
 
+    public Article(String nom, String description) {
+          this.nom = nom;
+        this.description = description;
+    }
+
+   
     public Medecin getMedecin() {
         return medecin;
     }
@@ -31,6 +40,7 @@ private int id;
     }
 
     public Article() {
+       
     }
 
   
@@ -47,6 +57,34 @@ private int id;
         this.description = description;
         this.date = date;
         this.medecin=medecin;
+    }
+
+    
+
+
+    public Article(int id, String nom, String description, Date date, Medecin medecin, Images images) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.date = date;
+        this.medecin = medecin;
+        this.images = images;
+    }
+
+    public Article(String nom, String description, Date date, Medecin medecin, Images images) {
+        this.nom = nom;
+        this.description = description;
+        this.date = date;
+        this.medecin = medecin;
+        this.images = images;
+    }
+
+    public Images getImages() {
+        return images;
+    }
+
+    public void setImages(Images images) {
+        this.images = images;
     }
 
    

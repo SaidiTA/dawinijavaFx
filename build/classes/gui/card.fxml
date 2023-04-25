@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="post" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="365.0" styleClass="rect-round" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CardController">
+<VBox fx:id="post" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="365.0" style="-fx-border-color: black;" styleClass="rect-round" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CardController">
    <children>
-      <ImageView fx:id="img" fitHeight="365.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true" styleClass="rect-round">
+      <ImageView fx:id="postImage" fitHeight="367.0" fitWidth="363.0" pickOnBounds="true" preserveRatio="true" styleClass="rect-round">
          <image>
             <Image url="@../../../../../Pictures/pidev/ssokr.png" />
          </image>

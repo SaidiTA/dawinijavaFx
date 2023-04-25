@@ -19,8 +19,9 @@ public class Dawinii extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/article.fxml"));
-        
+       // Parent root = FXMLLoader.load(getClass().getResource("/gui/article.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("/gui/ListMedecinArticle.fxml"));
+       //  Parent root = FXMLLoader.load(getClass().getResource("/gui/ListAdminArticle.fxml"));
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

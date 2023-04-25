@@ -7,6 +7,7 @@ package gui;
 
 import entities.Article;
 import entities.Commentaire;
+import entities.Images;
 import entities.User;
 import java.io.IOException;
 import java.net.URL;
@@ -24,12 +25,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.detailleArticleService;
+import test.Dawinii;
 
 /**
  * FXML Controller class
@@ -84,6 +87,11 @@ public class DetailleArticleController implements Initializable {
         this.article = article;
         narticle.setText(article.getNom());
         descarticle.setText(article.getDescription());
+        Images imageUrl = article.getImages();
+      Image image = new Image(Dawinii.class.getClass().getResource("/images/" + imageUrl.getUrl()).toString());
+
+        imgarticle.setImage(image);
+       //imgarticle.setImages(article.getImages());
         detailleArticleService commetaireService = new detailleArticleService();
         List<Commentaire> commentaires=null;
         System.out.println("article "+article);

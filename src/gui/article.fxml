@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="954.0" prefWidth="1450.0" style="-fx-background-color: #fff;" stylesheets="@add.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArticleController">
+<AnchorPane id="AnchorPane" prefHeight="954.0" prefWidth="1296.0" style="-fx-background-color: #fff;" stylesheets="@add.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArticleController">
    <children>
       <VBox alignment="CENTER" prefHeight="961.0" prefWidth="398.0" style="-fx-background-color: #F1F7FD;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -166,16 +166,16 @@
             </Button>
          </children>
       </VBox>
-      <ScrollPane layoutX="415.0" layoutY="160.0" prefHeight="791.0" prefWidth="948.0">
+      <ScrollPane layoutX="441.0" layoutY="269.0" prefHeight="354.0" prefWidth="838.0">
          <content>
-            <GridPane fx:id="postGrid">
+            <GridPane fx:id="postGrid" prefHeight="353.0" prefWidth="843.0">
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
          </content>
       </ScrollPane>
-      <HBox alignment="CENTER" layoutX="415.0" layoutY="14.0" prefHeight="139.0" prefWidth="927.0">
+      <HBox alignment="CENTER" layoutX="435.0" layoutY="28.0" prefHeight="117.0" prefWidth="835.0">
          <children>
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="77.0" prefWidth="132.0">
                <children>
@@ -185,12 +185,12 @@
                   <Insets bottom="10.0" top="10.0" />
                </HBox.margin>
             </HBox>
-            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="139.0" prefWidth="827.0" HBox.hgrow="ALWAYS">
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="791.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
                <children>
-                  <Label fx:id="ListeMedecin" alignment="CENTER" layoutX="78.0" layoutY="28.0" prefHeight="53.0" prefWidth="335.0" text="Acceuil" textFill="#157294">
+                  <Label fx:id="ListeMedecin" alignment="CENTER" layoutX="189.0" layoutY="26.0" prefHeight="53.0" prefWidth="335.0" text="Articles" textFill="#157294">
                      <font>
                         <Font name="FreeSerif" size="41.0" />
                      </font>
