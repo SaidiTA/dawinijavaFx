@@ -15,8 +15,17 @@ import util.MyDB;
 
 import entities.Rendezvous;
 import java.time.LocalDate;
+import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  *
@@ -65,6 +74,7 @@ public class RendezvousService implements IService<Rendezvous> {
         }
 
         return list;
+       
         
     }
     
@@ -175,6 +185,65 @@ public class RendezvousService implements IService<Rendezvous> {
         return list;
         
     }*/
+    
+    public void sendEmail(String sourceEmail, String sourcePwd, String desEmail, String subject, String body) {
+       /*Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+       //  Create a mail session
+        Session session = Session.getDefaultInstance(properties, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(sourceEmail, sourcePwd);
+            }
+        });
+
+         //Create a new email message
+        Message message = new MimeMessage(session);
+        try {
+            message.setFrom(new InternetAddress(sourceEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(desEmail));
+            message.setSubject(subject);
+            message.setText(body);
+
+           //  Send the email
+            Transport.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+       
+       Properties properties = new Properties();
+    properties.put("mail.smtp.host", "smtp.gmail.com");
+    properties.put("mail.smtp.port", "587");
+    properties.put("mail.smtp.auth", "true");
+    properties.put("mail.smtp.starttls.enable", "true");
+
+    //  Create a mail session
+    Session session = Session.getDefaultInstance(properties, new Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(sourceEmail, sourcePwd);
+        }
+    });
+
+    //Create a new email message
+    Message message = new MimeMessage(session);
+    try {
+        message.setFrom(new InternetAddress(sourceEmail));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(desEmail));
+        message.setSubject(subject);
+        message.setText(body);
+
+        //  Send the email
+        Transport.send(message);
+        System.out.println("Email sent successfully!");
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("Failed to send email!");
+    }
+    }
+    
     
     //@Override
     public boolean supprimerRR(int id) throws SQLException {
