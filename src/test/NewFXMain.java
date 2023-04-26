@@ -85,6 +85,7 @@ public class NewFXMain extends Application {
         Parent root;
         try {
            root = FXMLLoader.load(getClass().getResource("../gui/afficherRFXML.fxml"));
+           //root = FXMLLoader.load(getClass().getResource("../gui/RendezvousStatFXML.fxml"));
         //   root = FXMLLoader.load(getClass().getResource("../gui/afficherpaiementFXML.fxml"));
 
         //root = FXMLLoader.load(getClass().getResource("../gui/AjouterrendezvousFXML.fxml"));

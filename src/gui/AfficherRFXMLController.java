@@ -67,6 +67,7 @@ import javafx.util.Duration;
 //import tray.notification.NotificationType;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+
 //import tray.animations.AnimationType;
 import util.MyDB;
 
@@ -112,6 +113,8 @@ import static jdk.nashorn.internal.objects.NativeJava.type;
 //import tray.animations.AnimationType;
 //import tray.notification.NotificationType;
 //import tray.notification.TrayNotification;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 //////////////////////
 
 /**
@@ -154,7 +157,8 @@ public class AfficherRFXMLController implements Initializable {
     @FXML
     private Button btnpayer;
     
-    
+    private MediaPlayer mediaplayer;
+    private Media media;
     
     
     @FXML
@@ -162,8 +166,6 @@ public class AfficherRFXMLController implements Initializable {
     
 RendezvousService ts = new RendezvousService();
     ObservableList<Rendezvous> rendezvousList = ts.getAllRendezvous();
-    @FXML
-    private Button btnenvoyer;
     @FXML
     private Label lb_totalTransac;
     /**
@@ -202,6 +204,17 @@ for (Rendezvous r : rendezvousList) {
 }
         
                 this.lb_totalTransac.setText("Nombre de rendezvous pour  : " + rendezvousCount);*/
+      RendezvousService ts = new RendezvousService();
+       ObservableList<Rendezvous> rendezvousList = ts.getAllRendezvous();
+        String titre = "some_id_value"; // Replace with the actual id value you want to search for
+      int count = calculnb(titre);  
+        System.out.println("Taille de la liste de rendezvous : " + count);
+        this.lb_totalTransac.setText("Nombres de rendezvous   : " + count);
+      //  long rendezvousCount = rendezvousList.stream().count();
+       
+        /*******************************sout
+         * 
+         */
         
     } 
     
@@ -220,6 +233,29 @@ for (Rendezvous r : rendezvousList) {
         return count;
         
     }*/
+    
+    public int calculnb(String titre) {
+
+        PreparedStatement pre;
+        int count = 19;
+        try {
+            Connection conn = getConnection();
+
+            String query = "SELECT COUNT(*) FROM rendez_vous WHERE id='"+titre+"'";
+        Statement st;
+        ResultSet rs;
+            st = conn.createStatement();
+            rs = st.executeQuery(query);
+
+            rs.next();
+            count = rs.getInt(1);
+            return count;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return 0;
+
+    }
      
     
     @FXML
@@ -460,8 +496,6 @@ for (Rendezvous r : rendezvousList) {
     sortedData.comparatorProperty().bind(tvrendezvous.comparatorProperty());
     tvrendezvous.setItems(sortedData);
 }
-    
-    
     private void Gopaiement(ActionEvent event) {
         
         
@@ -490,6 +524,16 @@ for (Rendezvous r : rendezvousList) {
             e.printStackTrace();
         }*/
 
+    }
+    @FXML
+    private void Govideoexplicatif(ActionEvent event) throws IOException {
+        
+        
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/videoFXML.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     private void retour(ActionEvent event) throws IOException {
@@ -545,7 +589,6 @@ for (Rendezvous r : rendezvousList) {
         }
         
     }
-    @FXML
     private void sendEmail(ActionEvent event) {
         Properties props = new Properties();
 props.put("mail.smtp.auth", "true");

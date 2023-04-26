@@ -39,7 +39,7 @@
       <Button fx:id="btnrechercher" layoutX="559.0" layoutY="25.0" mnemonicParsing="false" onAction="#GetOneByTitre" text="rechercher" />
       <Button fx:id="btnpayer" layoutX="499.0" layoutY="300.0" mnemonicParsing="false" onAction="#retour" text="Payer votre rendezvous" />
       <TextField fx:id="SearchM" layoutX="236.0" layoutY="50.0" onInputMethodTextChanged="#searchRendezvous" promptText="Search" />
-      <Button fx:id="btnenvoyer" layoutX="11.0" layoutY="325.0" mnemonicParsing="false" onAction="#sendEmail" text="send mail" />
+      <Button layoutX="11.0" layoutY="325.0" mnemonicParsing="false" onAction="#Govideoexplicatif" text="video explicatif" />
       <Label layoutX="243.0" layoutY="304.0" text="Total Rendezvous :" />
       <Label fx:id="lb_totalTransac" layoutX="235.0" layoutY="342.0" text=" Rv" />
    </children>
