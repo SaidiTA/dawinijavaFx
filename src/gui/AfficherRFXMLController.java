@@ -206,14 +206,22 @@ for (Rendezvous r : rendezvousList) {
        ObservableList<Rendezvous> rendezvousList = ts.getAllRendezvous();
         String titre = "some_id_value"; // Replace with the actual id value you want to search for
       int count = calculnb(titre);  
-        System.out.println("Taille de la liste de rendezvous : " + count);
-        this.lb_totalTransac.setText("Nombres de rendezvous   : " + count);
+       // System.out.println("Taille de la liste de rendezvous : " + count);
+       // this.lb_totalTransac.setText("Nombres de rendezvous   : " + count);
       //  long rendezvousCount = rendezvousList.stream().count();
        
         /*******************************sout
          * 
          */
-        
+        ObservableList<Rendezvous> appointments = tvrendezvous.getItems();
+
+// Get the number of appointments
+    int numberOfAppointments = appointments.size();
+
+// Display the number of appointments
+//System.out.println("Number of appointments: " + numberOfAppointments);
+this.lb_totalTransac.setText("Nombres de rendezvous   : " + numberOfAppointments);
+
     } 
     
     /* public void setLb_totalTransac(int id) {
@@ -324,6 +332,7 @@ for (Rendezvous r : rendezvousList) {
         coletat.setCellValueFactory(new PropertyValueFactory<Rendezvous, String>("etat"));
         //searchRendezvous();
         tvrendezvous.setItems(List);
+        
         //searchRendezvous();
        /* setLb_totalTransac(ts.getAllRendezvous().stream()
                                   .mapToDouble((Rendezvous t) -> t.getId())
@@ -423,7 +432,7 @@ for (Rendezvous r : rendezvousList) {
         TrayNotification tray = new TrayNotification();
         //AnimationType type = AnimationType.POPUP;
         //tray.setAnimationType(type);
-        tray.setTitle("Bienvenu a dawini");
+        tray.setTitle(" dawini : ajout avec succes");
         tray.setMessage("Le rendezvous  Du titre"+ titretf+ " a ete effectuer avec Success");
         //tray.setNotificationType(NotificationType.INFORMATION);
         tray.showAndDismiss(Duration.millis(2000));

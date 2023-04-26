@@ -178,7 +178,7 @@ public class PaiementService {
             PdfPTable titleTable = new PdfPTable(new float[]{2, 4});
 
  //create a cell for the title
- PdfPCell titleCell = new PdfPCell(new Phrase("Recu N° " , new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD)));
+ PdfPCell titleCell = new PdfPCell(new Phrase("Recu N° " + paiement.getId() , new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD)));
             //PdfPCell titleCell = new PdfPCell(new Phrase("Recu N° " + paiement.getId(), new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD)));
             titleCell.setHorizontalAlignment(Element.ALIGN_CENTER);
             titleCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -215,7 +215,7 @@ public class PaiementService {
 
             Paragraph para6 = new Paragraph("Téléphone :  +216 00 000 000");
             document.add(para6);
-            Paragraph paraa = new Paragraph("\n\n\n");
+            Paragraph paraa = new Paragraph("\n id de paiement est    "+ paiement.getId() +"\n le rendezvous  est    "+ paiement.getRendez_vous_id()+"\n Tarif est    "+ paiement.getTarif()+"\n email est    "+ paiement.getEmail()+ "\n date d'expiraxion carte est    "+ paiement.getExpiration_carte());
             document.add(paraa);
 
              //get the list of elements to display
