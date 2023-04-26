@@ -309,7 +309,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="chercher" layoutX="1254.0" layoutY="273.0" prefHeight="54.0" prefWidth="365.0" promptText="chercher" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-background-color: #AEB2C3;" text="chercher par date">
+      <TextField fx:id="chercher" layoutX="1253.0" layoutY="230.0" prefHeight="54.0" prefWidth="365.0" promptText="chercher" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-background-color: #AEB2C3;" text="chercher par date">
          <effect>
             <DropShadow />
          </effect>
@@ -317,7 +317,12 @@
             <Font size="19.0" />
          </font>
       </TextField>
-      <Button fx:id="calendar" defaultButton="true" focusTraversable="false" layoutX="1254.0" layoutY="178.0" mnemonicParsing="false" onAction="#gotocalendar" prefHeight="66.0" prefWidth="366.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="CALENDRIER" textAlignment="CENTER" textFill="#2262c6">
+      <Button fx:id="calendar" defaultButton="true" focusTraversable="false" layoutX="1253.0" layoutY="134.0" mnemonicParsing="false" onAction="#gotocalendar" prefHeight="66.0" prefWidth="366.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="CALENDRIER" textAlignment="CENTER" textFill="#2262c6">
+         <font>
+            <Font name="AdobePiStd" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="excel" defaultButton="true" focusTraversable="false" layoutX="1253.0" layoutY="315.0" mnemonicParsing="false" onAction="#exportToExcel" prefHeight="66.0" prefWidth="366.0" style="-fx-background-color: #2262c6 -fx-background-radius: 20;" text="export vers Excel" textAlignment="CENTER" textFill="#2262c6">
          <font>
             <Font name="AdobePiStd" size="20.0" />
          </font>

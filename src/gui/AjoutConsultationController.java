@@ -92,7 +92,9 @@ public class AjoutConsultationController implements Initializable {
         } else {
 
             try {
+                c.setPatients_id(2);
                 cons.ajouter(c);
+                
 
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
@@ -115,6 +117,7 @@ public class AjoutConsultationController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         }
+        
     }
 @FXML
     public void Retour() throws IOException, SQLException {

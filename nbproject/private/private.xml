@@ -8,9 +8,12 @@
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/gui/Calendar.fxml</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/test/Test.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/services/ConsulationService.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/gui/AjouterOrdonnance.fxml</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/gui/ModifierConsultationController.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/gui/DashMedecinController.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/gui/AjoutConsultationController.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/entities/Consulation.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/services/ordonnanceService.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/gui/Dash.fxml</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/gui/AjouterOrdonnanceController.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/PIDEV3A32/src/entities/ordonnance.java</file>

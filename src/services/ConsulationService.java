@@ -32,7 +32,8 @@ public class ConsulationService implements IService<Consulation> {
 
     @Override
 public void ajouter(Consulation t) throws SQLException {
-    String req = "INSERT INTO consulation (date, heuredebut, heurefin,url_consultation,est_termine) VALUES ('" + t.getDate() + "', '" + t.getHeuredebut() + "', '" + t.getHeurefin() + "', '" + t.getUrl_consultation() +"', '" + t.getEst_termine()+"')";
+       
+    String req = "INSERT INTO consulation (patients_id,date, heuredebut, heurefin,url_consultation,est_termine) VALUES ('" + t.getPatients_id() + "','" + t.getDate() + "', '" + t.getHeuredebut() + "', '" + t.getHeurefin() + "', '" + t.getUrl_consultation() +"', '" + t.getEst_termine()+"')";
     Statement st = cnx.createStatement();
     st.executeUpdate(req);
 }

@@ -17,10 +17,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
+import javafx.stage.Stage;
 import services.ConsulationService;
 
 /**
@@ -94,6 +97,15 @@ public class ModifierConsultationController implements Initializable {
         Parent root;
         root = loader.load();
 
+    }
+    @FXML
+    private void retour2(ActionEvent event) throws IOException {
+   
+         Parent root = FXMLLoader.load(getClass().getResource("/gui/Dash.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

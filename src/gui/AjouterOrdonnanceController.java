@@ -22,7 +22,11 @@ import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -31,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import services.ConsulationService;
@@ -108,10 +113,16 @@ public class AjouterOrdonnanceController implements Initializable {
         try {
             os.ajouter(or);
             cons.consultationTerminer(this.consulation_id);
+            Parent root = FXMLLoader.load(getClass().getResource("/gui/Dash.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         }
+        
     }
 
     @FXML
