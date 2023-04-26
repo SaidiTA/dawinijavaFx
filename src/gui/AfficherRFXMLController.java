@@ -147,8 +147,6 @@ public class AfficherRFXMLController implements Initializable {
     @FXML
     private Button btnajouter;
     @FXML
-    private Button btnmodifier;
-    @FXML
     private Button btnsupprimer;
     @FXML
     private TextField recherchertf;
@@ -258,7 +256,6 @@ for (Rendezvous r : rendezvousList) {
     }
      
     
-    @FXML
     public void handleButtonAction(ActionEvent event) throws SQLException{
     
         //if(event.getSource() == btnajouter){
@@ -525,6 +522,17 @@ for (Rendezvous r : rendezvousList) {
         }*/
 
     }
+     @FXML
+    private void gostat(ActionEvent event) throws IOException {
+        
+        
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/RendezvousStatFXML.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    
     @FXML
     private void Govideoexplicatif(ActionEvent event) throws IOException {
         
@@ -535,6 +543,8 @@ for (Rendezvous r : rendezvousList) {
         stage.setScene(scene);
         stage.show();
     }
+    
+    
     @FXML
     private void retour(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherpaiementFXML.fxml"));

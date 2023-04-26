@@ -33,7 +33,6 @@
         </columns>
       </TableView>
       <Button fx:id="btnajouter" layoutX="15.0" layoutY="269.0" mnemonicParsing="false" onAction="#AjouterR" text="Ajouter" />
-      <Button fx:id="btnmodifier" layoutX="9.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Calendrier" />
       <Button fx:id="btnsupprimer" layoutX="151.0" layoutY="269.0" mnemonicParsing="false" onAction="#DeleteOne" text="Supprimer" />
       <TextField fx:id="recherchertf" layoutX="401.0" layoutY="25.0" />
       <Button fx:id="btnrechercher" layoutX="559.0" layoutY="25.0" mnemonicParsing="false" onAction="#GetOneByTitre" text="rechercher" />
@@ -42,5 +41,6 @@
       <Button layoutX="11.0" layoutY="325.0" mnemonicParsing="false" onAction="#Govideoexplicatif" text="video explicatif" />
       <Label layoutX="243.0" layoutY="304.0" text="Total Rendezvous :" />
       <Label fx:id="lb_totalTransac" layoutX="235.0" layoutY="342.0" text=" Rv" />
+      <Button layoutX="161.0" layoutY="330.0" mnemonicParsing="false" onAction="#gostat" text="stat" />
    </children>
 </AnchorPane>
