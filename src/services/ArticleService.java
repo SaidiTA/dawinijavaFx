@@ -8,6 +8,7 @@ package services;
 import entities.Article;
 import entities.Images;
 import entities.Medecin;
+import entities.User;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import util.MyDB;
 
 public class ArticleService {
@@ -31,14 +33,36 @@ public class ArticleService {
             PreparedStatement pst = MyDB.getInstance().getCnx().prepareStatement(requete1);
             pst.setString(1, d.getNom());
             pst.setString(2, d.getDescription());
-            
-
             pst.executeUpdate();
             System.out.println("Article ajouté !");
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public int createTask(Article d) throws SQLException {
+        int id = 0;
+
+        // Execute the INSERT query and get the generated ID
+        String requete1 = "INSERT INTO article(nom,description,date) VALUES(?,?,CURRENT_TIMESTAMP)";
+        PreparedStatement statement = MyDB.getInstance().getCnx().prepareStatement(requete1, Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1, d.getNom());
+        statement.setString(2, d.getDescription());
+        int rowsAffected = statement.executeUpdate();
+        //ResultSet rs = statement.executeQuery();
+
+        if (rowsAffected > 0) {
+            ResultSet resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                id = resultSet.getInt(1);
+                System.out.println("New row created with id: " + id);
+            }
+        } else {
+            System.out.println("No rows were inserted.");
+        }
+        return id;
+
     }
 
     public ObservableList<Article> listArticle() {
@@ -115,7 +139,7 @@ public class ArticleService {
             //rs.setImages(images);
             Medecin medecin = new MedecinService().recupererById(medecinId);
 
-            Article article = new Article(id, nom, description, date, medecin,images);
+            Article article = new Article(id, nom, description, date, medecin, images);
             articles.add(article);
         }
         return articles;
@@ -132,11 +156,11 @@ public class ArticleService {
                 String nom = rs.getString("nom");
                 String description = rs.getString("description");
                 Date date = rs.getDate("date");
-                 Images images = getImagesByArticleId(id);
-            //rs.setImages(images);
-           
+                Images images = getImagesByArticleId(id);
+                //rs.setImages(images);
+
                 Medecin medecin = new MedecinService().recupererById(medecinId);
-                Article article = new Article(id, nom, description, date, medecin,images);
+                Article article = new Article(id, nom, description, date, medecin, images);
                 return article;
             }
         } catch (SQLException ex) {
@@ -154,7 +178,7 @@ public class ArticleService {
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
             //rs.absolute(1);
-           
+
             int id = rs.getInt("id");
             image.setName(rs.getString("name"));
             image.setUrl(rs.getString("url"));
@@ -165,4 +189,37 @@ public class ArticleService {
         return image;
 
     }
+
+    public List<Article> search(String value) throws SQLException {
+
+        String query = "SELECT * FROM article WHERE nom LIKE ? ";
+        PreparedStatement pst = MyDB.getInstance().getCnx().prepareStatement(query);
+
+        pst.setString(1, "%" + value + "%");
+
+        ResultSet rs = pst.executeQuery();
+        List<Article> articles = new ArrayList<>();
+        while (rs.next()) {
+
+            int id = rs.getInt("id");
+            int medecinId = rs.getInt("medecin_id");
+            String nom = rs.getString("nom");
+            String description = rs.getString("description");
+            Date date = rs.getDate("date");
+            Images images = getImagesByArticleId(id);
+            //rs.setImages(images);
+            Medecin medecin = new MedecinService().recupererById(medecinId);
+
+            Article article = new Article(id, nom, description, date, medecin, images);
+            articles.add(article);
+        }
+        return articles;
+
+    }
+
+    
+
+
+
+
 }

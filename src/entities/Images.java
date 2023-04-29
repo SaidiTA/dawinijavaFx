@@ -11,23 +11,36 @@ package entities;
  */
 public class Images {
     private int id;
-    private int articleId;
+    private Article articleId;
+
+    public Article getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Article articleId) {
+        this.articleId = articleId;
+    }
     private String name;
     private String url;
 
-    public Images(int id, int articleId, String name, String url) {
+    public Images(int id, Article articleId, String name, String url) {
         this.id = id;
         this.articleId = articleId;
         this.name = name;
         this.url = url;
     }
 
-    public Images(int articleId, String name, String url) {
+    public Images(Article articleId, String name, String url) {
         this.articleId = articleId;
         this.name = name;
         this.url = url;
     }
-
+    
+    public Images(String name, String url) {
+        this.articleId = articleId;
+        this.name = name;
+        this.url = url;
+    }
     public Images() {
     }
     
@@ -38,14 +51,6 @@ public class Images {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
     }
 
     public String getName() {

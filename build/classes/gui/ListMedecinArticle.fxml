@@ -18,7 +18,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="994.0" prefWidth="388.0" style="-fx-background-color: #F1F7FD;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="139.0" fitWidth="311.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="96.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets bottom="10.0" top="-2.0" />
                </VBox.margin>
@@ -28,7 +28,7 @@
             </ImageView>
             <ImageView fitHeight="168.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Paul_Circle.png" />
+                  <Image url="@../images/person.png" />
                </image>
                <VBox.margin>
                   <Insets bottom="30.0" />
@@ -199,7 +199,7 @@
                   <Insets left="20.0" right="30.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="Email" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="150.0" text="Date">
+            <Label fx:id="date" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="150.0" text="Date">
                <HBox.margin>
                   <Insets left="20.0" right="30.0" />
                </HBox.margin>
@@ -226,7 +226,7 @@
                      <graphic>
                         <ImageView fx:id="btnAddplus1" fitHeight="46.0" fitWidth="36.0" onDragDetected="#handleButtonClick" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/images__1_-removebg-preview.png" />
+                              <Image url="@../images/1470610-200.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -250,7 +250,7 @@
                            <graphic>
                               <ImageView fx:id="btnRef" fitHeight="34.0" fitWidth="29.0" onDragDetected="#refreshTable" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/ref-removebg.png" />
+                                    <Image url="@../images/refresh-icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -275,6 +275,25 @@
                         <Font name="FreeSerif" size="41.0" />
                      </font>
                   </Label>
+                  <Button fx:id="exportButton" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#exportToExcel" prefHeight="59.0" prefWidth="55.0" stylesheets="@../../../Dawini_v1/src/gui/add.css">
+                     <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="transparent" />
+                        <String fx:value="whit_background" />
+                        <String fx:value="shadow" />
+                        <String fx:value="rect-round" />
+                     </styleClass>
+                     <font>
+                        <Font name="FreeSerif" size="19.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/export-excel.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </Pane>
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="53.0" prefWidth="330.0" stylesheets="@add.css">

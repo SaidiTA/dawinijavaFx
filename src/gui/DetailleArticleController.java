@@ -12,6 +12,7 @@ import entities.User;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -111,23 +112,47 @@ public class DetailleArticleController implements Initializable {
          }
     }
 
-    @FXML
-   private void submitComment(ActionEvent event) throws SQLException {
-        String message = commentTextArea.getText().trim();
+   @FXML
+private void submitComment(ActionEvent event) throws SQLException {
+    String message = commentTextArea.getText().trim();
+    
+    if (!message.isEmpty()) {
+        // Define list of inappropriate words
+        List<String> motsInappropries = Arrays.asList("nul", "mauvais", "terrible");
         
-        if (!message.isEmpty()) {
-            detailleArticleService commentaireService = new detailleArticleService();
-            User user = new User();
-        //bsh tbadel yrecuperi l patient connecte 
-           user.setId(1);
-
-            Commentaire commentaire = new Commentaire(message, new Date(), article, user);
-            commentaireService.ajouter(commentaire);
-            // Clear the text area after submitting the comment
-            commentTextArea.clear();
-            refreshComments();
+        // Split the message into individual words
+        String[] mots = message.split("[\\s,.!?]+");
+        
+        // Loop through the words and replace any inappropriate words with a star
+        for (int i = 0; i < mots.length; i++) {
+            if (motsInappropries.contains(mots[i].toLowerCase())) {
+                StringBuilder stars = new StringBuilder();
+                for (int j = 0; j < mots[i].length(); j++) {
+                    stars.append('*');
+                }
+                mots[i] = stars.toString();
+            }
         }
-   }
+        
+        // Recompose the message from the filtered words
+        message = String.join(" ", mots);
+        
+        // Create and insert the filtered comment into the database
+        detailleArticleService commentaireService = new detailleArticleService();
+        User user = new User();
+        //bsh tbadel yrecuperi l patient connecte 
+        user.setId(1);
+        Commentaire commentaire = new Commentaire(message, new Date(), article, user);
+        commentaireService.ajouter(commentaire);
+        
+        // Clear the text area after submitting the comment
+        commentTextArea.clear();
+        
+        // Refresh the comments section
+        refreshComments();
+    }
+}
+
 
     @FXML
     private void btndislike(ActionEvent event) {

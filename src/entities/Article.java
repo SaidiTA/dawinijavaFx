@@ -22,6 +22,11 @@ private int id;
         this.description = description;
     }
 
+        public Article(String nom, String description, Images image) {
+          this.nom = nom;
+        this.description = description;
+        this.images=image;
+    }
    
     public Medecin getMedecin() {
         return medecin;

@@ -19,7 +19,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="961.0" prefWidth="398.0" style="-fx-background-color: #F1F7FD;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="196.0" fitWidth="316.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="104.0" fitWidth="316.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets bottom="40.0" top="-2.0" />
                </VBox.margin>
@@ -29,7 +29,7 @@
             </ImageView>
             <ImageView fitHeight="230.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Paul_Circle.png" />
+                  <Image url="@../../../../../Pictures/graduation/306721174_1210924786119486_9129772958607356921_n.jpg" />
                </image>
                <VBox.margin>
                   <Insets bottom="50.0" />

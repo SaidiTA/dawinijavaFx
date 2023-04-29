@@ -57,6 +57,7 @@ public class ItemArticleMedecinController implements Initializable {
     private HBox lblAction;
     
     
+    
  public void setData(Article articles){
         int id=articles.getId();
         btnid.setText(Integer.toString(id));
