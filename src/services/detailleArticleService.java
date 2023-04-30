@@ -8,6 +8,7 @@ package services;
 import entities.Article;
 import entities.Commentaire;
 import entities.User;
+import entities.article_like;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -135,5 +136,55 @@ public class detailleArticleService {
 
         return commentaire;
     }
+    
+    public void ajouterLike(User user, Article article) {
+    try {
+        String requete = "INSERT INTO article_like(user_id, article_id, value) VALUES (?, ?, ?)";
+        PreparedStatement pst = cnx.prepareStatement(requete);
+        pst.setInt(1, user.getId());
+        pst.setInt(2, article.getId());
+        pst.setInt(3, 1); // 1 pour un like
+        pst.executeUpdate();
+        System.out.println("Like ajouté !");
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
+
+public void ajouterDislike(User user, Article article) {
+    try {
+        String requete = "INSERT INTO article_like(user_id, article_id, value) VALUES (?, ?, ?)";
+        PreparedStatement pst = cnx.prepareStatement(requete);
+        pst.setInt(1, user.getId());
+        pst.setInt(2, article.getId());
+        pst.setInt(3, -1); // -1 pour un dislike
+        pst.executeUpdate();
+        System.out.println("Dislike ajouté !");
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
+public int estDejaLikeOuDislike(User user, Article article) {
+    int value = 0;
+    try {
+        String requete = "SELECT value FROM article_like WHERE user_id=? AND article_id=?";
+        PreparedStatement pst = cnx.prepareStatement(requete);
+        pst.setInt(1, user.getId());
+        pst.setInt(2, article.getId());
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+            value = rs.getInt("value");
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return value;
+}
+
+    
+    
+    
+    
+    
 
 }

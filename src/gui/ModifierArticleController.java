@@ -6,7 +6,14 @@
 package gui;
 
 import entities.Article;
+import entities.Images;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.ArticleService;
 
@@ -38,6 +46,9 @@ public class ModifierArticleController implements Initializable {
     @FXML
     private ImageView btncross;
 private Article article ; 
+ private Images image;
+    @FXML
+    private Button btnupload;
 
     public Article getArticle() {
         return article;
@@ -106,4 +117,31 @@ private Article article ;
 
         
     }
-    }}
+    }
+
+    @FXML
+    private void uploadimage(ActionEvent event) {
+             FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choisir une image");
+
+    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png");
+    fileChooser.getExtensionFilters().add(extFilter);
+    File file = fileChooser.showOpenDialog(btnupload.getScene().getWindow());
+
+    if (file != null) {
+        // Display the selected file name
+        btnupload.setText(file.getName());
+
+        // Save the selected file to the "images" directory in the project folder
+        Path imagePath = Paths.get("images", file.getName());
+        Images img = new Images(file.getName(),file.getName());
+        this.image = img;
+        try {
+            Files.copy(file.toPath(), imagePath, StandardCopyOption.REPLACE_EXISTING);
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    }
+}

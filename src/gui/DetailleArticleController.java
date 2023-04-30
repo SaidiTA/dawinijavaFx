@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -64,13 +65,17 @@ public class DetailleArticleController implements Initializable {
     @FXML
     private VBox allComments;
 
-     private Article article;
-     private User user;
+    
+    @FXML
+    private Label dislikeCountLabel;
+    @FXML
+    private Label likeCountLabel;
 
     /**
      * Initializes the controller class.
      */
-     
+      private Article article;
+     private User user;
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -154,13 +159,6 @@ private void submitComment(ActionEvent event) throws SQLException {
 }
 
 
-    @FXML
-    private void btndislike(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnlike(ActionEvent event) {
-    }
 
     @FXML
     private void retour(ActionEvent event) {
@@ -197,5 +195,23 @@ private void submitComment(ActionEvent event) throws SQLException {
         }
     }
 }
+
+    @FXML
+    private void handleDislikeButtonAction(MouseEvent event) {
+    }
+
+    @FXML
+    private void handleLikeButtonAction(MouseEvent event) {
+    }
+   
     
+    @FXML
+    private void btndislike(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnlike(ActionEvent event) {
+    }
+    
+    // Ajouter un écouteur d'événements au bouton "Like"
 }
