@@ -45,6 +45,30 @@ public class Avis {
         this.date = date;
     }
 
+    public Avis(int id, int medecin, Patient patient, String text, double note, Date date, String statut) {
+         
+        this.patient = patient;
+        this.text = text;
+        this.note = note;
+        this.statut = statut;
+        this.date = date;
+    }
+
+    public Avis(Medecin medecin, Patient patient, String text, int note, Date date) {
+          this.medecin = medecin;
+        this.patient = patient;
+        this.text = text;
+        this.note = note;
+       
+    }
+
+    public Avis(int medecinId, Patient patient, String message, int note, Date date) {
+           this.medecin = medecin;
+        this.patient = patient;
+        this.text = text;
+        this.note = note;
+    }
+
     public int getId() {
         return id;
     }

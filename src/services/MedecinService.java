@@ -5,7 +5,9 @@
 package services;
 
 
+import entities.Avis;
 import entities.Medecin;
+import entities.Patient;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -185,7 +187,63 @@ if (rolesString.length() > 2) {
     return medecin;
     }
 
+  public List<Medecin> rechercher(String nom) throws SQLException {
+    Connection cnx = MyDB.getInstance().getCnx();
+    String req = "SELECT * FROM user u JOIN medecin m ON u.id = m.id WHERE u.nom LIKE ?";
+    PreparedStatement pst = cnx.prepareStatement(req);
+    pst.setString(1, "%" + nom + "%");
+    ResultSet rs = pst.executeQuery();
+    List<Medecin> medecins = new ArrayList<>();
+
+    while (rs.next()) {
+        Medecin medecin = new Medecin();
+        medecin.setId(rs.getInt("id"));
+        medecin.setEmail(rs.getString("email"));
+        medecin.setPassword(rs.getString("password"));
+        String rolesString = rs.getString("roles");
+        ArrayList<String> roles = new ArrayList<>(Arrays.asList(rolesString.substring(1, rolesString.length() - 1).split(", ")));
+        medecin.setRoles(roles);
+        medecin.setNom(rs.getString("nom"));
+        medecin.setPrenom(rs.getString("prenom"));
+        medecin.setCin(rs.getInt("cin"));
+        medecin.setSexe(rs.getString("sexe"));
+        medecin.setTelephone(rs.getString("telephone"));
+        medecin.setGouvernorat(rs.getString("gouvernorat"));
+        medecin.setAdresse(rs.getString("adresse"));
+        medecin.setConfirm_password(rs.getString("confirm_password"));
+        medecin.setImage(rs.getString("image"));
+        medecin.setTitre(rs.getString("titre"));
+        medecin.setAdresse_cabinet(rs.getString("adresse_cabinet"));
+        medecin.setFixe(rs.getString("fixe"));
+        medecin.setDiplome_formation(rs.getString("diplome_formation"));
+        medecin.setTarif(rs.getFloat("tarif"));
+        medecin.setCnam(rs.getBoolean("cnam"));
+        medecins.add(medecin);
+    }
+
+    return medecins;
+}
+public List<Avis> recupererAvisMedecin(int medecin) throws SQLException {
+    String sql = "SELECT id, medecin_id, patient_id, text, note, date,statut FROM avis WHERE medecin_id = ?";
+    PreparedStatement statement = cnx.prepareStatement(sql);
+    statement.setInt(1, medecin);
+    ResultSet result = statement.executeQuery();
+    List<Avis> avisList = new ArrayList<>();
+    while (result.next()) {
+        int id = result.getInt("id");
+        int patientId = result.getInt("patient_id");
+        String text = result.getString("text");
+        double note = result.getDouble("note");
+        Date date = result.getDate("date");
+        String statut = result.getString("statut");
+        Patient patient = new PatientService().recupererById(patientId);
+        Avis avis = new Avis(id, medecin, patient, text, note, date,statut);
+        avisList.add(avis);
+    }
+    return avisList;
+}
    
 }
+
     
 

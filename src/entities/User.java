@@ -252,7 +252,14 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", email=" + email + ", roles=" + roles + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", sexe=" + sexe + ", telephone=" + telephone + ", gouvernorat=" + gouvernorat + ", adresse=" + adresse + ", confirm_password=" + confirm_password + '}';
     }
-    
+
+   public static String getImagePath() {
+    User user = UserSession.getInstance().getCurrentUser();
+    if (user != null) {
+        return user.getImagePath();
+    }
+    return null;
+}
     
     
     

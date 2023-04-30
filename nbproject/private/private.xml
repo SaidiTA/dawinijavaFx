@@ -4,9 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/soumayaab/Desktop/Esprit/PIDEV/Dawini/Dawini/src/gui/ProfileMedecinController.java</file>
+            <file>file:/home/soumayaab/Desktop/Esprit/PIDEV/Dawini/Dawini/src/services/AvisService.java</file>
+            <file>file:/home/soumayaab/Desktop/Esprit/PIDEV/Dawini/Dawini/src/gui/FrontAvisController.java</file>
             <file>file:/home/soumayaab/Desktop/Esprit/PIDEV/Dawini/Dawini/src/gui/CardMedController.java</file>
-            <file>file:/home/soumayaab/Desktop/Esprit/PIDEV/Dawini/Dawini/src/gui/InfoMedecinController.java</file>
-            <file>file:/home/soumayaab/Desktop/Esprit/PIDEV/Dawini/Dawini/src/gui/HomeController.java</file>
+            <file>file:/home/soumayaab/Desktop/Esprit/PIDEV/Dawini/Dawini/src/gui/AllAvisController.java</file>
         </group>
     </open-files>
 </project-private>

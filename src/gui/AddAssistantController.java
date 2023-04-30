@@ -164,7 +164,7 @@ public class AddAssistantController implements Initializable {
             medecinItem.setOnAction(e -> {
                 String medecinName = medecin.getNom() + " " + medecin.getPrenom();
                 int medecinId = (int) ((MenuItem) e.getSource()).getUserData();
-                System.out.println("id:" + medecinId);
+               
                 // Utilisez l'ID du médecin sélectionné pour effectuer une action
                 // ...
                 MEDECIN.setText(medecinName);
@@ -204,11 +204,6 @@ for (Medecin m : medecinList) {
     }
 }
 
-if (selectedMedecin == null) {
-    System.out.println("Medecin list: " + medecinList);
-    System.out.println("Selected medecin: " + selectedMedecin);
-    return;
-}
 int medecinId = selectedMedecin.getId();
      
 

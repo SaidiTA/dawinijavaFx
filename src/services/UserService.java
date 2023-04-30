@@ -172,11 +172,11 @@ public class UserService implements IService<User> {
 
     }
 
-    public void setVerifCode(User t) throws SQLException {
+    public void setVerifCode(User t,String code) throws SQLException {
         String req = "update user set nom=?, VerifCode=? where id=?";
         PreparedStatement st = cnx.prepareStatement(req);
         st.setString(1, t.getNom());
-        st.setString(2, t.getVerifCode());
+        st.setString(2, code);
         st.setInt(3, t.getId());
         st.executeUpdate();
     }

@@ -132,7 +132,29 @@
                <children>
                   <HBox prefHeight="52.0" prefWidth="365.0" styleClass="white_background" stylesheets="@style.css">
                      <children>
-                        <Button fx:id="VoirPlus" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#VoirPlus" prefHeight="64.0" prefWidth="363.0" styleClass="primary-color" stylesheets="@add.css" text="voir plus" />
+                        <Button fx:id="VoirPlus" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#VoirPlus" prefHeight="58.0" prefWidth="174.0" style="-fx-background-color: #dbe8ff;" stylesheets="@style.css" text="voir le profil">
+                           <styleClass>
+                              <String fx:value="button" />
+                              <String fx:value="shadow" />
+                              <String fx:value="rect-round" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="365.0" styleClass="white_background" stylesheets="@style.css">
+                     <children>
+                        <Button fx:id="btnAvis" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#DonnerAVIS" prefHeight="59.0" prefWidth="172.0" style="-fx-background-color: #dbe8ff;" stylesheets="@style.css" text="Donner Votre Avis">
+                           <styleClass>
+                              <String fx:value="button" />
+                              <String fx:value="shadow" />
+                              <String fx:value="rect-round" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                </children>

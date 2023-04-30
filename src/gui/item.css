@@ -1,0 +1,33 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.cell_container{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box,#cccccc,5,0,0,7);
+    
+}
+
+.trans_icon_container{
+    -fx-background-color:#FFFFFF;
+    -fx-alignment: CENTER;
+    -fx-spacing: 5;
+    
+    
+}
+
+.cell_container line{
+    -fx-stroke: #EEEEEE; 
+}
+
+
+
+
+
+
+
+
+
+
+  

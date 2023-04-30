@@ -54,14 +54,14 @@ public class AssistantService implements IService<Assistant> {
         if (rs.next()) {
             t.setId(rs.getInt(1));
         }
-        System.out.println("getid:" +t.getId());
+       
       
        String req2 = "INSERT INTO assistant(id, medecin_id) VALUES(?, ?)";
 PreparedStatement pst2 = cnx.prepareStatement(req2);
 pst2.setInt(1, t.getId());
 
 if (t.getMedecin() != null) {
-     System.out.println("Medecin ID: " + t.getMedecin().getId());
+   
     pst2.setInt(2, t.getMedecin().getId());
 } else {
     //pst2.setNull(2, java.sql.Types.INTEGER);

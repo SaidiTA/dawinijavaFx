@@ -4,10 +4,12 @@
  */
 package gui;
 
+import entities.Avis;
 import entities.Medecin;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import services.AvisService;
 import services.MedecinService;
 import test.Dawini;
 
@@ -33,6 +36,7 @@ import test.Dawini;
  */
 public class CardMedController implements Initializable {
 
+    private Avis avis;
     @FXML
     private VBox post;
     @FXML
@@ -48,6 +52,8 @@ public class CardMedController implements Initializable {
     private Medecin medecin;
     @FXML
     private ImageView postImage;
+    @FXML
+    private Button btnAvis;
 
     public Medecin getMedecin() {
         return medecin;
@@ -56,58 +62,85 @@ public class CardMedController implements Initializable {
     public void setMedecin(Medecin medecin) {
         this.medecin = medecin;
     }
+
+    public Avis getAvis() {
+        return avis;
+    }
+
+    public void setAvis(Avis avis) {
+        this.avis = avis;
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void VoirPlus(ActionEvent event) throws SQLException {
-         int id = Integer.parseInt(ID.getText());
+        int id = Integer.parseInt(ID.getText());
         MedecinService a = new MedecinService();
         try {
             Medecin medecin = a.recupererById(id);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ProfileMedecin.fxml"));
-        Parent root = loader.load();
-        ProfileMedecinController controller = loader.getController();
-        controller.setMedecin(medecin);
-        Scene scene = new Scene(root);
-       
-        
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        System.out.println(ex.getMessage());
-    }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ProfileMedecin.fxml"));
+            Parent root = loader.load();
+            ProfileMedecinController controller = loader.getController();
+            controller.setMedecin(medecin);
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     void setData(Medecin medecin) {
-        int id=medecin.getId();
-        
-        ID.setText(Integer.toString(id));
-        
-        MED.setText(medecin.getNom() + " " + medecin.getPrenom());
-                Location.setText(medecin.getGouvernorat());
+        int id = medecin.getId();
 
-               
- Tarif.setText(String.valueOf(medecin.getTarif())+" "+"DT");
-  
-       
+        ID.setText(Integer.toString(id));
+
+        MED.setText(medecin.getNom() + " " + medecin.getPrenom());
+        Location.setText(medecin.getGouvernorat());
+
+        Tarif.setText(String.valueOf(medecin.getTarif()) + " " + "DT");
 
 //if (imageUrl != null) {
         try {
             //Image image = new Image(imageUrl.getUrl());
             // Image image = new Image(getClass().getResourceAsStream("../images/account.png"));
             Image image = new Image(Dawini.class.getClass().getResource("/images/" + medecin.getImage()).toString());
-            System.out.println("imageUrl: " + image);
+            // System.out.println("imageUrl: " + image);
             postImage.setImage(image);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
+
+    @FXML
+    private void DonnerAVIS(ActionEvent event) throws SQLException, IOException {
+         int id = Integer.parseInt(ID.getText());
+        MedecinService a = new MedecinService();
+        try {
+          
+            Medecin medecin = a.recupererById(id);
+               List<Avis> avis = a.recupererAvisMedecin(id);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/FrontAvis.fxml"));
+            Parent root = loader.load();
+            FrontAvisController controller = loader.getController();
+            controller.setMedecin(medecin);
+             controller.setAvis(avis);
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }

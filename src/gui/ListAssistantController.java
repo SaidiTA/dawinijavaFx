@@ -5,6 +5,7 @@
 package gui;
 
 import entities.Assistant;
+import entities.UserSession;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -171,6 +172,87 @@ private double x, y;
         } catch (IOException e) {
             System.out.println(e);
         }
+    }
+    }
+
+    @FXML
+    private void handleLogoutButtonAction(ActionEvent event) throws IOException {
+            // Supprimez la session utilisateur en cours
+    UserSession.getInstance().setCurrentUser(null);
+
+    // Redirigez l'utilisateur vers l'écran de connexion
+    Parent root = FXMLLoader.load(getClass().getResource("SignInUser.fxml"));
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    private void handleButtonClick(MouseEvent event) {
+    }
+
+    @FXML
+    private void MED(ActionEvent event) {
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListMedecin.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void ASSISTANT(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListAssistant.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void PAT(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListPatients.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void AVIS(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListAvis.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
     }
     }
 

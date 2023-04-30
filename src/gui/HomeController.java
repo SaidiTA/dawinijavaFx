@@ -5,6 +5,7 @@
 package gui;
 
 import entities.Medecin;
+import entities.UserSession;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,12 +16,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import services.MedecinService;
 
 /**
@@ -40,8 +45,8 @@ public class HomeController implements Initializable {
     private Label ListeMedecin;
     
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+       
+       
     }
     
     @Override
@@ -59,7 +64,7 @@ public class HomeController implements Initializable {
         int column = 0;
         for (Medecin medecin : medecins) {
             try {
-                System.out.println("article "+ medecin);
+               
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/cardMed.fxml"));
                 VBox node = loader.load();
                 CardMedController itemController = loader.getController();
@@ -95,6 +100,23 @@ public class HomeController implements Initializable {
 
     @FXML
     private void refreshTable(ActionEvent event) {
+    }
+
+   @FXML
+    private void handleLogoutButtonAction(ActionEvent event) throws IOException {
+        // Supprimez la session utilisateur en cours
+        UserSession.getInstance().setCurrentUser(null);
+
+        // Redirigez l'utilisateur vers l'écran de connexion
+        Parent root = FXMLLoader.load(getClass().getResource("SignInUser.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void refreshTable(MouseEvent event) {
     }
     
 }

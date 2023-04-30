@@ -50,8 +50,7 @@ public class AddMedecinController implements Initializable {
     private MenuButton Cnam;
     @FXML
     private MenuButton Titre;
-    //@FXML
-    //private MenuButton Specialite;
+   
     @FXML
     private TextArea Adresse;
     @FXML
@@ -79,8 +78,7 @@ public class AddMedecinController implements Initializable {
     @FXML
     private PasswordField ConfirmPassword;
     
-    @FXML
-    private MenuButton Specialite;
+    
     @FXML
     private Button btnUploadImage;
     
@@ -262,9 +260,7 @@ public class AddMedecinController implements Initializable {
         }
     }
 }
-    @FXML
-    private void handleButtonAction(MouseEvent event) {
-    }
+   
 }
     
 

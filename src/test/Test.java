@@ -28,7 +28,7 @@ public class Test {
      * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws SQLException {
-        // Ajouter les rôles
+      /*  // Ajouter les rôles
         ArrayList<String> role=new ArrayList();
          //role.add("[\"ROLE_MEDECIN\"]");
          //role.add("[\"ROLE_PATIENT\"]");
@@ -125,7 +125,7 @@ try {
          
          ////////////////////////////partie Assistant///////////////////////
                
-         
+        /* 
          Medecin medecin = new Medecin();
     medecin.setId(67); // Remplacer 1 par l'id du médecin existant dans la base de données
     
@@ -152,7 +152,7 @@ try {
     
      
     // Ajout de l'assistant
-    AssistantService assistantService = new AssistantService();
+  /*  AssistantService assistantService = new AssistantService();
     try {
         assistantService.ajouter(assistant);
         System.out.println("Assistant ajouté avec succès !");
