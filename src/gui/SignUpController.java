@@ -233,6 +233,38 @@ public class SignUpController implements Initializable {
         }
     }
 }
+
+    @FXML
+    private void registerMedcin(ActionEvent event) {
+              try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUpMedecin.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void retourlogin(ActionEvent event) {
+              try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignInUser.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
     
     
 }

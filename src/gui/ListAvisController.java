@@ -6,6 +6,7 @@ package gui;
 
 import entities.Avis;
 import entities.Medecin;
+import entities.UserSession;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -190,6 +191,24 @@ public class ListAvisController implements Initializable {
     } catch (IOException ex) {
         System.out.println(ex.getMessage());
     }
+    }
+
+    @FXML
+    private void handleLogoutButtonAction(ActionEvent event) throws IOException {
+            // Supprimez la session utilisateur en cours
+    UserSession.getInstance().setCurrentUser(null);
+
+    // Redirigez l'utilisateur vers l'écran de connexion
+    Parent root = FXMLLoader.load(getClass().getResource("SignInUser.fxml"));
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    }
+
+
+    @FXML
+    private void refreshTable(MouseEvent event) {
     }
 
     

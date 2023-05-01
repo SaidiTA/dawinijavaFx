@@ -100,10 +100,10 @@ public class SignInUserController implements Initializable {
                     stage.setScene(new Scene(root));
                     stage.show();
                 } else if (roles.equals("[\"ROLE_MEDECIN\"]")) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListMedecin.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListMedecinArticle.fxml"));
                     Parent root = loader.load();
                     // get the controller for the new scene and set any necessary parameters
-                    ListMedecinController controller = loader.getController();
+                    ListMedecinArticle controller = loader.getController();
                     // controller.setLoggedInUser(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
                     // show the new scene
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -148,6 +148,22 @@ public class SignInUserController implements Initializable {
     private void ForgotPassword(ActionEvent event) {
           try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SendSms.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void register(ActionEvent event) {
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUpMedecin.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
        

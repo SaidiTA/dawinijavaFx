@@ -58,7 +58,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="382.0" stylesheets="@add.css" text="Medecins">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#MED" prefHeight="53.0" prefWidth="382.0" stylesheets="@add.css" text="Medecins">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -79,7 +79,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Assistants">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#ASSISTANT" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Assistants">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -100,7 +100,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Patients">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#PAT" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Patients">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -184,7 +184,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Avis">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#AVIS" prefHeight="53.0" prefWidth="393.0" stylesheets="@add.css" text="Avis">
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -247,7 +247,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="400.0" stylesheets="@add.css" text="logout">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="55.0" prefWidth="400.0" stylesheets="@add.css" text="logout">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>

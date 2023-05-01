@@ -59,15 +59,15 @@ public class SendSmsController implements Initializable {
         String telephone = TEL.getText();
         User user = userService.VerifyPhone(telephone);
 
-        System.out.println("user " + user);
+       
         if (user.getId() != 0) {
             String code = generateCode();
             String body = "Bonjour! Le code de verification pour changement de mot de passe: " + code;
 
             // Send the code via SMS
             SendSMS.sendMessage("+216" + telephone, body);
-            user.setVerifCode(code);
-            userService.setVerifCode(user);
+            //user.setVerifCode(code);
+            userService.setVerifCode(user, code);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText("Verification code sent successfully.");

@@ -66,7 +66,7 @@
                      </styleClass>
                   </MenuButton>
                   <TextArea fx:id="ADRESSE" layoutX="63.0" layoutY="522.0" prefHeight="95.0" prefWidth="668.0" promptText="Adresse" stylesheets="@style.css" />
-                  <Hyperlink layoutX="628.0" layoutY="42.0" text="Êtes-vous Médecin ?" />
+                  <Hyperlink layoutX="628.0" layoutY="42.0" onAction="#registerMedcin" text="Êtes-vous Médecin ?" />
                   <Button fx:id="btn" layoutX="543.0" layoutY="731.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="48.0" prefWidth="189.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Se Connecter">
                      <styleClass>
                         <String fx:value="button" />
@@ -77,6 +77,7 @@
                         <Font size="18.0" />
                      </font></Text>
                   <Button fx:id="btnUploadImage" layoutX="276.0" layoutY="658.0" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="48.0" prefWidth="270.0" style="-fx-background-color: silver;" styleClass="shadow" stylesheets="@add.css" text="Upload Image" />
+                  <Hyperlink layoutX="63.0" layoutY="767.0" onAction="#retourlogin" text="Already have account" />
                </children>
             </Pane>
          </center>

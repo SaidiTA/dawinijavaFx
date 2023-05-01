@@ -62,7 +62,7 @@
                      </styleClass>
                   </MenuButton>
                   <TextArea fx:id="lblcabinet" layoutX="66.0" layoutY="587.0" prefHeight="63.0" prefWidth="668.0" promptText=" Adresse Cabinet" />
-                  <Hyperlink layoutX="628.0" layoutY="42.0" style="te: #3057a4;" text="Êtes-vous Patient ?" />
+                  <Hyperlink layoutX="628.0" layoutY="42.0" onAction="#signupPat" style="te: #3057a4;" text="Êtes-vous Patient ?" />
                   <Button fx:id="btn" layoutX="578.0" layoutY="842.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: #dbe8ff;" styleClass="shadow" stylesheets="@add.css" text="S'inscrire" />
                   <Text fill="#3057a4" layoutX="63.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSCRIPTION DE MEDECIN" wrappingWidth="272.22135162353516">
                      <font>
@@ -103,6 +103,7 @@
                   <TextArea fx:id="lbladress" layoutX="66.0" layoutY="668.0" prefHeight="66.0" prefWidth="668.0" promptText="Adresse" />
                   <TextArea fx:id="lbldiplome" layoutX="63.0" layoutY="503.0" prefHeight="65.0" prefWidth="674.0" promptText="Diplome Et Formation" />
                   <Button fx:id="btnUploadImage" layoutX="283.0" layoutY="769.0" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="48.0" prefWidth="270.0" style="-fx-background-color: silver;" styleClass="shadow" stylesheets="@add.css" text="Upload Image" />
+                  <Hyperlink layoutX="52.0" layoutY="859.0" onAction="#retourlogin" prefHeight="31.0" prefWidth="179.0" text="Already have Account" />
                </children>
             </Pane>
          </center>

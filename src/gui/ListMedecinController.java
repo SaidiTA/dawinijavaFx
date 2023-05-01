@@ -5,16 +5,14 @@
 package gui;
 
 import entities.Medecin;
+import entities.User;
+import entities.UserSession;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -22,17 +20,17 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import services.MedecinService;
+import test.Dawini;
 
 /**
  *
@@ -70,11 +68,44 @@ private double x, y;
     private Button btnRef1;
     @FXML
     private ImageView btnRef;
-   
+    @FXML
+    private Button btnSearch;
+    @FXML
+    private TextField txtSearch;
+    @FXML
+    private Button btnlogout;
+    @FXML
+    private ImageView imgprofile;
+   private Medecin medecin;
+    @FXML
+    private Button btnArticle;
+
+    public Medecin getMedecin() {
+        return medecin;
+    }
+
+    public void setMedecin(Medecin medecin) {
+        this.medecin = medecin;
+    }
 
     
 
       public void initialize(URL location, ResourceBundle resources) {
+          User currentUser = UserSession.getInstance().getCurrentUser();
+if (currentUser != null) {
+    String imagePath = currentUser.getImagePath();
+    try {
+            //Image image = new Image(imageUrl.getUrl());
+            // Image image = new Image(getClass().getResourceAsStream("../images/account.png"));
+            Image image = new Image(Dawini.class.getClass().getResource("/images/" + medecin.getImage()).toString());
+            System.out.println("imageUrl: " + image);
+            imgprofile.setImage(image);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+
            MedecinService medecinService = new MedecinService();
          List<Medecin> medecins = null;
 
@@ -87,18 +118,26 @@ private double x, y;
       
 
 
+for (Medecin medecin : medecins) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/item.fxml"));
+        Node node = loader.load();
+        ItemController itemController = loader.getController();
+        itemController.setData(medecin);
 
-    for (Medecin medecin : medecins) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/item.fxml"));
-            Node node = loader.load();
-            ItemController itemController = loader.getController();
-            itemController.setData(medecin);
-            pnitems.getChildren().add(node);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        node.setOnMouseEntered(event -> {
+            node.setStyle("-fx-background-color : #c8d7db");
+        });
+        node.setOnMouseExited(event -> {
+            node.setStyle("-fx-background-color :  #F1F7FD");
+        });
+
+        pnitems.getChildren().add(node);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+
 
     }
 @FXML
@@ -180,6 +219,148 @@ private double x, y;
         }
     }
     }
+
+   
+
+    @FXML
+private void search(ActionEvent event) {
+    pnitems.getChildren().clear();
+    MedecinService medecinService = new MedecinService();
+    List<Medecin> medecins = null;
+
+    try {
+        medecins =  medecinService.rechercher(txtSearch.getText());
+    } catch (SQLException ex) {
+        System.out.println(ex);
+    }
+
+   for (Medecin medecin : medecins) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/item.fxml"));
+        Node node = loader.load();
+        ItemController itemController = loader.getController();
+        itemController.setData(medecin);
+        pnitems.getChildren().add(node);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+}
+
+   @FXML
+private void handleLogoutButtonAction(ActionEvent event) throws IOException {
+    // Supprimez la session utilisateur en cours
+    UserSession.getInstance().setCurrentUser(null);
+
+    // Redirigez l'utilisateur vers l'écran de connexion
+    Parent root = FXMLLoader.load(getClass().getResource("SignInUser.fxml"));
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+}
+
+    @FXML
+    private void Med(ActionEvent event) {
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListMedecin.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    
+
+    
+    
+    }
+
+    @FXML
+    private void ASSISTANT(ActionEvent event) {
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListAssistant.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    
+    
+    
+
+    @FXML
+    private void PAT(ActionEvent event) {
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListPatients.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    
+    
+    
+
+    @FXML
+    private void AVIS(ActionEvent event) {
+       try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListAvis.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void ARTICLE(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListAdminArticle.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void handleButtonClick(MouseEvent event) {
+    }
+
+    
+    
+
+ 
+   
 
   
 

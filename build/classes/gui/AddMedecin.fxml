@@ -18,8 +18,7 @@
       <children>
          <MenuButton fx:id="Genre" layoutX="385.0" layoutY="360.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="249.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Genre">
             <items>
-               <MenuItem mnemonicParsing="false" text="Action 1" />
-               <MenuItem mnemonicParsing="false" text="Action 2" />
+              
             </items>
             <styleClass>
                <String fx:value="shadow" />
@@ -29,8 +28,7 @@
          <TextArea fx:id="Adresse_Cabinet" layoutX="63.0" layoutY="679.0" prefHeight="63.0" prefWidth="834.0" promptText=" Adresse Cabinet" styleClass="shadow" stylesheets="@add.css" />
          <MenuButton fx:id="Cnam" layoutX="679.0" layoutY="359.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="221.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="CNAM">
             <items>
-               <MenuItem mnemonicParsing="false" text="Action 1" />
-               <MenuItem mnemonicParsing="false" text="Action 2" />
+              
             </items>
             <styleClass>
                <String fx:value="shadow" />
@@ -39,8 +37,7 @@
          </MenuButton>
          <MenuButton fx:id="Titre" layoutX="66.0" layoutY="358.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="270.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Titre">
             <items>
-               <MenuItem mnemonicParsing="false" text="Action 1" />
-               <MenuItem mnemonicParsing="false" text="Action 2" />
+               
             </items>
             <styleClass>
                <String fx:value="shadow" />
@@ -61,8 +58,7 @@
          <TextArea fx:id="Diplome_Formation" layoutX="63.0" layoutY="599.0" prefHeight="65.0" prefWidth="834.0" promptText="Diplome Et Formation" styleClass="shadow" stylesheets="@add.css" />
          <MenuButton fx:id="Gouvernorat" layoutX="511.0" layoutY="433.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="388.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Gouvernorat">
             <items>
-               <MenuItem mnemonicParsing="false" text="Action 1" />
-               <MenuItem mnemonicParsing="false" text="Action 2" />
+               
             </items>
             <styleClass>
                <String fx:value="shadow" />

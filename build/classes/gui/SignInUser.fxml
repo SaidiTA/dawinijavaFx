@@ -44,7 +44,7 @@
                         <Font size="14.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink layoutX="549.0" layoutY="594.0" text="Register now">
+                  <Hyperlink layoutX="549.0" layoutY="594.0" onAction="#register" text="Register now">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -68,7 +68,7 @@ TextField {
 
 .shopping-online-card{
     -fx-background-color: #BAEAC3;
-    -fx-background-radius: 30;
+    -fx-background-radius: 10px 100px / 120px;
 }
 
 .fruit-item{
@@ -76,3 +76,7 @@ TextField {
         -fx-background-radius: 30;
 }
 
+.border{
+    -fx-border-radius: 10px 30px 50px 70px;
+   
+}

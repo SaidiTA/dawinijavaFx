@@ -7,6 +7,7 @@ package gui;
 import entities.User;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,15 +48,15 @@ public class VerifyCodeController implements Initializable {
     }
 
     @FXML
-    private void Verifier(ActionEvent event) {
+    private void Verifier(ActionEvent event) throws SQLException {
 
         String telephone = TEL.getText();
         String code = CODE.getText();
+        
         UserService service = new UserService();
         User user = service.CheckVerifCode(telephone, code);
         if (user.getId() != 0) {
-            user.setVerifCode(null);
-
+            service.setVerifCode(user, null);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText("Verification code sent successfully.");

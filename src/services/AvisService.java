@@ -20,17 +20,18 @@ public class AvisService implements IService<Avis> {
          cnx = MyDB.getInstance().getCnx();
     }
     
-    @Override
-    public void ajouter(Avis avis) throws SQLException {
-        String sql = "INSERT INTO avis (medecin_id, patient_id, text, note, date) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement statement = cnx.prepareStatement(sql);
-        statement.setInt(1, avis.getMedecin().getId());
-        statement.setInt(2, avis.getPatient().getId());
-        statement.setString(3, avis.getText());
-        statement.setDouble(4, avis.getNote());
-        statement.setDate(5, new java.sql.Date(avis.getDate().getTime()));
-        statement.executeUpdate();
-    }
+ @Override
+public void ajouter(Avis avis) throws SQLException {
+    String sql = "INSERT INTO avis (medecin_id, patient_id, text, note, date, statut) VALUES (?, ?, ?, ?, ?, ?)";
+    PreparedStatement statement = cnx.prepareStatement(sql);
+    statement.setInt(1, avis.getMedecin().getId());
+    statement.setInt(2, avis.getPatient().getId());
+    statement.setString(3, avis.getText());
+    statement.setDouble(4, avis.getNote());
+    statement.setDate(5, new java.sql.Date(avis.getDate().getTime()));
+    statement.setString(6, "Activer");
+    statement.executeUpdate();
+}
 
     @Override
     public void modifier(Avis avis) throws SQLException {
@@ -104,8 +105,32 @@ public Avis recupererById(int id) throws SQLException {
 }
 
    
+public List<Avis> recupererAvisMedecin(int medecinId) throws SQLException {
+    String sql = "SELECT id, patient_id, text, note, date, statut FROM avis WHERE medecin_id = ?";
+    PreparedStatement statement = cnx.prepareStatement(sql);
+    statement.setInt(1, medecinId);
+    ResultSet result = statement.executeQuery();
 
-   
+    List<Avis> avisList = new ArrayList<>();
+
+    while (result.next()) {
+        int id = result.getInt("id");
+        int patientId = result.getInt("patient_id");
+        String text = result.getString("text");
+        double note = result.getDouble("note");
+        Date date = result.getDate("date");
+        String statut = result.getString("statut");
+
+        Patient patient = new PatientService().recupererById(patientId);
+        Medecin medecin = new MedecinService().recupererById(medecinId);
+
+        Avis avis = new Avis(id, medecin, patient, text, note, date, statut);
+        avisList.add(avis);
+    }
+
+    return avisList;
+}
+
 
 }
 

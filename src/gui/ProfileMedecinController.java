@@ -5,11 +5,16 @@
 package gui;
 
 import entities.Medecin;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -18,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import test.Dawini;
 
 /**
@@ -28,53 +34,61 @@ import test.Dawini;
 public class ProfileMedecinController implements Initializable {
 
     @FXML
-    private TextArea commentTextArea;
-    @FXML
-    private Button submitButton;
-    @FXML
-    private VBox allComments;
-    @FXML
     private ImageView btnUploadImage;
     @FXML
-    private Text ID;
-    @FXML
-    private Text NOM;
-    @FXML
-    private Text PRENOM;
-    @FXML
-    private Text EMAIL;
-   
-    @FXML
-    private Text TEL;
-    @FXML
-    private Text FIXE;
-   
-    @FXML
-    private Text TITRE;
+    private TextField ID;
     
     @FXML
-    private Text diplome;
+    private TextField NOM;
+    
+    @FXML
+    private TextField PRENOM;
+    
+    @FXML
+    private TextField EMAIL;
+    
+   
+    @FXML
+    private TextField TEL;
+    
+    @FXML
+    private TextField FIXE;
+    
+   
+    @FXML
+    private TextField TITRE;
+    
+    
 private Medecin medecin;
-    @FXML
     private Button btncrosse;
-    @FXML
     private ImageView btncross;
     @FXML
-    private Text TARIF;
+    private TextField TARIF;
+    
     @FXML
-    private Text GOUV;
+    private TextField GOUV;
+    
     @FXML
-    private Text SPEC;
+    private TextField SPEC;
+    
     @FXML
-    private Text ADRESSE;
+    private TextField ADRESSE;
     @FXML
-    private Text CABINET;
+    private TextField CABINET;
+    
+    @FXML
+    private TextField Genre;
+    @FXML
+    private Button btnBack;
+
+    
 
     public Medecin getMedecin() {
         return medecin;
     }
-     public void setMedecin(Medecin medecin) {
-         ID.setText(String.valueOf(medecin.getId()));
+
+    public void setMedecin(Medecin medecin) {
+        ID.setText(String.valueOf(medecin.getId()));
         this.medecin = medecin;
         NOM.setText(medecin.getNom());
         PRENOM.setText(medecin.getPrenom());
@@ -83,17 +97,11 @@ private Medecin medecin;
         CABINET.setText(medecin.getAdresse_cabinet());
         TEL.setText(medecin.getTelephone());
         TITRE.setText(medecin.getTitre());
-        
+        Genre.setText(medecin.getSexe());
         ADRESSE.setText(medecin.getAdresse());
         FIXE.setText(medecin.getFixe());
-     
-     FIXE.setText(medecin.getFixe());
-      
-      TARIF.setText(String.valueOf(medecin.getTarif()));
-        
-        SPEC.setText("");
-      
-       
+        TARIF.setText(String.valueOf(medecin.getTarif()));
+        SPEC.setText("Diabète");
         try {
             //Image image = new Image(imageUrl.getUrl());
             // Image image = new Image(getClass().getResourceAsStream("../images/account.png"));
@@ -104,27 +112,33 @@ private Medecin medecin;
             System.out.println(ex.getMessage());
         }
     }
-       
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void submitComment(ActionEvent event) {
-       
     }
 
-    @FXML
-    private void handleButtonAction(MouseEvent event) {
-    }
+
+private void handleButtonAction(ActionEvent event) throws IOException {
+   
+
+}
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void retour(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-    
 }
