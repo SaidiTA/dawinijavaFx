@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="917.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SignUpUserController">
+   <children>
+      <BorderPane layoutY="-1.0" prefHeight="917.0" prefWidth="1281.0">
+         <left>
+            <Pane prefHeight="917.0" prefWidth="469.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Line endX="7.0" endY="-224.99996948242188" layoutX="407.0" layoutY="225.0" startX="7.0" startY="598.2929077148438" />
+                  <ImageView fitHeight="945.0" fitWidth="472.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/INSRI.png" />
+                     </image></ImageView>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <Pane prefHeight="883.0" prefWidth="794.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="lblNom" layoutX="63.0" layoutY="123.0" prefHeight="50.0" prefWidth="219.0" promptText="Nom" />
+                  <TextField fx:id="lblPrenom" layoutX="294.0" layoutY="123.0" prefHeight="50.0" prefWidth="197.0" promptText="Prenom" />
+                  <TextField fx:id="lblEmail" layoutX="501.0" layoutY="123.0" prefHeight="50.0" prefWidth="235.0" promptText="Email" />
+                  <TextField fx:id="lblTelephone" layoutX="63.0" layoutY="199.0" prefHeight="51.0" prefWidth="219.0" promptText="Telephone" />
+                  <TextField fx:id="lblcin" layoutX="501.0" layoutY="200.0" prefHeight="50.0" prefWidth="237.0" promptText="CIN" />
+                  <PasswordField fx:id="lblpassword" layoutX="63.0" layoutY="353.0" prefHeight="57.0" prefWidth="330.0" promptText="Mot De Passe" />
+                  <PasswordField fx:id="lblconfirm" layoutX="418.0" layoutY="353.0" prefHeight="57.0" prefWidth="319.0" promptText="Confirmer Mot De Passe" />
+                  <MenuButton fx:id="lblgouv" layoutX="418.0" layoutY="433.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="319.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Gouvernorat">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                     <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </MenuButton>
+                  <MenuButton fx:id="lblgenre" layoutX="462.0" layoutY="279.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Genre">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </MenuButton>
+                  <TextArea fx:id="lblcabinet" layoutX="66.0" layoutY="587.0" prefHeight="63.0" prefWidth="668.0" promptText=" Adresse Cabinet" />
+                  <Hyperlink layoutX="628.0" layoutY="42.0" onAction="#signupPat" style="te: #3057a4;" text="Êtes-vous Patient ?" />
+                  <Button fx:id="btn" layoutX="578.0" layoutY="842.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: #dbe8ff;" styleClass="shadow" stylesheets="@add.css" text="S'inscrire" />
+                  <Text fill="#3057a4" layoutX="63.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSCRIPTION DE MEDECIN" wrappingWidth="272.22135162353516">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <MenuButton fx:id="lblcnam" layoutX="612.0" layoutY="279.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="126.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="CNAM">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </MenuButton>
+                  <MenuButton fx:id="lbltitre" layoutX="294.0" layoutY="279.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="162.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Titre">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </MenuButton>
+                  <MenuButton fx:id="lblspec" layoutX="63.0" layoutY="433.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="331.0" style="-fx-background-color: #dbe8ff;" stylesheets="@add.css" text="Specialite">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </MenuButton>
+                  <TextField fx:id="lbltarif" layoutX="63.0" layoutY="277.0" prefHeight="50.0" prefWidth="221.0" promptText="Tarif" />
+                  <TextField fx:id="lblFixe" layoutX="294.0" layoutY="200.0" prefHeight="50.0" prefWidth="200.0" promptText="Fixe" />
+                  <TextArea fx:id="lbladress" layoutX="66.0" layoutY="668.0" prefHeight="66.0" prefWidth="668.0" promptText="Adresse" />
+                  <TextArea fx:id="lbldiplome" layoutX="63.0" layoutY="503.0" prefHeight="65.0" prefWidth="674.0" promptText="Diplome Et Formation" />
+                  <Button fx:id="btnUploadImage" layoutX="283.0" layoutY="769.0" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="48.0" prefWidth="270.0" style="-fx-background-color: silver;" styleClass="shadow" stylesheets="@add.css" text="Upload Image" />
+                  <Hyperlink layoutX="52.0" layoutY="859.0" onAction="#retourlogin" prefHeight="31.0" prefWidth="179.0" text="Already have Account" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
