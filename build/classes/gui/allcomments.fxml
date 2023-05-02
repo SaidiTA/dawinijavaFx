@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="allComments" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="133.0" prefWidth="708.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AllcommentsController">
+   <children>
+      <HBox prefHeight="48.0" prefWidth="708.0">
+         <children>
+            <Text fx:id="ID" strokeType="OUTSIDE" strokeWidth="0.0" text="id" wrappingWidth="33.13671875">
+               <HBox.margin>
+                  <Insets left="8.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <Text fx:id="nompat" strokeType="OUTSIDE" strokeWidth="0.0" text="nomuser">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Text>
+            <Text fx:id="DATE" strokeType="OUTSIDE" strokeWidth="0.0" text="date">
+               <HBox.margin>
+                  <Insets left="550.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox prefHeight="87.0" prefWidth="708.0">
+         <children>
+            <Text fx:id="MESSAGE" strokeType="OUTSIDE" strokeWidth="0.0" text="message" wrappingWidth="389.2421875" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="60.0" top="12.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

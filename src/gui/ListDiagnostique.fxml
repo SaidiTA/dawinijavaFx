@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="845.0" prefWidth="1310.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListDiagnostiqueController">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="320.0" styleClass="white-background" stylesheets="@style.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="295.0" prefWidth="300.0" styleClass="profile-layout" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/doctor.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label text="Marwa kaabar" textFill="WHITE">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Corbel Bold" size="27.0" />
+                     </font></Label>
+               </children>
+               <opaqueInsets>
+                  <Insets left="10.0" right="10.0" />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="438.0" prefWidth="320.0">
+               <children>
+                  <Label text="Date de diagnostique" textFill="#33ccff">
+                     <font>
+                        <Font name="Corbel Bold" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker fx:id="dateCol" prefHeight="56.0" prefWidth="291.0">
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Label text="Symptome" textFill="#33ccff">
+                     <font>
+                        <Font name="Corbel Bold" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" top="15.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="sympCol" prefHeight="59.0" prefWidth="290.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" />
+                     </VBox.margin></TextField>
+                  <Label text="Resultat du test" textFill="#33ccff">
+                     <font>
+                        <Font name="Corbel Bold" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" top="15.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="resCol" prefHeight="58.0" prefWidth="290.0">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" />
+                     </VBox.margin></TextField>
+                  <Label text="Diagnostique final" textFill="#33ccff">
+                     <font>
+                        <Font name="Corbel Bold" size="25.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" top="15.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="diagCol" prefHeight="56.0" prefWidth="290.0">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" />
+                     </VBox.margin></TextField>
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#btn_aj_diag" text="Ajouter diagnostique" textFill="WHITE">
+               <font>
+                  <Font name="Corbel" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="44.0" top="22.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="white-background" stylesheets="@style.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="81.0" prefWidth="990.0" styleClass="white-background" stylesheets="@style.css">
+               <children>
+                  <Pane prefHeight="81.0" prefWidth="916.0" styleClass="white-background" stylesheets="@style.css">
+                     <children>
+                        <Button layoutX="35.0" layoutY="25.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
+                     </children></Pane>
+                  <TextField fx:id="Recherche" onKeyReleased="#Recherche" prefHeight="39.0" prefWidth="625.0">
+                     <HBox.margin>
+                        <Insets top="23.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css">
+                     <HBox.margin>
+                        <Insets top="18.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="search" fitHeight="39.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/images.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="54.0" prefWidth="990.0" styleClass="white-background" stylesheets="@style.css">
+               <children>
+                  <HBox prefHeight="54.0" prefWidth="815.0" />
+                  <ComboBox fx:id="Trie" onAction="#Trie" prefHeight="31.0" prefWidth="154.0" promptText="Trie par date" />
+               </children></HBox>
+            <Label text="Liste des diagnostiques" textFill="#33ccff">
+               <font>
+                  <Font name="Corbel Bold" size="32.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="36.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="white-background" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane prefHeight="653.0" prefWidth="985.0" style="-fx-background-color: #fff;" styleClass="transparent" stylesheets="@style.css">
+                     <content>
+                        <VBox fx:id="dos" prefHeight="649.0" prefWidth="983.0" styleClass="white-background" stylesheets="@style.css">
+                           <children>
+                              <HBox fx:id="HB" prefHeight="64.0" prefWidth="200.0" spacing="10.0" styleClass="light-gray-background" stylesheets="@style.css">
+                                 <children>
+                                    <Label prefHeight="64.0" prefWidth="33.0" text="ID">
+                                       <font>
+                                          <Font name="Corbel Bold Italic" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="65.0" prefWidth="170.0" text="Date diagnostique">
+                                       <font>
+                                          <Font name="Corbel Bold Italic" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="64.0" prefWidth="171.0" text="Symptome">
+                                       <font>
+                                          <Font name="Corbel Bold Italic" size="20.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="33.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label layoutX="233.0" layoutY="10.0" prefHeight="64.0" prefWidth="222.0" text="Resultat test">
+                                       <font>
+                                          <Font name="Corbel Bold Italic" size="20.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="37.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label layoutX="387.0" layoutY="10.0" prefHeight="64.0" prefWidth="184.0" text="Diagnostique final">
+                                       <font>
+                                          <Font name="Corbel Bold Italic" size="20.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="7.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="64.0" prefWidth="230.0" text="Action">
+                                       <font>
+                                          <Font name="Corbel Bold Italic" size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="81.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

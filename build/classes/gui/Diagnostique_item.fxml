@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="HBox" onMouseClicked="#onSelection" prefHeight="63.0" prefWidth="1123.0" spacing="10.0" styleClass="light-gray-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Diagnostique_itemController">
+   <children>
+      <Label fx:id="idCol" prefHeight="63.0" prefWidth="51.0">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateCol" prefHeight="65.0" prefWidth="170.0">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="symCol" prefHeight="64.0" prefWidth="171.0">
+         <padding>
+            <Insets left="33.0" />
+         </padding>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="resCol" layoutX="233.0" layoutY="10.0" prefHeight="64.0" prefWidth="222.0">
+         <padding>
+            <Insets left="37.0" />
+         </padding>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="diagCol" layoutX="387.0" layoutY="10.0" prefHeight="64.0" prefWidth="201.0">
+         <padding>
+            <Insets left="7.0" />
+         </padding>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="63.0" prefWidth="228.0" spacing="15.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#mod_dos" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #EBC95E;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/images%20(2).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#sup_dos" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #f04f4f;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/téléchargement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#pdf" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #fff;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/pdf.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</HBox>

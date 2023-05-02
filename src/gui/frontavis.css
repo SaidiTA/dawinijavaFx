@@ -1,0 +1,40 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+-fx-background-color: #f5f5f5;
+}
+
+Label {
+-fx-font-size: 16px;
+}
+
+HBox > Label {
+-fx-pref-width: 100px;
+}
+
+Button {
+-fx-background-color: #2196f3;
+-fx-text-fill: white;
+}
+
+ListView {
+-fx-background-color: white;
+-fx-border-color: #ddd;
+-fx-border-width: 1px;
+-fx-padding: 10px;
+}
+
+ListView .list-cell {
+-fx-padding: 10px;
+-fx-background-color: #f9f9f9;
+}
+
+.listViewNameLabel {
+-fx-font-weight: bold;
+}
+
+.listViewCommentLabel {
+-fx-text-fill: #666;
+}
