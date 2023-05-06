@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="257.0" prefWidth="771.0" stylesheets="@add.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DeleteController">
+   <children>
+      <Label layoutX="171.0" layoutY="46.0" prefHeight="47.0" prefWidth="411.0" text="Confirmer-vous la suppression ?" textFill="#1e1c1c">
+         <font>
+            <Font name="Likhan" size="30.0" />
+         </font>
+      </Label>
+      <Text fill="#656565" layoutX="223.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous confirmez, Votre dossier " wrappingWidth="325.54052734375">
+         <font>
+            <Font name="SansSerif Regular" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#656565" layoutX="271.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sera definitivement effacé">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnSupprimer" layoutX="180.0" layoutY="186.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="47.0" prefWidth="182.0" style="-fx-background-color: #dd0000;" stylesheets="@add.css" text="Supprimer" textFill="#252424">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <styleClass>
+            <String fx:value="whit_background" />
+            <String fx:value="button" />
+         </styleClass>
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tr-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnAnnuler" layoutX="430.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="175.0" style="-fx-background-color: #dcdcdc;" stylesheets="@add.css" text="Annuler">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <styleClass>
+            <String fx:value="whit_background" />
+            <String fx:value="button" />
+         </styleClass>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/crosss-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+   <styleClass>
+      <String fx:value="anchorpane-round" />
+      <String fx:value="whit_background" />
+   </styleClass>
+</Pane>

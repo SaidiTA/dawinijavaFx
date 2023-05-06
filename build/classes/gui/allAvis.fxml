@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="allAvis" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="1077.0" spacing="12.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AllAvisController">
+   <children>
+      <HBox prefHeight="52.0" prefWidth="826.0" stylesheets="@testt.css">
+         <children>
+            <VBox prefHeight="62.0" prefWidth="1084.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="31.0" prefWidth="1077.0">
+                     <children>
+                        <ImageView fx:id="imgprofil" fitHeight="41.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
+
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text fx:id="nompat" fill="#1f4a83" strokeType="OUTSIDE" strokeWidth="0.0" text="nomuser" wrappingWidth="201.21142578125" />
+                              <Text fx:id="DATE" fill="#b5aaaa" lineSpacing="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date">
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="noteBox" prefHeight="41.0" prefWidth="172.0">
+                           <HBox.margin>
+                              <Insets left="680.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="105.0" prefWidth="1077.0" spacing="1.0" style="-fx-background-color: #a8c1e3;" stylesheets="@testt.css">
+         <children>
+            <Text fx:id="MESSAGE" strokeType="OUTSIDE" strokeWidth="0.0" text="message" wrappingWidth="1002.2421875">
+               <font>
+                  <Font name="Serif Regular" size="13.0" />
+               </font></Text>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="60.0" top="12.0" />
+         </padding>
+         <styleClass>
+            <String fx:value="shopping-online-card" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </HBox>
+   </children>
+   <styleClass>
+      <String fx:value="right-bar" />
+      <String fx:value="shadow" />
+      <String fx:value="transparent" />
+      <String fx:value="chosen-fruit-card" />
+      <String fx:value="transparent" />
+      <String fx:value="free-delivery-card" />
+      <String fx:value="cell_container" />
+   </styleClass>
+   <stylesheets>
+      <URL value="@testt.css" />
+      <URL value="@item.css" />
+   </stylesheets>
+</VBox>

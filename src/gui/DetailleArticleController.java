@@ -1,0 +1,216 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
+package gui;
+
+import entities.Article;
+import entities.Commentaire;
+import entities.Images;
+import entities.User;
+import entities.UserSession;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import services.detailleArticleService;
+import test.Dawini;
+
+/**
+ * FXML Controller class
+ *
+ * @author soumayaab
+ */
+public class DetailleArticleController implements Initializable {
+int user_id;
+    @FXML
+    private TextArea commentTextArea;
+    @FXML
+    private Button submitButton;
+    @FXML
+    private ImageView imgarticle;
+    @FXML
+    private Text ID;
+    @FXML
+    private Label narticle;
+    @FXML
+    private Label descarticle;
+    @FXML
+    private Button unlike;
+    @FXML
+    private Button like;
+    @FXML
+    private Button retour;
+
+    @FXML
+    private VBox allComments;
+
+    @FXML
+    private Label dislikeCountLabel;
+    @FXML
+    private Label likeCountLabel;
+
+    /**
+     * Initializes the controller class.
+     */
+    private Article article;
+    private User user;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
+    public void initialize(int user) {
+         this.user_id=user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setArticle(Article article) {
+        ID.setText(String.valueOf(article.getId()));
+        this.article = article;
+        narticle.setText(article.getNom());
+        descarticle.setText(article.getDescription());
+        Images imageUrl = article.getImages();
+        Image image = new Image(Dawini.class.getClass().getResource("/images/" + imageUrl.getUrl()).toString());
+
+        imgarticle.setImage(image);
+        //imgarticle.setImages(article.getImages());
+        detailleArticleService commetaireService = new detailleArticleService();
+        List<Commentaire> commentaires = null;
+        System.out.println("article " + article);
+        commentaires = commetaireService.listCommentaire(article);
+        System.out.println("commentaires " + commentaires);
+
+        for (Commentaire comment : commentaires) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("allcomments.fxml"));
+                Node node = loader.load();
+                AllcommentsController commentaireController = loader.getController();
+                commentaireController.setData(comment);
+                allComments.getChildren().add(node);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    private void submitComment(ActionEvent event) throws SQLException {
+        String message = commentTextArea.getText().trim();
+
+        if (!message.isEmpty()) {
+            // Define list of inappropriate words
+            List<String> motsInappropries = Arrays.asList("nul", "mauvais", "terrible");
+
+            // Split the message into individual words
+            String[] mots = message.split("[\\s,.!?]+");
+
+            // Loop through the words and replace any inappropriate words with a star
+            for (int i = 0; i < mots.length; i++) {
+                if (motsInappropries.contains(mots[i].toLowerCase())) {
+                    StringBuilder stars = new StringBuilder();
+                    for (int j = 0; j < mots[i].length(); j++) {
+                        stars.append('*');
+                    }
+                    mots[i] = stars.toString();
+                }
+            }
+
+            // Recompose the message from the filtered words
+            message = String.join(" ", mots);
+
+            // Create and insert the filtered comment into the database
+            detailleArticleService commentaireService = new detailleArticleService();
+            User user = new User();
+            //bsh tbadel yrecuperi l patient connecte 
+            user.setId(70);
+            Commentaire commentaire = new Commentaire(message, new Date(), article, user_id);
+            commentaire.setUser_id(UserSession.getInstance().getCurrentUser().getId());
+            commentaireService.ajouter(commentaire);
+
+            // Clear the text area after submitting the comment
+            commentTextArea.clear();
+
+            // Refresh the comments section
+            refreshComments();
+        }
+    }
+
+    @FXML
+    private void retour(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("article.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private void refreshComments() {
+        // Nettoyer tous les commentaires existants
+        allComments.getChildren().clear();
+
+        // Charger et afficher les nouveaux commentaires
+        detailleArticleService commetaireService = new detailleArticleService();
+        List<Commentaire> commentaires = commetaireService.listCommentaire(article);
+
+        for (Commentaire comment : commentaires) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("allcomments.fxml"));
+                Node node = loader.load();
+                AllcommentsController commentaireController = loader.getController();
+                commentaireController.setData(comment);
+                allComments.getChildren().add(node);
+            } catch (IOException e) {
+}
+        }
+    }
+
+    @FXML
+    private void handleDislikeButtonAction(MouseEvent event) {
+    }
+
+    @FXML
+    private void handleLikeButtonAction(MouseEvent event) {
+    }
+
+    @FXML
+    private void btndislike(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnlike(ActionEvent event) {
+    }
+}

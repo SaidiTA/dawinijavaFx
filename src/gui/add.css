@@ -1,0 +1,48 @@
+.whit_background{
+-fx-background-color:#fff;
+
+}
+
+.primary-color
+{ 
+-fx-background-color:#F4F5F9;
+}
+
+.shadow
+{ 
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1),10,0,0,10);
+}
+
+.rect-round{
+    -fx-background-radius: 20;
+}
+.anchorpane-round {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+.transparent{
+    -fx-background-color:rgba(0,0,0,0);
+}
+
+.button{
+    -fx-background-color:#F1F7FD;  
+}
+.button:hover{
+    -fx-background-color:#BDBBC3;  
+}
+.button:pressed{
+    -fx-background-color:#99ccff;  
+}
+
+
+.text-input
+{ 
+-fx-background-color:rgba(0,0,0,0);
+-fx-border-width: 0,0,0,1;
+-fx-border-color:#EBC95E
+
+}
+
+

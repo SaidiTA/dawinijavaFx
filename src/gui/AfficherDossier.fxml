@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="660.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherDossierController">
+   <children>
+      <TableView fx:id="tableview" layoutX="90.0" layoutY="54.0" prefHeight="513.0" prefWidth="880.0">
+        <columns>
+          <TableColumn fx:id="numCol" prefWidth="197.0" text="Numero" />
+          <TableColumn fx:id="codeCol" prefWidth="191.0" text="Code apci" />
+            <TableColumn fx:id="descpCol" prefWidth="438.0" text="Despription" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

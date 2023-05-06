@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SpecialitesFrontController">
+    <children>
+        <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="757.0" prefWidth="1152.0">
+            <children>
+                <Pane prefHeight="136.0" prefWidth="1152.0" style="-fx-background-color: azure;">
+                    <children>
+                        <ImageView fitHeight="123.0" fitWidth="200.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/logo-dawini.png" />
+                            </image>
+                        </ImageView>
+                        <DialogPane layoutX="251.0" layoutY="43.0" prefHeight="58.0" prefWidth="762.0" />
+                        <Hyperlink fx:id="home" layoutX="312.0" layoutY="58.0" onAction="#HOME" text="Accuiel" />
+                        <Hyperlink fx:id="btnRdv" layoutX="416.0" layoutY="58.0" onAction="#RDV" text="Rendez-vous" />
+                        <Hyperlink fx:id="BtnArt" layoutX="555.0" layoutY="55.0" onAction="#ARTICLE" text="Article" />
+                        <Hyperlink fx:id="BtnForum" layoutX="660.0" layoutY="55.0" onAction="#FORUM" text="Forum" />
+                        <Hyperlink layoutX="777.0" layoutY="58.0" text="A propos" />
+                    </children>
+                </Pane>
+                <Pane layoutX="-14.0" layoutY="218.0" prefHeight="502.0" prefWidth="1152.0" style="-fx-background-color: azure;">
+                    <children>
+                        <Label fx:id="nomspecialites" layoutX="180.0" layoutY="319.0" prefHeight="21.0" prefWidth="71.0" />
+                  <HBox fx:id="pnitems" layoutX="22.0" layoutY="19.0" prefHeight="437.0" prefWidth="1076.0" />
+                    </children>
+                </Pane>
+                <Button fx:id="btnAdd" layoutX="874.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="56.0" prefWidth="240.0" style="-fx-background-color: skyblue;" text="Ajouter Sujet">
+                    <styleClass>
+                        <String fx:value="button" />
+                        <String fx:value="transparent" />
+                        <String fx:value="whit_background" />
+                        <String fx:value="shadow" />
+                        <String fx:value="rect-round" />
+                    </styleClass>
+                    <graphic>
+                        <ImageView fx:id="btnAddplus1" fitHeight="46.0" fitWidth="66.0" onDragDetected="#handleButtonClick" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/images__1_-removebg-preview.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="FreeSerif" size="19.0" />
+                    </font>
+                    <stylesheets>
+                        <URL value="@add.css" />
+                        <URL value="@style.css" />
+                    </stylesheets>
+                </Button>
+                <Label fx:id="nomspecialites1" layoutX="190.0" layoutY="329.0" prefHeight="21.0" prefWidth="71.0" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

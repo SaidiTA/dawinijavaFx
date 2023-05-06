@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReponseController">
+   <children>
+      <Pane layoutX="20.0" layoutY="10.0" prefHeight="136.0" prefWidth="1254.0" style="-fx-background-color: azure;">
+         <children>
+            <ImageView fitHeight="123.0" fitWidth="200.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                        <Image url="@../images/logo-dawini.png" />
+               </image>
+            </ImageView>
+            <DialogPane layoutX="251.0" layoutY="43.0" prefHeight="58.0" prefWidth="762.0" style="-fx-background-color: white;" />
+            <Hyperlink layoutX="312.0" layoutY="58.0" text="Accuiel" />
+            <Hyperlink layoutX="416.0" layoutY="58.0" text="Rendez-vous" />
+            <Hyperlink layoutX="555.0" layoutY="62.0" text="Article" />
+            <Hyperlink layoutX="660.0" layoutY="62.0" text="Forum" />
+            <Hyperlink layoutX="777.0" layoutY="62.0" text="A propos" />
+            <Button fx:id="btnRef111" layoutX="1159.0" layoutY="50.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="53.0" prefWidth="64.0" stylesheets="@../../../../soumaya/Dawini_v1/src/gui/add.css">
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="transparent" />
+                  <String fx:value="whit_background" />
+                  <String fx:value="shadow" />
+                  <String fx:value="rect-round" />
+               </styleClass>
+               <font>
+                  <Font name="FreeSerif" size="19.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="btnRef11" fitHeight="34.0" fitWidth="29.0" onDragDetected="#refreshTable" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                                          <Image url="@../images/ref-removebg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="10.0" layoutY="161.0" prefHeight="710.0" prefWidth="1254.0" style="-fx-background-color: azure;">
+         <children>
+            <AnchorPane layoutX="-181.0" layoutY="249.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+            <Hyperlink fx:id="btnnom" layoutX="37.0" layoutY="14.0" text="C'est quoi les types du diabetes ?" textAlignment="CENTER" underline="true" />
+            <Button fx:id="btnAjouter" layoutX="1056.0" layoutY="616.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #33FF9F;" stylesheets="@add.css" text="Ajouter Reponse" />
+<ScrollPane layoutX="4.0" layoutY="48.0" prefHeight="563.0" prefWidth="1247.0">
+               <content>
+            <VBox fx:id="pnitems" prefHeight="547.0" prefWidth="1251.0" style="-fx-background-color: #F1F7FD;" />
+               </content>
+                  </ScrollPane>
+            <Label fx:id="btnid" disable="true" layoutX="4.0" layoutY="18.0" text="Label" />           
+         </children>
+      </Pane>
+      <Button fx:id="btnback" layoutX="1102.0" layoutY="67.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: azure;" stylesheets="@style.css" text="Retour" />
+   </children>
+</AnchorPane>
